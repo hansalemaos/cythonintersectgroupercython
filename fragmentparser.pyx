@@ -10,8 +10,10 @@ from functools import cache
 import re
 import shutil
 import platform
+from typing import Any
 iswindows = platform.system() == "Windows"
 refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
+hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")
 ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
 serial = "127.0.0.1:5560"
 adb = shutil.which("adb")
@@ -63,155 +65,163 @@ cpdef list[str] execute_sh_command(str command):
             command, shell=True, capture_output=True
         )
     return p.stdout.strip().splitlines()
-    
-def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
-    @cache
-    def findchi(ff):
+
+@cache
+def findchi(ff):
+    try:
+        r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
+        datadict = {}
+        maininfos = list(
+            {
+                k: v
+                for k, v in sorted(
+                    r0.items(), key=lambda q: len(q[0]), reverse=True
+                )
+            }.items()
+        )[0]
+        otherdata = ff.split(maininfos[-1]["text"])
+        t = maininfos[-1]["text"][1:-1] + " ÇÇÇÇÇÇ ÇÇÇÇÇÇ"
+        infosplit = t.split(maxsplit=5)
+        firstimesearch = infosplit[1]
+        secondtimesearch = infosplit[2]
+        datadict["START_X"] = -1
+        datadict["START_Y"] = -1
+        datadict["CENTER_X"] = -1
+        datadict["CENTER_Y"] = -1
+        datadict["AREA"] = -1
+        datadict["END_X"] = -1
+        datadict["END_Y"] = -1
+        datadict["WIDTH"] = -1
+        datadict["HEIGHT"] = -1
+        datadict["START_X_RELATIVE"] = -1
+        datadict["START_Y_RELATIVE"] = -1
+        datadict["END_X_RELATIVE"] = -1
+        datadict["END_Y_RELATIVE"] = -1
+
         try:
-            r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
-            datadict = {}
-            maininfos = list(
-                {
-                    k: v
-                    for k, v in sorted(
-                        r0.items(), key=lambda q: len(q[0]), reverse=True
-                    )
-                }.items()
-            )[0]
-            otherdata = ff.split(maininfos[-1]["text"])
-            t = maininfos[-1]["text"][1:-1] + " ÇÇÇÇÇÇ ÇÇÇÇÇÇ"
-            infosplit = t.split(maxsplit=5)
-            firstimesearch = infosplit[1]
-            secondtimesearch = infosplit[2]
-            datadict["START_X"] = -1
-            datadict["START_Y"] = -1
-            datadict["CENTER_X"] = -1
-            datadict["CENTER_Y"] = -1
-            datadict["AREA"] = -1
-            datadict["END_X"] = -1
-            datadict["END_Y"] = -1
-            datadict["WIDTH"] = -1
-            datadict["HEIGHT"] = -1
-            datadict["START_X_RELATIVE"] = -1
-            datadict["START_Y_RELATIVE"] = -1
-            datadict["END_X_RELATIVE"] = -1
-            datadict["END_Y_RELATIVE"] = -1
+            datadict["COORDS"] = infosplit[-3].rstrip("Ç ")
+        except Exception:
+            datadict["COORDS"] = None
+        try:
+            datadict["INT_COORDS"] = tuple(
+                map(int, (refi.findall(datadict["COORDS"])[0]))
+            )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
+        except Exception:
+            datadict["INT_COORDS"] = ()
+        try:
+            datadict["CLASSNAME"] = otherdata[0]
+        except Exception:
+            datadict["CLASSNAME"] = None
 
-            try:
-                datadict["COORDS"] = infosplit[-3].rstrip("Ç ")
-            except Exception:
-                datadict["COORDS"] = None
-            try:
-                datadict["INT_COORDS"] = tuple(
-                    map(int, (refi.findall(datadict["COORDS"])[0]))
-                )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
-            except Exception:
-                datadict["INT_COORDS"] = ()
-            try:
-                datadict["CLASSNAME"] = otherdata[0]
-            except Exception:
-                datadict["CLASSNAME"] = None
+        try:
+            datadict["HASHCODE"] = infosplit[-2].rstrip("Ç ")
+        except Exception:
+            datadict["HASHCODE"] = None
+        try:
+            datadict["ELEMENT_ID"] = infosplit[-1].rstrip("Ç ")
+        except Exception:
+            datadict["ELEMENT_ID"] = None
+        try:
+            datadict["MID"] = infosplit[0]
+        except Exception:
+            datadict["MID"] = None
+        try:
+            datadict["VISIBILITY"] = firstimesearch[0]
+        except Exception:
+            datadict["VISIBILITY"] = None
 
-            try:
-                datadict["HASHCODE"] = infosplit[-2].rstrip("Ç ")
-            except Exception:
-                datadict["HASHCODE"] = None
-            try:
-                datadict["ELEMENT_ID"] = infosplit[-1].rstrip("Ç ")
-            except Exception:
-                datadict["ELEMENT_ID"] = None
-            try:
-                datadict["MID"] = infosplit[0]
-            except Exception:
-                datadict["MID"] = None
-            try:
-                datadict["VISIBILITY"] = firstimesearch[0]
-            except Exception:
-                datadict["VISIBILITY"] = None
+        try:
+            datadict["FOCUSABLE"] = firstimesearch[1]
+        except Exception:
+            datadict["FOCUSABLE"] = None
 
-            try:
-                datadict["FOCUSABLE"] = firstimesearch[1]
-            except Exception:
-                datadict["FOCUSABLE"] = None
+        try:
+            datadict["ENABLED"] = firstimesearch[2]
+        except Exception:
+            datadict["ENABLED"] = None
 
-            try:
-                datadict["ENABLED"] = firstimesearch[2]
-            except Exception:
-                datadict["ENABLED"] = None
+        try:
+            datadict["DRAWN"] = firstimesearch[3]
+        except Exception:
+            datadict["DRAWN"] = None
 
-            try:
-                datadict["DRAWN"] = firstimesearch[3]
-            except Exception:
-                datadict["DRAWN"] = None
+        try:
+            datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
+        except Exception:
+            datadict["SCROLLBARS_HORIZONTAL"] = None
 
-            try:
-                datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
-            except Exception:
-                datadict["SCROLLBARS_HORIZONTAL"] = None
+        try:
+            datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
+        except Exception:
+            datadict["SCROLLBARS_VERTICAL"] = None
 
-            try:
-                datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
-            except Exception:
-                datadict["SCROLLBARS_VERTICAL"] = None
+        try:
+            datadict["CLICKABLE"] = firstimesearch[6]
+        except Exception:
+            datadict["CLICKABLE"] = None
 
-            try:
-                datadict["CLICKABLE"] = firstimesearch[6]
-            except Exception:
-                datadict["CLICKABLE"] = None
+        try:
+            datadict["LONG_CLICKABLE"] = firstimesearch[7]
+        except Exception:
+            datadict["LONG_CLICKABLE"] = None
 
-            try:
-                datadict["LONG_CLICKABLE"] = firstimesearch[7]
-            except Exception:
-                datadict["LONG_CLICKABLE"] = None
+        try:
+            datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
+        except Exception:
+            datadict["CONTEXT_CLICKABLE"] = None
 
-            try:
-                datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
-            except Exception:
-                datadict["CONTEXT_CLICKABLE"] = None
+        try:
+            datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
+        except Exception:
+            datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
 
-            try:
-                datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
-            except Exception:
-                datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
+        try:
+            datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
+        except Exception:
+            datadict["PFLAG_FOCUSED"] = None
 
-            try:
-                datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
-            except Exception:
-                datadict["PFLAG_FOCUSED"] = None
+        try:
+            datadict["PFLAG_SELECTED"] = secondtimesearch[2]
+        except Exception:
+            datadict["PFLAG_SELECTED"] = None
 
-            try:
-                datadict["PFLAG_SELECTED"] = secondtimesearch[2]
-            except Exception:
-                datadict["PFLAG_SELECTED"] = None
+        try:
+            datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
+        except Exception:
+            datadict["PFLAG_PREPRESSED"] = None
 
-            try:
-                datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
-            except Exception:
-                datadict["PFLAG_PREPRESSED"] = None
+        try:
+            datadict["PFLAG_HOVERED"] = secondtimesearch[4]
+        except Exception:
+            datadict["PFLAG_HOVERED"] = None
 
-            try:
-                datadict["PFLAG_HOVERED"] = secondtimesearch[4]
-            except Exception:
-                datadict["PFLAG_HOVERED"] = None
+        try:
+            datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
+        except Exception:
+            datadict["PFLAG_ACTIVATED"] = None
 
-            try:
-                datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
-            except Exception:
-                datadict["PFLAG_ACTIVATED"] = None
+        try:
+            datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
+        except Exception:
+            datadict["PFLAG_INVALIDATED"] = None
 
-            try:
-                datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
-            except Exception:
-                datadict["PFLAG_INVALIDATED"] = None
+        try:
+            datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
+        except Exception:
+            datadict["PFLAG_DIRTY_MASK"] = None
+        return maininfos, otherdata, datadict
+    except Exception as fe:
+        # sys.stderr.write(f'{fe}')
+        return [],[],{}
 
-            try:
-                datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
-            except Exception:
-                datadict["PFLAG_DIRTY_MASK"] = None
-            return maininfos, otherdata, datadict
-        except Exception as fe:
-            # sys.stderr.write(f'{fe}')
-            return None
+cpdef list[list[dict]] get_all_activity_elements(cython.bint as_pandas=False, cython.Py_ssize_t number_of_max_views=-1):
+    cdef:
+        dict[str,Any] datadict,datadict2
+        list allda
+        list[list] allsi, allchildrendata
+        Py_ssize_t i, elemtindex, hierachcounter, hierachcounter2
+        list[list[dict[str,Any]]] allconvdata
+        #list allsplits,maininfos2, otherdata2
 
     allda = execute_sh_command(
         ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS,
@@ -222,29 +232,22 @@ def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
         [
             i
             for i, x in enumerate(allda)
-            if re.search(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))", x)
+            if hierachyregex.search(x)
         ],
     )
     allsplits = [x for x in allsi if b"View Hierarchy:" in x[0]]
-    if number_of_max_views  >0:
+    if number_of_max_views > 0:
         allsplits = allsplits[-number_of_max_views:]
 
     allconvdata = []
-    # for vxa in allsplits:
-    #     for h in range(len(vxa)):
-    #         try:
-    #             vxa[h]=vxa[h][4:]
-    #             print(vxa[h])
-    #         except Exception:
-    #             continue
-
-    for elemtindex, a in enumerate(allsplits):
+    for elemtindex in range(len(allsplits)):
+        a=allsplits[elemtindex]
         try:
             di = indent2dict(
                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
             )
         except Exception as e :
-            print(e)
+            #print(e)
             continue
         allchildrendata = []
         hierachcounter = 0
@@ -323,5 +326,5 @@ def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
 
         except Exception:
             pass
-
+    findchi.cache_clear()
     return allconvdata

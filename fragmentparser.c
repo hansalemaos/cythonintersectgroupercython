@@ -1539,6 +1539,20 @@ static const char *__pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
+struct __pyx_opt_args_14fragmentparser_get_all_activity_elements;
+
+/* "fragmentparser.pyx":217
+ *         return [],[],{}
+ * 
+ * cpdef list[list[dict]] get_all_activity_elements(cython.bint as_pandas=False, cython.Py_ssize_t number_of_max_views=-1):             # <<<<<<<<<<<<<<
+ *     cdef:
+ *         dict[str,Any] datadict,datadict2
+ */
+struct __pyx_opt_args_14fragmentparser_get_all_activity_elements {
+  int __pyx_n;
+  int as_pandas;
+  Py_ssize_t number_of_max_views;
+};
 /* #### Code section: utility_code_proto ### */
 
 /* --- Runtime support code (head) --- */
@@ -1957,6 +1971,9 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
 #define __Pyx_PyObject_FastCall(func, args, nargs)  __Pyx_PyObject_FastCallDict(func, args, (size_t)(nargs), NULL)
 static CYTHON_INLINE PyObject* __Pyx_PyObject_FastCallDict(PyObject *func, PyObject **args, size_t nargs, PyObject *kwargs);
 
+/* RaiseUnexpectedTypeError.proto */
+static int __Pyx_RaiseUnexpectedTypeError(const char *expected, PyObject *obj);
+
 /* py_dict_items.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyDict_Items(PyObject* d);
 
@@ -2154,15 +2171,12 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
         PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
         int has_cstart, int has_cstop, int wraparound);
 
-/* RaiseUnexpectedTypeError.proto */
-static int __Pyx_RaiseUnexpectedTypeError(const char *expected, PyObject *obj);
-
-/* PyIntBinop.proto */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+/* SwapException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_ExceptionSwap(type, value, tb)  __Pyx__ExceptionSwap(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
 #else
-#define __Pyx_PyInt_AddObjC(op1, op2, intval, inplace, zerodivision_check)\
-    (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
+static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
 #endif
 
 /* ListCompAppend.proto */
@@ -2213,14 +2227,6 @@ static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name
 #define __Pyx_PyBaseString_Join PyUnicode_Join
 #endif
 static CYTHON_INLINE PyObject* __Pyx_PyBytes_Join(PyObject* sep, PyObject* values);
-
-/* SwapException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_ExceptionSwap(type, value, tb)  __Pyx__ExceptionSwap(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#else
-static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
-#endif
 
 /* append.proto */
 static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x);
@@ -2333,6 +2339,8 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from "fragmentparser" */
 static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_14fragmentparser_execute_sh_command(PyObject *, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_14fragmentparser_get_all_activity_elements(int __pyx_skip_dispatch, struct __pyx_opt_args_14fragmentparser_get_all_activity_elements *__pyx_optional_args); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
 #define __Pyx_MODULE_NAME "fragmentparser"
@@ -2344,40 +2352,33 @@ int __pyx_module_is_main_fragmentparser = 0;
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_range;
-static PyObject *__pyx_builtin_enumerate;
-static PyObject *__pyx_builtin_print;
-static PyObject *__pyx_builtin_sum;
 static PyObject *__pyx_builtin_map;
 static PyObject *__pyx_builtin_sorted;
+static PyObject *__pyx_builtin_sum;
+static PyObject *__pyx_builtin_enumerate;
 /* #### Code section: string_decls ### */
-static const char __pyx_k_a[] = "a";
-static const char __pyx_k_e[] = "e";
-static const char __pyx_k_f[] = "f";
-static const char __pyx_k_i[] = "i";
 static const char __pyx_k_k[] = "k";
 static const char __pyx_k_l[] = "l";
-static const char __pyx_k_p[] = "p";
 static const char __pyx_k_s[] = " -s ";
 static const char __pyx_k_t[] = "t";
 static const char __pyx_k_v[] = "v";
-static const char __pyx_k_x[] = "x";
 static const char __pyx_k__2[] = "{";
 static const char __pyx_k__3[] = "}";
 static const char __pyx_k__5[] = " \303\207\303\207\303\207\303\207\303\207\303\207 \303\207\303\207\303\207\303\207\303\207\303\207";
 static const char __pyx_k__6[] = "\303\207 ";
-static const char __pyx_k__9[] = "\n";
-static const char __pyx_k_di[] = "di";
+static const char __pyx_k__7[] = "\n";
 static const char __pyx_k_fe[] = "fe";
 static const char __pyx_k_ff[] = "ff";
 static const char __pyx_k_r0[] = "r0";
 static const char __pyx_k_re[] = "re";
 static const char __pyx_k_s1[] = "s1";
 static const char __pyx_k_s2[] = "s2";
+static const char __pyx_k_Any[] = "Any";
 static const char __pyx_k_MID[] = "MID";
-static const char __pyx_k__12[] = ".";
-static const char __pyx_k__13[] = "*";
-static const char __pyx_k__14[] = "([^,]+),([^,]+)-([^,]+),([^,]+)";
-static const char __pyx_k__24[] = "?";
+static const char __pyx_k__10[] = ".";
+static const char __pyx_k__11[] = "*";
+static const char __pyx_k__12[] = "([^,]+),([^,]+)-([^,]+),([^,]+)";
+static const char __pyx_k__25[] = "?";
 static const char __pyx_k_adb[] = "adb";
 static const char __pyx_k_key[] = "key";
 static const char __pyx_k_map[] = "map";
@@ -2397,12 +2398,9 @@ static const char __pyx_k_DRAWN[] = "DRAWN";
 static const char __pyx_k_END_X[] = "END_X";
 static const char __pyx_k_END_Y[] = "END_Y";
 static const char __pyx_k_WIDTH[] = "WIDTH";
-static const char __pyx_k_allda[] = "allda";
-static const char __pyx_k_allsi[] = "allsi";
 static const char __pyx_k_cache[] = "cache";
 static const char __pyx_k_input[] = "input";
 static const char __pyx_k_items[] = "items";
-static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shell[] = "shell";
 static const char __pyx_k_split[] = "split";
@@ -2413,7 +2411,6 @@ static const char __pyx_k_COORDS[] = "COORDS";
 static const char __pyx_k_HEIGHT[] = "HEIGHT";
 static const char __pyx_k_append[] = "append";
 static const char __pyx_k_decode[] = "decode";
-static const char __pyx_k_encode[] = "encode";
 static const char __pyx_k_fla_tu[] = "fla_tu";
 static const char __pyx_k_ignore[] = "ignore";
 static const char __pyx_k_import[] = "__import__";
@@ -2425,6 +2422,7 @@ static const char __pyx_k_sorted[] = "sorted";
 static const char __pyx_k_stdout[] = "stdout";
 static const char __pyx_k_string[] = "string";
 static const char __pyx_k_system[] = "system";
+static const char __pyx_k_typing[] = "typing";
 static const char __pyx_k_ENABLED[] = "ENABLED";
 static const char __pyx_k_START_X[] = "START_X";
 static const char __pyx_k_START_Y[] = "START_Y";
@@ -2447,9 +2445,7 @@ static const char __pyx_k_CLICKABLE[] = "CLICKABLE";
 static const char __pyx_k_FOCUSABLE[] = "FOCUSABLE";
 static const char __pyx_k_IS_PARENT[] = "IS_PARENT";
 static const char __pyx_k_TypeError[] = "TypeError";
-static const char __pyx_k_allsplits[] = "allsplits";
 static const char __pyx_k_as_pandas[] = "as_pandas";
-static const char __pyx_k_datadict2[] = "datadict2";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_functools[] = "functools";
 static const char __pyx_k_infosplit[] = "infosplit";
@@ -2462,14 +2458,11 @@ static const char __pyx_k_INT_COORDS[] = "INT_COORDS";
 static const char __pyx_k_VIEW_INDEX[] = "VIEW_INDEX";
 static const char __pyx_k_VISIBILITY[] = "VISIBILITY";
 static const char __pyx_k_ValueError[] = "ValueError";
-static const char __pyx_k_elemtindex[] = "elemtindex";
 static const char __pyx_k_list_split[] = "list_split";
-static const char __pyx_k_maininfos2[] = "maininfos2";
-static const char __pyx_k_otherdata2[] = "otherdata2";
 static const char __pyx_k_parifinder[] = "parifinder";
 static const char __pyx_k_splitlines[] = "splitlines";
 static const char __pyx_k_subprocess[] = "subprocess";
-static const char __pyx_k_allconvdata[] = "allconvdata";
+static const char __pyx_k_cache_clear[] = "cache_clear";
 static const char __pyx_k_indent2dict[] = "indent2dict";
 static const char __pyx_k_parse_pairs[] = "parse_pairs";
 static const char __pyx_k_initializing[] = "_initializing";
@@ -2477,6 +2470,7 @@ static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_removespaces[] = "removespaces";
 static const char __pyx_k_PFLAG_FOCUSED[] = "PFLAG_FOCUSED";
 static const char __pyx_k_PFLAG_HOVERED[] = "PFLAG_HOVERED";
+static const char __pyx_k_hierachyregex[] = "hierachyregex";
 static const char __pyx_k_127_0_0_1_5560[] = "127.0.0.1:5560";
 static const char __pyx_k_END_X_RELATIVE[] = "END_X_RELATIVE";
 static const char __pyx_k_END_Y_RELATIVE[] = "END_Y_RELATIVE";
@@ -2486,11 +2480,8 @@ static const char __pyx_k_View_Hierarchy[] = "View Hierarchy:";
 static const char __pyx_k_capture_output[] = "capture_output";
 static const char __pyx_k_firstimesearch[] = "firstimesearch";
 static const char __pyx_k_fragmentparser[] = "fragmentparser";
-static const char __pyx_k_hierachcounter[] = "hierachcounter";
 static const char __pyx_k_HIERACHY_SINGLE[] = "HIERACHY_SINGLE";
 static const char __pyx_k_PFLAG_ACTIVATED[] = "PFLAG_ACTIVATED";
-static const char __pyx_k_allchildrendata[] = "allchildrendata";
-static const char __pyx_k_hierachcounter2[] = "hierachcounter2";
 static const char __pyx_k_HIERACHY_CLUSTER[] = "HIERACHY_CLUSTER";
 static const char __pyx_k_PFLAG_DIRTY_MASK[] = "PFLAG_DIRTY_MASK";
 static const char __pyx_k_PFLAG_PREPRESSED[] = "PFLAG_PREPRESSED";
@@ -2507,21 +2498,20 @@ static const char __pyx_k_SCROLLBARS_VERTICAL[] = "SCROLLBARS_VERTICAL";
 static const char __pyx_k_indices_or_sections[] = "indices_or_sections";
 static const char __pyx_k_number_of_max_views[] = "number_of_max_views";
 static const char __pyx_k_SCROLLBARS_HORIZONTAL[] = "SCROLLBARS_HORIZONTAL";
+static const char __pyx_k_findchi_locals_lambda[] = "findchi.<locals>.<lambda>";
 static const char __pyx_k_PFLAG_IS_ROOT_NAMESPACE[] = "PFLAG_IS_ROOT_NAMESPACE";
 static const char __pyx_k_s_View_Hierarchy_Looper[] = "^\\s*(?:(?:View Hierarchy:)|(?:Looper))";
 static const char __pyx_k_get_all_activity_elements[] = "get_all_activity_elements";
 static const char __pyx_k_ADB_SHELL_GET_ALL_ACTIVITY_ELEME[] = "ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS";
 static const char __pyx_k_dumpsys_activity_top_a_c_checkin[] = "dumpsys activity top -a -c --checkin";
 static const char __pyx_k_flatten_any_dict_iterable_or_wha[] = "flatten_any_dict_iterable_or_whatsoever";
-static const char __pyx_k_get_all_activity_elements_locals[] = "get_all_activity_elements.<locals>.findchi.<locals>.<lambda>";
 static const char __pyx_k_number_sections_must_be_larger_t[] = "number sections must be larger than 0.";
-static const char __pyx_k_get_all_activity_elements_locals_2[] = "get_all_activity_elements.<locals>.findchi";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_14fragmentparser_list_split(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_l, PyObject *__pyx_v_indices_or_sections); /* proto */
 static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_command); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_q); /* proto */
-static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_ff); /* proto */
-static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_as_pandas, PyObject *__pyx_v_number_of_max_views); /* proto */
+static PyObject *__pyx_pf_14fragmentparser_4findchi(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_ff); /* proto */
+static PyObject *__pyx_pf_14fragmentparser_6get_all_activity_elements(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_as_pandas, Py_ssize_t __pyx_v_number_of_max_views); /* proto */
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items = {0, 0, 0, 0, 0};
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
@@ -2557,6 +2547,7 @@ typedef struct {
   PyObject *__pyx_kp_u_127_0_0_1_5560;
   PyObject *__pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME;
   PyObject *__pyx_n_u_AREA;
+  PyObject *__pyx_n_s_Any;
   PyObject *__pyx_n_u_CENTER_X;
   PyObject *__pyx_n_u_CENTER_Y;
   PyObject *__pyx_n_u_CLASSNAME;
@@ -2600,27 +2591,22 @@ typedef struct {
   PyObject *__pyx_kp_b_View_Hierarchy;
   PyObject *__pyx_n_u_WIDTH;
   PyObject *__pyx_n_u_Windows;
+  PyObject *__pyx_kp_u__10;
+  PyObject *__pyx_n_s__11;
   PyObject *__pyx_kp_u__12;
-  PyObject *__pyx_n_s__13;
-  PyObject *__pyx_kp_u__14;
   PyObject *__pyx_kp_u__2;
-  PyObject *__pyx_n_s__24;
+  PyObject *__pyx_n_s__25;
   PyObject *__pyx_kp_u__3;
   PyObject *__pyx_kp_u__5;
   PyObject *__pyx_kp_u__6;
-  PyObject *__pyx_kp_b__9;
-  PyObject *__pyx_n_s_a;
+  PyObject *__pyx_kp_b__7;
   PyObject *__pyx_n_s_adb;
   PyObject *__pyx_n_u_adb;
-  PyObject *__pyx_n_s_allchildrendata;
-  PyObject *__pyx_n_s_allconvdata;
-  PyObject *__pyx_n_s_allda;
-  PyObject *__pyx_n_s_allsi;
-  PyObject *__pyx_n_s_allsplits;
   PyObject *__pyx_n_s_append;
   PyObject *__pyx_n_s_as_pandas;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_cache;
+  PyObject *__pyx_n_s_cache_clear;
   PyObject *__pyx_n_s_capture_output;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_cmdo;
@@ -2628,21 +2614,16 @@ typedef struct {
   PyObject *__pyx_n_s_compile;
   PyObject *__pyx_n_s_copy;
   PyObject *__pyx_n_s_datadict;
-  PyObject *__pyx_n_s_datadict2;
   PyObject *__pyx_n_s_decode;
   PyObject *__pyx_n_s_deepcopy;
-  PyObject *__pyx_n_s_di;
   PyObject *__pyx_kp_u_dumpsys_activity_top_a_c_checkin;
-  PyObject *__pyx_n_s_e;
-  PyObject *__pyx_n_s_elemtindex;
-  PyObject *__pyx_n_s_encode;
   PyObject *__pyx_n_s_enumerate;
   PyObject *__pyx_n_s_execute_sh_command;
-  PyObject *__pyx_n_s_f;
   PyObject *__pyx_n_s_fe;
   PyObject *__pyx_n_s_ff;
   PyObject *__pyx_n_s_findall;
   PyObject *__pyx_n_s_findchi;
+  PyObject *__pyx_n_s_findchi_locals_lambda;
   PyObject *__pyx_n_s_firstimesearch;
   PyObject *__pyx_n_s_fla_tu;
   PyObject *__pyx_n_s_flatten_any_dict_iterable_or_wha;
@@ -2650,11 +2631,7 @@ typedef struct {
   PyObject *__pyx_kp_s_fragmentparser_pyx;
   PyObject *__pyx_n_s_functools;
   PyObject *__pyx_n_s_get_all_activity_elements;
-  PyObject *__pyx_n_s_get_all_activity_elements_locals;
-  PyObject *__pyx_n_s_get_all_activity_elements_locals_2;
-  PyObject *__pyx_n_s_hierachcounter;
-  PyObject *__pyx_n_s_hierachcounter2;
-  PyObject *__pyx_n_s_i;
+  PyObject *__pyx_n_s_hierachyregex;
   PyObject *__pyx_n_u_ignore;
   PyObject *__pyx_n_s_import;
   PyObject *__pyx_n_s_indent2dict;
@@ -2672,19 +2649,15 @@ typedef struct {
   PyObject *__pyx_n_s_list_split;
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_s_maininfos;
-  PyObject *__pyx_n_s_maininfos2;
   PyObject *__pyx_n_s_map;
   PyObject *__pyx_n_s_maxsplit;
   PyObject *__pyx_n_s_name;
   PyObject *__pyx_n_s_number_of_max_views;
   PyObject *__pyx_kp_u_number_sections_must_be_larger_t;
   PyObject *__pyx_n_s_otherdata;
-  PyObject *__pyx_n_s_otherdata2;
-  PyObject *__pyx_n_s_p;
   PyObject *__pyx_n_s_parifinder;
   PyObject *__pyx_n_s_parse_pairs;
   PyObject *__pyx_n_s_platform;
-  PyObject *__pyx_n_s_print;
   PyObject *__pyx_n_s_r0;
   PyObject *__pyx_n_s_range;
   PyObject *__pyx_n_s_re;
@@ -2717,10 +2690,10 @@ typedef struct {
   PyObject *__pyx_n_s_t;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_u_text;
+  PyObject *__pyx_n_s_typing;
   PyObject *__pyx_kp_u_utf_8;
   PyObject *__pyx_n_s_v;
   PyObject *__pyx_n_s_which;
-  PyObject *__pyx_n_s_x;
   PyObject *__pyx_int_0;
   PyObject *__pyx_int_1;
   PyObject *__pyx_int_2;
@@ -2728,19 +2701,20 @@ typedef struct {
   PyObject *__pyx_int_neg_1;
   PyObject *__pyx_tuple_;
   PyObject *__pyx_slice__4;
-  PyObject *__pyx_tuple__7;
-  PyObject *__pyx_slice__10;
-  PyObject *__pyx_tuple__11;
+  PyObject *__pyx_slice__8;
+  PyObject *__pyx_tuple__9;
+  PyObject *__pyx_tuple__13;
+  PyObject *__pyx_tuple__14;
   PyObject *__pyx_tuple__15;
   PyObject *__pyx_tuple__16;
-  PyObject *__pyx_tuple__17;
-  PyObject *__pyx_tuple__19;
-  PyObject *__pyx_tuple__21;
-  PyObject *__pyx_tuple__23;
-  PyObject *__pyx_codeobj__8;
-  PyObject *__pyx_codeobj__18;
-  PyObject *__pyx_codeobj__20;
-  PyObject *__pyx_codeobj__22;
+  PyObject *__pyx_tuple__18;
+  PyObject *__pyx_tuple__20;
+  PyObject *__pyx_tuple__22;
+  PyObject *__pyx_tuple__24;
+  PyObject *__pyx_codeobj__17;
+  PyObject *__pyx_codeobj__19;
+  PyObject *__pyx_codeobj__21;
+  PyObject *__pyx_codeobj__23;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -2786,6 +2760,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u_127_0_0_1_5560);
   Py_CLEAR(clear_module_state->__pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME);
   Py_CLEAR(clear_module_state->__pyx_n_u_AREA);
+  Py_CLEAR(clear_module_state->__pyx_n_s_Any);
   Py_CLEAR(clear_module_state->__pyx_n_u_CENTER_X);
   Py_CLEAR(clear_module_state->__pyx_n_u_CENTER_Y);
   Py_CLEAR(clear_module_state->__pyx_n_u_CLASSNAME);
@@ -2829,27 +2804,22 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_b_View_Hierarchy);
   Py_CLEAR(clear_module_state->__pyx_n_u_WIDTH);
   Py_CLEAR(clear_module_state->__pyx_n_u_Windows);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__10);
+  Py_CLEAR(clear_module_state->__pyx_n_s__11);
   Py_CLEAR(clear_module_state->__pyx_kp_u__12);
-  Py_CLEAR(clear_module_state->__pyx_n_s__13);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__14);
   Py_CLEAR(clear_module_state->__pyx_kp_u__2);
-  Py_CLEAR(clear_module_state->__pyx_n_s__24);
+  Py_CLEAR(clear_module_state->__pyx_n_s__25);
   Py_CLEAR(clear_module_state->__pyx_kp_u__3);
   Py_CLEAR(clear_module_state->__pyx_kp_u__5);
   Py_CLEAR(clear_module_state->__pyx_kp_u__6);
-  Py_CLEAR(clear_module_state->__pyx_kp_b__9);
-  Py_CLEAR(clear_module_state->__pyx_n_s_a);
+  Py_CLEAR(clear_module_state->__pyx_kp_b__7);
   Py_CLEAR(clear_module_state->__pyx_n_s_adb);
   Py_CLEAR(clear_module_state->__pyx_n_u_adb);
-  Py_CLEAR(clear_module_state->__pyx_n_s_allchildrendata);
-  Py_CLEAR(clear_module_state->__pyx_n_s_allconvdata);
-  Py_CLEAR(clear_module_state->__pyx_n_s_allda);
-  Py_CLEAR(clear_module_state->__pyx_n_s_allsi);
-  Py_CLEAR(clear_module_state->__pyx_n_s_allsplits);
   Py_CLEAR(clear_module_state->__pyx_n_s_append);
   Py_CLEAR(clear_module_state->__pyx_n_s_as_pandas);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_cache);
+  Py_CLEAR(clear_module_state->__pyx_n_s_cache_clear);
   Py_CLEAR(clear_module_state->__pyx_n_s_capture_output);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_cmdo);
@@ -2857,21 +2827,16 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_compile);
   Py_CLEAR(clear_module_state->__pyx_n_s_copy);
   Py_CLEAR(clear_module_state->__pyx_n_s_datadict);
-  Py_CLEAR(clear_module_state->__pyx_n_s_datadict2);
   Py_CLEAR(clear_module_state->__pyx_n_s_decode);
   Py_CLEAR(clear_module_state->__pyx_n_s_deepcopy);
-  Py_CLEAR(clear_module_state->__pyx_n_s_di);
   Py_CLEAR(clear_module_state->__pyx_kp_u_dumpsys_activity_top_a_c_checkin);
-  Py_CLEAR(clear_module_state->__pyx_n_s_e);
-  Py_CLEAR(clear_module_state->__pyx_n_s_elemtindex);
-  Py_CLEAR(clear_module_state->__pyx_n_s_encode);
   Py_CLEAR(clear_module_state->__pyx_n_s_enumerate);
   Py_CLEAR(clear_module_state->__pyx_n_s_execute_sh_command);
-  Py_CLEAR(clear_module_state->__pyx_n_s_f);
   Py_CLEAR(clear_module_state->__pyx_n_s_fe);
   Py_CLEAR(clear_module_state->__pyx_n_s_ff);
   Py_CLEAR(clear_module_state->__pyx_n_s_findall);
   Py_CLEAR(clear_module_state->__pyx_n_s_findchi);
+  Py_CLEAR(clear_module_state->__pyx_n_s_findchi_locals_lambda);
   Py_CLEAR(clear_module_state->__pyx_n_s_firstimesearch);
   Py_CLEAR(clear_module_state->__pyx_n_s_fla_tu);
   Py_CLEAR(clear_module_state->__pyx_n_s_flatten_any_dict_iterable_or_wha);
@@ -2879,11 +2844,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_s_fragmentparser_pyx);
   Py_CLEAR(clear_module_state->__pyx_n_s_functools);
   Py_CLEAR(clear_module_state->__pyx_n_s_get_all_activity_elements);
-  Py_CLEAR(clear_module_state->__pyx_n_s_get_all_activity_elements_locals);
-  Py_CLEAR(clear_module_state->__pyx_n_s_get_all_activity_elements_locals_2);
-  Py_CLEAR(clear_module_state->__pyx_n_s_hierachcounter);
-  Py_CLEAR(clear_module_state->__pyx_n_s_hierachcounter2);
-  Py_CLEAR(clear_module_state->__pyx_n_s_i);
+  Py_CLEAR(clear_module_state->__pyx_n_s_hierachyregex);
   Py_CLEAR(clear_module_state->__pyx_n_u_ignore);
   Py_CLEAR(clear_module_state->__pyx_n_s_import);
   Py_CLEAR(clear_module_state->__pyx_n_s_indent2dict);
@@ -2901,19 +2862,15 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_list_split);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_maininfos);
-  Py_CLEAR(clear_module_state->__pyx_n_s_maininfos2);
   Py_CLEAR(clear_module_state->__pyx_n_s_map);
   Py_CLEAR(clear_module_state->__pyx_n_s_maxsplit);
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
   Py_CLEAR(clear_module_state->__pyx_n_s_number_of_max_views);
   Py_CLEAR(clear_module_state->__pyx_kp_u_number_sections_must_be_larger_t);
   Py_CLEAR(clear_module_state->__pyx_n_s_otherdata);
-  Py_CLEAR(clear_module_state->__pyx_n_s_otherdata2);
-  Py_CLEAR(clear_module_state->__pyx_n_s_p);
   Py_CLEAR(clear_module_state->__pyx_n_s_parifinder);
   Py_CLEAR(clear_module_state->__pyx_n_s_parse_pairs);
   Py_CLEAR(clear_module_state->__pyx_n_s_platform);
-  Py_CLEAR(clear_module_state->__pyx_n_s_print);
   Py_CLEAR(clear_module_state->__pyx_n_s_r0);
   Py_CLEAR(clear_module_state->__pyx_n_s_range);
   Py_CLEAR(clear_module_state->__pyx_n_s_re);
@@ -2946,10 +2903,10 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_t);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_u_text);
+  Py_CLEAR(clear_module_state->__pyx_n_s_typing);
   Py_CLEAR(clear_module_state->__pyx_kp_u_utf_8);
   Py_CLEAR(clear_module_state->__pyx_n_s_v);
   Py_CLEAR(clear_module_state->__pyx_n_s_which);
-  Py_CLEAR(clear_module_state->__pyx_n_s_x);
   Py_CLEAR(clear_module_state->__pyx_int_0);
   Py_CLEAR(clear_module_state->__pyx_int_1);
   Py_CLEAR(clear_module_state->__pyx_int_2);
@@ -2957,19 +2914,20 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_int_neg_1);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
   Py_CLEAR(clear_module_state->__pyx_slice__4);
-  Py_CLEAR(clear_module_state->__pyx_tuple__7);
-  Py_CLEAR(clear_module_state->__pyx_slice__10);
-  Py_CLEAR(clear_module_state->__pyx_tuple__11);
+  Py_CLEAR(clear_module_state->__pyx_slice__8);
+  Py_CLEAR(clear_module_state->__pyx_tuple__9);
+  Py_CLEAR(clear_module_state->__pyx_tuple__13);
+  Py_CLEAR(clear_module_state->__pyx_tuple__14);
   Py_CLEAR(clear_module_state->__pyx_tuple__15);
   Py_CLEAR(clear_module_state->__pyx_tuple__16);
-  Py_CLEAR(clear_module_state->__pyx_tuple__17);
-  Py_CLEAR(clear_module_state->__pyx_tuple__19);
-  Py_CLEAR(clear_module_state->__pyx_tuple__21);
-  Py_CLEAR(clear_module_state->__pyx_tuple__23);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__8);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__18);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__20);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__22);
+  Py_CLEAR(clear_module_state->__pyx_tuple__18);
+  Py_CLEAR(clear_module_state->__pyx_tuple__20);
+  Py_CLEAR(clear_module_state->__pyx_tuple__22);
+  Py_CLEAR(clear_module_state->__pyx_tuple__24);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__17);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__19);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__21);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__23);
   return 0;
 }
 #endif
@@ -2993,6 +2951,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u_127_0_0_1_5560);
   Py_VISIT(traverse_module_state->__pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME);
   Py_VISIT(traverse_module_state->__pyx_n_u_AREA);
+  Py_VISIT(traverse_module_state->__pyx_n_s_Any);
   Py_VISIT(traverse_module_state->__pyx_n_u_CENTER_X);
   Py_VISIT(traverse_module_state->__pyx_n_u_CENTER_Y);
   Py_VISIT(traverse_module_state->__pyx_n_u_CLASSNAME);
@@ -3036,27 +2995,22 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_b_View_Hierarchy);
   Py_VISIT(traverse_module_state->__pyx_n_u_WIDTH);
   Py_VISIT(traverse_module_state->__pyx_n_u_Windows);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__10);
+  Py_VISIT(traverse_module_state->__pyx_n_s__11);
   Py_VISIT(traverse_module_state->__pyx_kp_u__12);
-  Py_VISIT(traverse_module_state->__pyx_n_s__13);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__14);
   Py_VISIT(traverse_module_state->__pyx_kp_u__2);
-  Py_VISIT(traverse_module_state->__pyx_n_s__24);
+  Py_VISIT(traverse_module_state->__pyx_n_s__25);
   Py_VISIT(traverse_module_state->__pyx_kp_u__3);
   Py_VISIT(traverse_module_state->__pyx_kp_u__5);
   Py_VISIT(traverse_module_state->__pyx_kp_u__6);
-  Py_VISIT(traverse_module_state->__pyx_kp_b__9);
-  Py_VISIT(traverse_module_state->__pyx_n_s_a);
+  Py_VISIT(traverse_module_state->__pyx_kp_b__7);
   Py_VISIT(traverse_module_state->__pyx_n_s_adb);
   Py_VISIT(traverse_module_state->__pyx_n_u_adb);
-  Py_VISIT(traverse_module_state->__pyx_n_s_allchildrendata);
-  Py_VISIT(traverse_module_state->__pyx_n_s_allconvdata);
-  Py_VISIT(traverse_module_state->__pyx_n_s_allda);
-  Py_VISIT(traverse_module_state->__pyx_n_s_allsi);
-  Py_VISIT(traverse_module_state->__pyx_n_s_allsplits);
   Py_VISIT(traverse_module_state->__pyx_n_s_append);
   Py_VISIT(traverse_module_state->__pyx_n_s_as_pandas);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_cache);
+  Py_VISIT(traverse_module_state->__pyx_n_s_cache_clear);
   Py_VISIT(traverse_module_state->__pyx_n_s_capture_output);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_cmdo);
@@ -3064,21 +3018,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_compile);
   Py_VISIT(traverse_module_state->__pyx_n_s_copy);
   Py_VISIT(traverse_module_state->__pyx_n_s_datadict);
-  Py_VISIT(traverse_module_state->__pyx_n_s_datadict2);
   Py_VISIT(traverse_module_state->__pyx_n_s_decode);
   Py_VISIT(traverse_module_state->__pyx_n_s_deepcopy);
-  Py_VISIT(traverse_module_state->__pyx_n_s_di);
   Py_VISIT(traverse_module_state->__pyx_kp_u_dumpsys_activity_top_a_c_checkin);
-  Py_VISIT(traverse_module_state->__pyx_n_s_e);
-  Py_VISIT(traverse_module_state->__pyx_n_s_elemtindex);
-  Py_VISIT(traverse_module_state->__pyx_n_s_encode);
   Py_VISIT(traverse_module_state->__pyx_n_s_enumerate);
   Py_VISIT(traverse_module_state->__pyx_n_s_execute_sh_command);
-  Py_VISIT(traverse_module_state->__pyx_n_s_f);
   Py_VISIT(traverse_module_state->__pyx_n_s_fe);
   Py_VISIT(traverse_module_state->__pyx_n_s_ff);
   Py_VISIT(traverse_module_state->__pyx_n_s_findall);
   Py_VISIT(traverse_module_state->__pyx_n_s_findchi);
+  Py_VISIT(traverse_module_state->__pyx_n_s_findchi_locals_lambda);
   Py_VISIT(traverse_module_state->__pyx_n_s_firstimesearch);
   Py_VISIT(traverse_module_state->__pyx_n_s_fla_tu);
   Py_VISIT(traverse_module_state->__pyx_n_s_flatten_any_dict_iterable_or_wha);
@@ -3086,11 +3035,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_s_fragmentparser_pyx);
   Py_VISIT(traverse_module_state->__pyx_n_s_functools);
   Py_VISIT(traverse_module_state->__pyx_n_s_get_all_activity_elements);
-  Py_VISIT(traverse_module_state->__pyx_n_s_get_all_activity_elements_locals);
-  Py_VISIT(traverse_module_state->__pyx_n_s_get_all_activity_elements_locals_2);
-  Py_VISIT(traverse_module_state->__pyx_n_s_hierachcounter);
-  Py_VISIT(traverse_module_state->__pyx_n_s_hierachcounter2);
-  Py_VISIT(traverse_module_state->__pyx_n_s_i);
+  Py_VISIT(traverse_module_state->__pyx_n_s_hierachyregex);
   Py_VISIT(traverse_module_state->__pyx_n_u_ignore);
   Py_VISIT(traverse_module_state->__pyx_n_s_import);
   Py_VISIT(traverse_module_state->__pyx_n_s_indent2dict);
@@ -3108,19 +3053,15 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_list_split);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_maininfos);
-  Py_VISIT(traverse_module_state->__pyx_n_s_maininfos2);
   Py_VISIT(traverse_module_state->__pyx_n_s_map);
   Py_VISIT(traverse_module_state->__pyx_n_s_maxsplit);
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
   Py_VISIT(traverse_module_state->__pyx_n_s_number_of_max_views);
   Py_VISIT(traverse_module_state->__pyx_kp_u_number_sections_must_be_larger_t);
   Py_VISIT(traverse_module_state->__pyx_n_s_otherdata);
-  Py_VISIT(traverse_module_state->__pyx_n_s_otherdata2);
-  Py_VISIT(traverse_module_state->__pyx_n_s_p);
   Py_VISIT(traverse_module_state->__pyx_n_s_parifinder);
   Py_VISIT(traverse_module_state->__pyx_n_s_parse_pairs);
   Py_VISIT(traverse_module_state->__pyx_n_s_platform);
-  Py_VISIT(traverse_module_state->__pyx_n_s_print);
   Py_VISIT(traverse_module_state->__pyx_n_s_r0);
   Py_VISIT(traverse_module_state->__pyx_n_s_range);
   Py_VISIT(traverse_module_state->__pyx_n_s_re);
@@ -3153,10 +3094,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_t);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_u_text);
+  Py_VISIT(traverse_module_state->__pyx_n_s_typing);
   Py_VISIT(traverse_module_state->__pyx_kp_u_utf_8);
   Py_VISIT(traverse_module_state->__pyx_n_s_v);
   Py_VISIT(traverse_module_state->__pyx_n_s_which);
-  Py_VISIT(traverse_module_state->__pyx_n_s_x);
   Py_VISIT(traverse_module_state->__pyx_int_0);
   Py_VISIT(traverse_module_state->__pyx_int_1);
   Py_VISIT(traverse_module_state->__pyx_int_2);
@@ -3164,19 +3105,20 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_int_neg_1);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
   Py_VISIT(traverse_module_state->__pyx_slice__4);
-  Py_VISIT(traverse_module_state->__pyx_tuple__7);
-  Py_VISIT(traverse_module_state->__pyx_slice__10);
-  Py_VISIT(traverse_module_state->__pyx_tuple__11);
+  Py_VISIT(traverse_module_state->__pyx_slice__8);
+  Py_VISIT(traverse_module_state->__pyx_tuple__9);
+  Py_VISIT(traverse_module_state->__pyx_tuple__13);
+  Py_VISIT(traverse_module_state->__pyx_tuple__14);
   Py_VISIT(traverse_module_state->__pyx_tuple__15);
   Py_VISIT(traverse_module_state->__pyx_tuple__16);
-  Py_VISIT(traverse_module_state->__pyx_tuple__17);
-  Py_VISIT(traverse_module_state->__pyx_tuple__19);
-  Py_VISIT(traverse_module_state->__pyx_tuple__21);
-  Py_VISIT(traverse_module_state->__pyx_tuple__23);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__8);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__18);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__20);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__22);
+  Py_VISIT(traverse_module_state->__pyx_tuple__18);
+  Py_VISIT(traverse_module_state->__pyx_tuple__20);
+  Py_VISIT(traverse_module_state->__pyx_tuple__22);
+  Py_VISIT(traverse_module_state->__pyx_tuple__24);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__17);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__19);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__21);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__23);
   return 0;
 }
 #endif
@@ -3212,6 +3154,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u_127_0_0_1_5560 __pyx_mstate_global->__pyx_kp_u_127_0_0_1_5560
 #define __pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME __pyx_mstate_global->__pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME
 #define __pyx_n_u_AREA __pyx_mstate_global->__pyx_n_u_AREA
+#define __pyx_n_s_Any __pyx_mstate_global->__pyx_n_s_Any
 #define __pyx_n_u_CENTER_X __pyx_mstate_global->__pyx_n_u_CENTER_X
 #define __pyx_n_u_CENTER_Y __pyx_mstate_global->__pyx_n_u_CENTER_Y
 #define __pyx_n_u_CLASSNAME __pyx_mstate_global->__pyx_n_u_CLASSNAME
@@ -3255,27 +3198,22 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_b_View_Hierarchy __pyx_mstate_global->__pyx_kp_b_View_Hierarchy
 #define __pyx_n_u_WIDTH __pyx_mstate_global->__pyx_n_u_WIDTH
 #define __pyx_n_u_Windows __pyx_mstate_global->__pyx_n_u_Windows
+#define __pyx_kp_u__10 __pyx_mstate_global->__pyx_kp_u__10
+#define __pyx_n_s__11 __pyx_mstate_global->__pyx_n_s__11
 #define __pyx_kp_u__12 __pyx_mstate_global->__pyx_kp_u__12
-#define __pyx_n_s__13 __pyx_mstate_global->__pyx_n_s__13
-#define __pyx_kp_u__14 __pyx_mstate_global->__pyx_kp_u__14
 #define __pyx_kp_u__2 __pyx_mstate_global->__pyx_kp_u__2
-#define __pyx_n_s__24 __pyx_mstate_global->__pyx_n_s__24
+#define __pyx_n_s__25 __pyx_mstate_global->__pyx_n_s__25
 #define __pyx_kp_u__3 __pyx_mstate_global->__pyx_kp_u__3
 #define __pyx_kp_u__5 __pyx_mstate_global->__pyx_kp_u__5
 #define __pyx_kp_u__6 __pyx_mstate_global->__pyx_kp_u__6
-#define __pyx_kp_b__9 __pyx_mstate_global->__pyx_kp_b__9
-#define __pyx_n_s_a __pyx_mstate_global->__pyx_n_s_a
+#define __pyx_kp_b__7 __pyx_mstate_global->__pyx_kp_b__7
 #define __pyx_n_s_adb __pyx_mstate_global->__pyx_n_s_adb
 #define __pyx_n_u_adb __pyx_mstate_global->__pyx_n_u_adb
-#define __pyx_n_s_allchildrendata __pyx_mstate_global->__pyx_n_s_allchildrendata
-#define __pyx_n_s_allconvdata __pyx_mstate_global->__pyx_n_s_allconvdata
-#define __pyx_n_s_allda __pyx_mstate_global->__pyx_n_s_allda
-#define __pyx_n_s_allsi __pyx_mstate_global->__pyx_n_s_allsi
-#define __pyx_n_s_allsplits __pyx_mstate_global->__pyx_n_s_allsplits
 #define __pyx_n_s_append __pyx_mstate_global->__pyx_n_s_append
 #define __pyx_n_s_as_pandas __pyx_mstate_global->__pyx_n_s_as_pandas
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_cache __pyx_mstate_global->__pyx_n_s_cache
+#define __pyx_n_s_cache_clear __pyx_mstate_global->__pyx_n_s_cache_clear
 #define __pyx_n_s_capture_output __pyx_mstate_global->__pyx_n_s_capture_output
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_cmdo __pyx_mstate_global->__pyx_n_s_cmdo
@@ -3283,21 +3221,16 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_compile __pyx_mstate_global->__pyx_n_s_compile
 #define __pyx_n_s_copy __pyx_mstate_global->__pyx_n_s_copy
 #define __pyx_n_s_datadict __pyx_mstate_global->__pyx_n_s_datadict
-#define __pyx_n_s_datadict2 __pyx_mstate_global->__pyx_n_s_datadict2
 #define __pyx_n_s_decode __pyx_mstate_global->__pyx_n_s_decode
 #define __pyx_n_s_deepcopy __pyx_mstate_global->__pyx_n_s_deepcopy
-#define __pyx_n_s_di __pyx_mstate_global->__pyx_n_s_di
 #define __pyx_kp_u_dumpsys_activity_top_a_c_checkin __pyx_mstate_global->__pyx_kp_u_dumpsys_activity_top_a_c_checkin
-#define __pyx_n_s_e __pyx_mstate_global->__pyx_n_s_e
-#define __pyx_n_s_elemtindex __pyx_mstate_global->__pyx_n_s_elemtindex
-#define __pyx_n_s_encode __pyx_mstate_global->__pyx_n_s_encode
 #define __pyx_n_s_enumerate __pyx_mstate_global->__pyx_n_s_enumerate
 #define __pyx_n_s_execute_sh_command __pyx_mstate_global->__pyx_n_s_execute_sh_command
-#define __pyx_n_s_f __pyx_mstate_global->__pyx_n_s_f
 #define __pyx_n_s_fe __pyx_mstate_global->__pyx_n_s_fe
 #define __pyx_n_s_ff __pyx_mstate_global->__pyx_n_s_ff
 #define __pyx_n_s_findall __pyx_mstate_global->__pyx_n_s_findall
 #define __pyx_n_s_findchi __pyx_mstate_global->__pyx_n_s_findchi
+#define __pyx_n_s_findchi_locals_lambda __pyx_mstate_global->__pyx_n_s_findchi_locals_lambda
 #define __pyx_n_s_firstimesearch __pyx_mstate_global->__pyx_n_s_firstimesearch
 #define __pyx_n_s_fla_tu __pyx_mstate_global->__pyx_n_s_fla_tu
 #define __pyx_n_s_flatten_any_dict_iterable_or_wha __pyx_mstate_global->__pyx_n_s_flatten_any_dict_iterable_or_wha
@@ -3305,11 +3238,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_s_fragmentparser_pyx __pyx_mstate_global->__pyx_kp_s_fragmentparser_pyx
 #define __pyx_n_s_functools __pyx_mstate_global->__pyx_n_s_functools
 #define __pyx_n_s_get_all_activity_elements __pyx_mstate_global->__pyx_n_s_get_all_activity_elements
-#define __pyx_n_s_get_all_activity_elements_locals __pyx_mstate_global->__pyx_n_s_get_all_activity_elements_locals
-#define __pyx_n_s_get_all_activity_elements_locals_2 __pyx_mstate_global->__pyx_n_s_get_all_activity_elements_locals_2
-#define __pyx_n_s_hierachcounter __pyx_mstate_global->__pyx_n_s_hierachcounter
-#define __pyx_n_s_hierachcounter2 __pyx_mstate_global->__pyx_n_s_hierachcounter2
-#define __pyx_n_s_i __pyx_mstate_global->__pyx_n_s_i
+#define __pyx_n_s_hierachyregex __pyx_mstate_global->__pyx_n_s_hierachyregex
 #define __pyx_n_u_ignore __pyx_mstate_global->__pyx_n_u_ignore
 #define __pyx_n_s_import __pyx_mstate_global->__pyx_n_s_import
 #define __pyx_n_s_indent2dict __pyx_mstate_global->__pyx_n_s_indent2dict
@@ -3327,19 +3256,15 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_list_split __pyx_mstate_global->__pyx_n_s_list_split
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_s_maininfos __pyx_mstate_global->__pyx_n_s_maininfos
-#define __pyx_n_s_maininfos2 __pyx_mstate_global->__pyx_n_s_maininfos2
 #define __pyx_n_s_map __pyx_mstate_global->__pyx_n_s_map
 #define __pyx_n_s_maxsplit __pyx_mstate_global->__pyx_n_s_maxsplit
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
 #define __pyx_n_s_number_of_max_views __pyx_mstate_global->__pyx_n_s_number_of_max_views
 #define __pyx_kp_u_number_sections_must_be_larger_t __pyx_mstate_global->__pyx_kp_u_number_sections_must_be_larger_t
 #define __pyx_n_s_otherdata __pyx_mstate_global->__pyx_n_s_otherdata
-#define __pyx_n_s_otherdata2 __pyx_mstate_global->__pyx_n_s_otherdata2
-#define __pyx_n_s_p __pyx_mstate_global->__pyx_n_s_p
 #define __pyx_n_s_parifinder __pyx_mstate_global->__pyx_n_s_parifinder
 #define __pyx_n_s_parse_pairs __pyx_mstate_global->__pyx_n_s_parse_pairs
 #define __pyx_n_s_platform __pyx_mstate_global->__pyx_n_s_platform
-#define __pyx_n_s_print __pyx_mstate_global->__pyx_n_s_print
 #define __pyx_n_s_r0 __pyx_mstate_global->__pyx_n_s_r0
 #define __pyx_n_s_range __pyx_mstate_global->__pyx_n_s_range
 #define __pyx_n_s_re __pyx_mstate_global->__pyx_n_s_re
@@ -3372,10 +3297,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_t __pyx_mstate_global->__pyx_n_s_t
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_u_text __pyx_mstate_global->__pyx_n_u_text
+#define __pyx_n_s_typing __pyx_mstate_global->__pyx_n_s_typing
 #define __pyx_kp_u_utf_8 __pyx_mstate_global->__pyx_kp_u_utf_8
 #define __pyx_n_s_v __pyx_mstate_global->__pyx_n_s_v
 #define __pyx_n_s_which __pyx_mstate_global->__pyx_n_s_which
-#define __pyx_n_s_x __pyx_mstate_global->__pyx_n_s_x
 #define __pyx_int_0 __pyx_mstate_global->__pyx_int_0
 #define __pyx_int_1 __pyx_mstate_global->__pyx_int_1
 #define __pyx_int_2 __pyx_mstate_global->__pyx_int_2
@@ -3383,22 +3308,23 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_int_neg_1 __pyx_mstate_global->__pyx_int_neg_1
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
 #define __pyx_slice__4 __pyx_mstate_global->__pyx_slice__4
-#define __pyx_tuple__7 __pyx_mstate_global->__pyx_tuple__7
-#define __pyx_slice__10 __pyx_mstate_global->__pyx_slice__10
-#define __pyx_tuple__11 __pyx_mstate_global->__pyx_tuple__11
+#define __pyx_slice__8 __pyx_mstate_global->__pyx_slice__8
+#define __pyx_tuple__9 __pyx_mstate_global->__pyx_tuple__9
+#define __pyx_tuple__13 __pyx_mstate_global->__pyx_tuple__13
+#define __pyx_tuple__14 __pyx_mstate_global->__pyx_tuple__14
 #define __pyx_tuple__15 __pyx_mstate_global->__pyx_tuple__15
 #define __pyx_tuple__16 __pyx_mstate_global->__pyx_tuple__16
-#define __pyx_tuple__17 __pyx_mstate_global->__pyx_tuple__17
-#define __pyx_tuple__19 __pyx_mstate_global->__pyx_tuple__19
-#define __pyx_tuple__21 __pyx_mstate_global->__pyx_tuple__21
-#define __pyx_tuple__23 __pyx_mstate_global->__pyx_tuple__23
-#define __pyx_codeobj__8 __pyx_mstate_global->__pyx_codeobj__8
-#define __pyx_codeobj__18 __pyx_mstate_global->__pyx_codeobj__18
-#define __pyx_codeobj__20 __pyx_mstate_global->__pyx_codeobj__20
-#define __pyx_codeobj__22 __pyx_mstate_global->__pyx_codeobj__22
+#define __pyx_tuple__18 __pyx_mstate_global->__pyx_tuple__18
+#define __pyx_tuple__20 __pyx_mstate_global->__pyx_tuple__20
+#define __pyx_tuple__22 __pyx_mstate_global->__pyx_tuple__22
+#define __pyx_tuple__24 __pyx_mstate_global->__pyx_tuple__24
+#define __pyx_codeobj__17 __pyx_mstate_global->__pyx_codeobj__17
+#define __pyx_codeobj__19 __pyx_mstate_global->__pyx_codeobj__19
+#define __pyx_codeobj__21 __pyx_mstate_global->__pyx_codeobj__21
+#define __pyx_codeobj__23 __pyx_mstate_global->__pyx_codeobj__23
 /* #### Code section: module_code ### */
 
-/* "fragmentparser.pyx":21
+/* "fragmentparser.pyx":23
  * 
  * 
  * cpdef list[list] list_split(list[str,bytes] l, list[tuple] indices_or_sections):             # <<<<<<<<<<<<<<
@@ -3451,7 +3377,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("list_split", 1);
 
-  /* "fragmentparser.pyx":26
+  /* "fragmentparser.pyx":28
  *         list div_points, section_sizes
  *         list[list] sub_arys
  *     Ntotal = len(l)             # <<<<<<<<<<<<<<
@@ -3460,12 +3386,12 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
   if (unlikely(__pyx_v_l == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 26, __pyx_L1_error)
+    __PYX_ERR(0, 28, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_l); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_l); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_v_Ntotal = __pyx_t_1;
 
-  /* "fragmentparser.pyx":27
+  /* "fragmentparser.pyx":29
  *         list[list] sub_arys
  *     Ntotal = len(l)
  *     try:             # <<<<<<<<<<<<<<
@@ -3481,7 +3407,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
     __Pyx_XGOTREF(__pyx_t_4);
     /*try:*/ {
 
-      /* "fragmentparser.pyx":28
+      /* "fragmentparser.pyx":30
  *     Ntotal = len(l)
  *     try:
  *         Nsections = len(indices_or_sections) + 1             # <<<<<<<<<<<<<<
@@ -3490,44 +3416,44 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
       if (unlikely(__pyx_v_indices_or_sections == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-        __PYX_ERR(0, 28, __pyx_L3_error)
+        __PYX_ERR(0, 30, __pyx_L3_error)
       }
-      __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_indices_or_sections); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 28, __pyx_L3_error)
+      __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_indices_or_sections); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 30, __pyx_L3_error)
       __pyx_v_Nsections = (__pyx_t_1 + 1);
 
-      /* "fragmentparser.pyx":29
+      /* "fragmentparser.pyx":31
  *     try:
  *         Nsections = len(indices_or_sections) + 1
  *         div_points = [0] + list(indices_or_sections) + [Ntotal]             # <<<<<<<<<<<<<<
  *     except TypeError:
  *         Nsections = int(indices_or_sections)
  */
-      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L3_error)
+      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_5, 0, __pyx_int_0)) __PYX_ERR(0, 29, __pyx_L3_error);
-      __pyx_t_6 = PySequence_List(__pyx_v_indices_or_sections); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 29, __pyx_L3_error)
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_5, 0, __pyx_int_0)) __PYX_ERR(0, 31, __pyx_L3_error);
+      __pyx_t_6 = PySequence_List(__pyx_v_indices_or_sections); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = PyNumber_Add(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L3_error)
+      __pyx_t_7 = PyNumber_Add(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 31, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_Ntotal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 29, __pyx_L3_error)
+      __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_Ntotal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L3_error)
+      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_6);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_5, 0, __pyx_t_6)) __PYX_ERR(0, 29, __pyx_L3_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_5, 0, __pyx_t_6)) __PYX_ERR(0, 31, __pyx_L3_error);
       __pyx_t_6 = 0;
-      __pyx_t_6 = PyNumber_Add(__pyx_t_7, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 29, __pyx_L3_error)
+      __pyx_t_6 = PyNumber_Add(__pyx_t_7, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_div_points = ((PyObject*)__pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "fragmentparser.pyx":27
+      /* "fragmentparser.pyx":29
  *         list[list] sub_arys
  *     Ntotal = len(l)
  *     try:             # <<<<<<<<<<<<<<
@@ -3544,7 +3470,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "fragmentparser.pyx":30
+    /* "fragmentparser.pyx":32
  *         Nsections = len(indices_or_sections) + 1
  *         div_points = [0] + list(indices_or_sections) + [Ntotal]
  *     except TypeError:             # <<<<<<<<<<<<<<
@@ -3554,25 +3480,25 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
     __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
     if (__pyx_t_8) {
       __Pyx_AddTraceback("fragmentparser.list_split", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_7) < 0) __PYX_ERR(0, 30, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_7) < 0) __PYX_ERR(0, 32, __pyx_L5_except_error)
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_5);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* "fragmentparser.pyx":31
+      /* "fragmentparser.pyx":33
  *         div_points = [0] + list(indices_or_sections) + [Ntotal]
  *     except TypeError:
  *         Nsections = int(indices_or_sections)             # <<<<<<<<<<<<<<
  *         if Nsections <= 0:
  *             raise ValueError("number sections must be larger than 0.")
  */
-      __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_v_indices_or_sections); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 31, __pyx_L5_except_error)
+      __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_v_indices_or_sections); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 33, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_1 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_1 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L5_except_error)
+      __pyx_t_1 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_1 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L5_except_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_v_Nsections = __pyx_t_1;
 
-      /* "fragmentparser.pyx":32
+      /* "fragmentparser.pyx":34
  *     except TypeError:
  *         Nsections = int(indices_or_sections)
  *         if Nsections <= 0:             # <<<<<<<<<<<<<<
@@ -3582,20 +3508,20 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
       __pyx_t_10 = (__pyx_v_Nsections <= 0);
       if (unlikely(__pyx_t_10)) {
 
-        /* "fragmentparser.pyx":33
+        /* "fragmentparser.pyx":35
  *         Nsections = int(indices_or_sections)
  *         if Nsections <= 0:
  *             raise ValueError("number sections must be larger than 0.")             # <<<<<<<<<<<<<<
  * 
  *         Neach_section, extras = divmod(Ntotal, Nsections)
  */
-        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 33, __pyx_L5_except_error)
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 35, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_Raise(__pyx_t_9, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __PYX_ERR(0, 33, __pyx_L5_except_error)
+        __PYX_ERR(0, 35, __pyx_L5_except_error)
 
-        /* "fragmentparser.pyx":32
+        /* "fragmentparser.pyx":34
  *     except TypeError:
  *         Nsections = int(indices_or_sections)
  *         if Nsections <= 0:             # <<<<<<<<<<<<<<
@@ -3604,18 +3530,18 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
       }
 
-      /* "fragmentparser.pyx":35
+      /* "fragmentparser.pyx":37
  *             raise ValueError("number sections must be larger than 0.")
  * 
  *         Neach_section, extras = divmod(Ntotal, Nsections)             # <<<<<<<<<<<<<<
  *         section_sizes = (
  *             [0] + extras * [Neach_section + 1] + (Nsections - extras) * [Neach_section]
  */
-      __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_Ntotal); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 35, __pyx_L5_except_error)
+      __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_Ntotal); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_Nsections); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 35, __pyx_L5_except_error)
+      __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_Nsections); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 37, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = PyNumber_Divmod(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 35, __pyx_L5_except_error)
+      __pyx_t_12 = PyNumber_Divmod(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 37, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -3625,7 +3551,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 35, __pyx_L5_except_error)
+          __PYX_ERR(0, 37, __pyx_L5_except_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -3638,15 +3564,15 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
         __Pyx_INCREF(__pyx_t_11);
         __Pyx_INCREF(__pyx_t_9);
         #else
-        __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 35, __pyx_L5_except_error)
+        __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 37, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 35, __pyx_L5_except_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_13 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 35, __pyx_L5_except_error)
+        __pyx_t_13 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 37, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __pyx_t_14 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_13);
@@ -3654,7 +3580,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
         __Pyx_GOTREF(__pyx_t_11);
         index = 1; __pyx_t_9 = __pyx_t_14(__pyx_t_13); if (unlikely(!__pyx_t_9)) goto __pyx_L12_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_13), 2) < 0) __PYX_ERR(0, 35, __pyx_L5_except_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_13), 2) < 0) __PYX_ERR(0, 37, __pyx_L5_except_error)
         __pyx_t_14 = NULL;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         goto __pyx_L13_unpacking_done;
@@ -3662,77 +3588,77 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __pyx_t_14 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 35, __pyx_L5_except_error)
+        __PYX_ERR(0, 37, __pyx_L5_except_error)
         __pyx_L13_unpacking_done:;
       }
-      __pyx_t_1 = __Pyx_PyIndex_AsSsize_t(__pyx_t_11); if (unlikely((__pyx_t_1 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L5_except_error)
+      __pyx_t_1 = __Pyx_PyIndex_AsSsize_t(__pyx_t_11); if (unlikely((__pyx_t_1 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L5_except_error)
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_15 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_15 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L5_except_error)
+      __pyx_t_15 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_15 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L5_except_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_v_Neach_section = __pyx_t_1;
       __pyx_v_extras = __pyx_t_15;
 
-      /* "fragmentparser.pyx":37
+      /* "fragmentparser.pyx":39
  *         Neach_section, extras = divmod(Ntotal, Nsections)
  *         section_sizes = (
  *             [0] + extras * [Neach_section + 1] + (Nsections - extras) * [Neach_section]             # <<<<<<<<<<<<<<
  *         )
  *         div_points = []
  */
-      __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 37, __pyx_L5_except_error)
+      __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_int_0)) __PYX_ERR(0, 37, __pyx_L5_except_error);
-      __pyx_t_9 = PyInt_FromSsize_t((__pyx_v_Neach_section + 1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L5_except_error)
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_int_0)) __PYX_ERR(0, 39, __pyx_L5_except_error);
+      __pyx_t_9 = PyInt_FromSsize_t((__pyx_v_Neach_section + 1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = PyList_New(1 * ((__pyx_v_extras<0) ? 0:__pyx_v_extras)); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 37, __pyx_L5_except_error)
+      __pyx_t_11 = PyList_New(1 * ((__pyx_v_extras<0) ? 0:__pyx_v_extras)); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_11);
       { Py_ssize_t __pyx_temp;
         for (__pyx_temp=0; __pyx_temp < __pyx_v_extras; __pyx_temp++) {
           __Pyx_INCREF(__pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_9);
-          if (__Pyx_PyList_SET_ITEM(__pyx_t_11, __pyx_temp, __pyx_t_9)) __PYX_ERR(0, 37, __pyx_L5_except_error);
+          if (__Pyx_PyList_SET_ITEM(__pyx_t_11, __pyx_temp, __pyx_t_9)) __PYX_ERR(0, 39, __pyx_L5_except_error);
         }
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = PyNumber_Add(__pyx_t_12, __pyx_t_11); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L5_except_error)
+      __pyx_t_9 = PyNumber_Add(__pyx_t_12, __pyx_t_11); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_Neach_section); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 37, __pyx_L5_except_error)
+      __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_Neach_section); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_t_15 = (__pyx_v_Nsections - __pyx_v_extras);
-      __pyx_t_12 = PyList_New(1 * ((__pyx_t_15<0) ? 0:__pyx_t_15)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 37, __pyx_L5_except_error)
+      __pyx_t_12 = PyList_New(1 * ((__pyx_t_15<0) ? 0:__pyx_t_15)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_12);
       { Py_ssize_t __pyx_temp;
         for (__pyx_temp=0; __pyx_temp < __pyx_t_15; __pyx_temp++) {
           __Pyx_INCREF(__pyx_t_11);
           __Pyx_GIVEREF(__pyx_t_11);
-          if (__Pyx_PyList_SET_ITEM(__pyx_t_12, __pyx_temp, __pyx_t_11)) __PYX_ERR(0, 37, __pyx_L5_except_error);
+          if (__Pyx_PyList_SET_ITEM(__pyx_t_12, __pyx_temp, __pyx_t_11)) __PYX_ERR(0, 39, __pyx_L5_except_error);
         }
       }
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = PyNumber_Add(__pyx_t_9, __pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 37, __pyx_L5_except_error)
+      __pyx_t_11 = PyNumber_Add(__pyx_t_9, __pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_v_section_sizes = ((PyObject*)__pyx_t_11);
       __pyx_t_11 = 0;
 
-      /* "fragmentparser.pyx":39
+      /* "fragmentparser.pyx":41
  *             [0] + extras * [Neach_section + 1] + (Nsections - extras) * [Neach_section]
  *         )
  *         div_points = []             # <<<<<<<<<<<<<<
  *         new_sum = 0
  *         for i in range(len(section_sizes)):
  */
-      __pyx_t_11 = PyList_New(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 39, __pyx_L5_except_error)
+      __pyx_t_11 = PyList_New(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 41, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_XDECREF_SET(__pyx_v_div_points, ((PyObject*)__pyx_t_11));
       __pyx_t_11 = 0;
 
-      /* "fragmentparser.pyx":40
+      /* "fragmentparser.pyx":42
  *         )
  *         div_points = []
  *         new_sum = 0             # <<<<<<<<<<<<<<
@@ -3741,47 +3667,47 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
       __pyx_v_new_sum = 0;
 
-      /* "fragmentparser.pyx":41
+      /* "fragmentparser.pyx":43
  *         div_points = []
  *         new_sum = 0
  *         for i in range(len(section_sizes)):             # <<<<<<<<<<<<<<
  *             new_sum += section_sizes[i]
  *             div_points.append(new_sum)
  */
-      __pyx_t_15 = __Pyx_PyList_GET_SIZE(__pyx_v_section_sizes); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 41, __pyx_L5_except_error)
+      __pyx_t_15 = __Pyx_PyList_GET_SIZE(__pyx_v_section_sizes); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 43, __pyx_L5_except_error)
       __pyx_t_1 = __pyx_t_15;
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_1; __pyx_t_16+=1) {
         __pyx_v_i = __pyx_t_16;
 
-        /* "fragmentparser.pyx":42
+        /* "fragmentparser.pyx":44
  *         new_sum = 0
  *         for i in range(len(section_sizes)):
  *             new_sum += section_sizes[i]             # <<<<<<<<<<<<<<
  *             div_points.append(new_sum)
  * 
  */
-        __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_new_sum); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 42, __pyx_L5_except_error)
+        __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_new_sum); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 44, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_section_sizes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L5_except_error)
+        __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_section_sizes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 44, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L5_except_error)
+        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 44, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __pyx_t_17 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_17 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L5_except_error)
+        __pyx_t_17 = __Pyx_PyIndex_AsSsize_t(__pyx_t_9); if (unlikely((__pyx_t_17 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L5_except_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_v_new_sum = __pyx_t_17;
 
-        /* "fragmentparser.pyx":43
+        /* "fragmentparser.pyx":45
  *         for i in range(len(section_sizes)):
  *             new_sum += section_sizes[i]
  *             div_points.append(new_sum)             # <<<<<<<<<<<<<<
  * 
  *     sub_arys = []
  */
-        __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_new_sum); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 43, __pyx_L5_except_error)
+        __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_new_sum); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 45, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_div_points, __pyx_t_9); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 43, __pyx_L5_except_error)
+        __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_div_points, __pyx_t_9); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 45, __pyx_L5_except_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -3791,7 +3717,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
     }
     goto __pyx_L5_except_error;
 
-    /* "fragmentparser.pyx":27
+    /* "fragmentparser.pyx":29
  *         list[list] sub_arys
  *     Ntotal = len(l)
  *     try:             # <<<<<<<<<<<<<<
@@ -3812,19 +3738,19 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
     __pyx_L8_try_end:;
   }
 
-  /* "fragmentparser.pyx":45
+  /* "fragmentparser.pyx":47
  *             div_points.append(new_sum)
  * 
  *     sub_arys = []             # <<<<<<<<<<<<<<
  *     lenar = len(l)
  *     for i in range(Nsections):
  */
-  __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_v_sub_arys = ((PyObject*)__pyx_t_7);
   __pyx_t_7 = 0;
 
-  /* "fragmentparser.pyx":46
+  /* "fragmentparser.pyx":48
  * 
  *     sub_arys = []
  *     lenar = len(l)             # <<<<<<<<<<<<<<
@@ -3833,12 +3759,12 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
   if (unlikely(__pyx_v_l == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 46, __pyx_L1_error)
+    __PYX_ERR(0, 48, __pyx_L1_error)
   }
-  __pyx_t_15 = __Pyx_PyList_GET_SIZE(__pyx_v_l); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyList_GET_SIZE(__pyx_v_l); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 48, __pyx_L1_error)
   __pyx_v_lenar = __pyx_t_15;
 
-  /* "fragmentparser.pyx":47
+  /* "fragmentparser.pyx":49
  *     sub_arys = []
  *     lenar = len(l)
  *     for i in range(Nsections):             # <<<<<<<<<<<<<<
@@ -3850,20 +3776,20 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
   for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_1; __pyx_t_16+=1) {
     __pyx_v_i = __pyx_t_16;
 
-    /* "fragmentparser.pyx":48
+    /* "fragmentparser.pyx":50
  *     lenar = len(l)
  *     for i in range(Nsections):
  *         st = div_points[i]             # <<<<<<<<<<<<<<
  *         end = div_points[i + 1]
  *         if st >= lenar:
  */
-    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_div_points, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_div_points, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_17 = __Pyx_PyIndex_AsSsize_t(__pyx_t_7); if (unlikely((__pyx_t_17 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyIndex_AsSsize_t(__pyx_t_7); if (unlikely((__pyx_t_17 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_v_st = __pyx_t_17;
 
-    /* "fragmentparser.pyx":49
+    /* "fragmentparser.pyx":51
  *     for i in range(Nsections):
  *         st = div_points[i]
  *         end = div_points[i + 1]             # <<<<<<<<<<<<<<
@@ -3871,13 +3797,13 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  *             break
  */
     __pyx_t_17 = (__pyx_v_i + 1);
-    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_div_points, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_div_points, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_17 = __Pyx_PyIndex_AsSsize_t(__pyx_t_7); if (unlikely((__pyx_t_17 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyIndex_AsSsize_t(__pyx_t_7); if (unlikely((__pyx_t_17 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_v_end = __pyx_t_17;
 
-    /* "fragmentparser.pyx":50
+    /* "fragmentparser.pyx":52
  *         st = div_points[i]
  *         end = div_points[i + 1]
  *         if st >= lenar:             # <<<<<<<<<<<<<<
@@ -3887,7 +3813,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
     __pyx_t_10 = (__pyx_v_st >= __pyx_v_lenar);
     if (__pyx_t_10) {
 
-      /* "fragmentparser.pyx":51
+      /* "fragmentparser.pyx":53
  *         end = div_points[i + 1]
  *         if st >= lenar:
  *             break             # <<<<<<<<<<<<<<
@@ -3896,7 +3822,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
       goto __pyx_L17_break;
 
-      /* "fragmentparser.pyx":50
+      /* "fragmentparser.pyx":52
  *         st = div_points[i]
  *         end = div_points[i + 1]
  *         if st >= lenar:             # <<<<<<<<<<<<<<
@@ -3905,7 +3831,7 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
     }
 
-    /* "fragmentparser.pyx":52
+    /* "fragmentparser.pyx":54
  *         if st >= lenar:
  *             break
  *         sub_arys.append((l[st:end]))             # <<<<<<<<<<<<<<
@@ -3914,28 +3840,28 @@ static PyObject *__pyx_f_14fragmentparser_list_split(PyObject *__pyx_v_l, PyObje
  */
     if (unlikely(__pyx_v_l == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 52, __pyx_L1_error)
+      __PYX_ERR(0, 54, __pyx_L1_error)
     }
-    __pyx_t_7 = __Pyx_PyList_GetSlice(__pyx_v_l, __pyx_v_st, __pyx_v_end); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyList_GetSlice(__pyx_v_l, __pyx_v_st, __pyx_v_end); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_sub_arys, __pyx_t_7); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_sub_arys, __pyx_t_7); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __pyx_L17_break:;
 
-  /* "fragmentparser.pyx":54
+  /* "fragmentparser.pyx":56
  *         sub_arys.append((l[st:end]))
  * 
  *     return sub_arys             # <<<<<<<<<<<<<<
  * 
- * def execute_sh_command(command):
+ * cpdef list[str] execute_sh_command(str command):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_sub_arys);
   __pyx_r = __pyx_v_sub_arys;
   goto __pyx_L0;
 
-  /* "fragmentparser.pyx":21
+  /* "fragmentparser.pyx":23
  * 
  * 
  * cpdef list[list] list_split(list[str,bytes] l, list[tuple] indices_or_sections):             # <<<<<<<<<<<<<<
@@ -4019,7 +3945,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -4027,14 +3953,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("list_split", 1, 2, 2, 1); __PYX_ERR(0, 21, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("list_split", 1, 2, 2, 1); __PYX_ERR(0, 23, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "list_split") < 0)) __PYX_ERR(0, 21, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "list_split") < 0)) __PYX_ERR(0, 23, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -4047,7 +3973,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("list_split", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 21, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("list_split", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 23, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4061,8 +3987,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_l), (&PyList_Type), 1, "l", 1))) __PYX_ERR(0, 21, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_indices_or_sections), (&PyList_Type), 1, "indices_or_sections", 1))) __PYX_ERR(0, 21, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_l), (&PyList_Type), 1, "l", 1))) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_indices_or_sections), (&PyList_Type), 1, "indices_or_sections", 1))) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_r = __pyx_pf_14fragmentparser_list_split(__pyx_self, __pyx_v_l, __pyx_v_indices_or_sections);
 
   /* function exit code */
@@ -4089,7 +4015,7 @@ static PyObject *__pyx_pf_14fragmentparser_list_split(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("list_split", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_14fragmentparser_list_split(__pyx_v_l, __pyx_v_indices_or_sections, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_14fragmentparser_list_split(__pyx_v_l, __pyx_v_indices_or_sections, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4106,31 +4032,16 @@ static PyObject *__pyx_pf_14fragmentparser_list_split(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "fragmentparser.pyx":56
+/* "fragmentparser.pyx":58
  *     return sub_arys
  * 
- * def execute_sh_command(command):             # <<<<<<<<<<<<<<
+ * cpdef list[str] execute_sh_command(str command):             # <<<<<<<<<<<<<<
  *     if iswindows:
  *         p= subprocess.run(
  */
 
-/* Python wrapper */
 static PyObject *__pyx_pw_14fragmentparser_3execute_sh_command(PyObject *__pyx_self, PyObject *__pyx_v_command); /*proto*/
-static PyMethodDef __pyx_mdef_14fragmentparser_3execute_sh_command = {"execute_sh_command", (PyCFunction)__pyx_pw_14fragmentparser_3execute_sh_command, METH_O, 0};
-static PyObject *__pyx_pw_14fragmentparser_3execute_sh_command(PyObject *__pyx_self, PyObject *__pyx_v_command) {
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("execute_sh_command (wrapper)", 0);
-  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_14fragmentparser_2execute_sh_command(__pyx_self, ((PyObject *)__pyx_v_command));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_command) {
+static PyObject *__pyx_f_14fragmentparser_execute_sh_command(PyObject *__pyx_v_command, CYTHON_UNUSED int __pyx_skip_dispatch) {
   PyObject *__pyx_v_p = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4139,109 +4050,89 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_t_8;
+  int __pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("execute_sh_command", 1);
 
-  /* "fragmentparser.pyx":57
+  /* "fragmentparser.pyx":59
  * 
- * def execute_sh_command(command):
+ * cpdef list[str] execute_sh_command(str command):
  *     if iswindows:             # <<<<<<<<<<<<<<
  *         p= subprocess.run(
  *             cmdo, shell=True, input=command.encode("utf-8"), capture_output=True
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_iswindows); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_iswindows); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "fragmentparser.pyx":58
- * def execute_sh_command(command):
+    /* "fragmentparser.pyx":60
+ * cpdef list[str] execute_sh_command(str command):
  *     if iswindows:
  *         p= subprocess.run(             # <<<<<<<<<<<<<<
  *             cmdo, shell=True, input=command.encode("utf-8"), capture_output=True
  *         )
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_subprocess); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_subprocess); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_run); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_run); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "fragmentparser.pyx":59
+    /* "fragmentparser.pyx":61
  *     if iswindows:
  *         p= subprocess.run(
  *             cmdo, shell=True, input=command.encode("utf-8"), capture_output=True             # <<<<<<<<<<<<<<
  *         )
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_cmdo); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_cmdo); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
 
-    /* "fragmentparser.pyx":58
- * def execute_sh_command(command):
+    /* "fragmentparser.pyx":60
+ * cpdef list[str] execute_sh_command(str command):
  *     if iswindows:
  *         p= subprocess.run(             # <<<<<<<<<<<<<<
  *             cmdo, shell=True, input=command.encode("utf-8"), capture_output=True
  *         )
  */
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_1);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error);
     __pyx_t_1 = 0;
 
-    /* "fragmentparser.pyx":59
+    /* "fragmentparser.pyx":61
  *     if iswindows:
  *         p= subprocess.run(
  *             cmdo, shell=True, input=command.encode("utf-8"), capture_output=True             # <<<<<<<<<<<<<<
  *         )
  *     else:
  */
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_shell, Py_True) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_command, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 59, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = NULL;
-    __pyx_t_8 = 0;
-    #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_6))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_6);
-      if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-        __Pyx_INCREF(__pyx_t_7);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_6, function);
-        __pyx_t_8 = 1;
-      }
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_shell, Py_True) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+    if (unlikely(__pyx_v_command == Py_None)) {
+      PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
+      __PYX_ERR(0, 61, __pyx_L1_error)
     }
-    #endif
-    {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_kp_u_utf_8};
-      __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    }
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_input, __pyx_t_5) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_5 = PyUnicode_AsUTF8String(__pyx_v_command); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_input, __pyx_t_5) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_capture_output, Py_True) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_capture_output, Py_True) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
 
-    /* "fragmentparser.pyx":58
- * def execute_sh_command(command):
+    /* "fragmentparser.pyx":60
+ * cpdef list[str] execute_sh_command(str command):
  *     if iswindows:
  *         p= subprocess.run(             # <<<<<<<<<<<<<<
  *             cmdo, shell=True, input=command.encode("utf-8"), capture_output=True
  *         )
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4249,9 +4140,9 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
     __pyx_v_p = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fragmentparser.pyx":57
+    /* "fragmentparser.pyx":59
  * 
- * def execute_sh_command(command):
+ * cpdef list[str] execute_sh_command(str command):
  *     if iswindows:             # <<<<<<<<<<<<<<
  *         p= subprocess.run(
  *             cmdo, shell=True, input=command.encode("utf-8"), capture_output=True
@@ -4259,7 +4150,7 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
     goto __pyx_L3;
   }
 
-  /* "fragmentparser.pyx":62
+  /* "fragmentparser.pyx":64
  *         )
  *     else:
  *         p = subprocess.run(             # <<<<<<<<<<<<<<
@@ -4267,37 +4158,37 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
  *         )
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_subprocess); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_subprocess); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "fragmentparser.pyx":63
+    /* "fragmentparser.pyx":65
  *     else:
  *         p = subprocess.run(
  *             command, shell=True, capture_output=True             # <<<<<<<<<<<<<<
  *         )
  *     return p.stdout.strip().splitlines()
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_command);
     __Pyx_GIVEREF(__pyx_v_command);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_command)) __PYX_ERR(0, 62, __pyx_L1_error);
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_command)) __PYX_ERR(0, 64, __pyx_L1_error);
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_shell, Py_True) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_capture_output, Py_True) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_shell, Py_True) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_capture_output, Py_True) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
 
-    /* "fragmentparser.pyx":62
+    /* "fragmentparser.pyx":64
  *         )
  *     else:
  *         p = subprocess.run(             # <<<<<<<<<<<<<<
  *             command, shell=True, capture_output=True
  *         )
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4307,21 +4198,21 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
   }
   __pyx_L3:;
 
-  /* "fragmentparser.pyx":65
+  /* "fragmentparser.pyx":67
  *             command, shell=True, capture_output=True
  *         )
  *     return p.stdout.strip().splitlines()             # <<<<<<<<<<<<<<
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
- *     @cache
+ * 
+ * @cache
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_stdout); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_stdout); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_strip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_strip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
-  __pyx_t_8 = 0;
+  __pyx_t_6 = 0;
   #if CYTHON_UNPACK_METHODS
   if (likely(PyMethod_Check(__pyx_t_1))) {
     __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_1);
@@ -4330,23 +4221,23 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_1, function);
-      __pyx_t_8 = 1;
+      __pyx_t_6 = 1;
     }
   }
   #endif
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
-    __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+    __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_splitlines); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_splitlines); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
-  __pyx_t_8 = 0;
+  __pyx_t_6 = 0;
   #if CYTHON_UNPACK_METHODS
   if (likely(PyMethod_Check(__pyx_t_1))) {
     __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
@@ -4355,26 +4246,27 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_1, function);
-      __pyx_t_8 = 1;
+      __pyx_t_6 = 1;
     }
   }
   #endif
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_r = __pyx_t_3;
+  if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_3))) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_r = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "fragmentparser.pyx":56
+  /* "fragmentparser.pyx":58
  *     return sub_arys
  * 
- * def execute_sh_command(command):             # <<<<<<<<<<<<<<
+ * cpdef list[str] execute_sh_command(str command):             # <<<<<<<<<<<<<<
  *     if iswindows:
  *         p= subprocess.run(
  */
@@ -4385,10 +4277,8 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("fragmentparser.execute_sh_command", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
+  __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_p);
   __Pyx_XGIVEREF(__pyx_r);
@@ -4396,163 +4286,92 @@ static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "fragmentparser.pyx":66
- *         )
- *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):             # <<<<<<<<<<<<<<
- *     @cache
- *     def findchi(ff):
- */
-
 /* Python wrapper */
-static PyObject *__pyx_pw_14fragmentparser_5get_all_activity_elements(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_14fragmentparser_5get_all_activity_elements = {"get_all_activity_elements", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14fragmentparser_5get_all_activity_elements, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14fragmentparser_5get_all_activity_elements(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  CYTHON_UNUSED PyObject *__pyx_v_as_pandas = 0;
-  PyObject *__pyx_v_number_of_max_views = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
+static PyObject *__pyx_pw_14fragmentparser_3execute_sh_command(PyObject *__pyx_self, PyObject *__pyx_v_command); /*proto*/
+static PyMethodDef __pyx_mdef_14fragmentparser_3execute_sh_command = {"execute_sh_command", (PyCFunction)__pyx_pw_14fragmentparser_3execute_sh_command, METH_O, 0};
+static PyObject *__pyx_pw_14fragmentparser_3execute_sh_command(PyObject *__pyx_self, PyObject *__pyx_v_command) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("get_all_activity_elements (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_MACROS
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_as_pandas,&__pyx_n_s_number_of_max_views,0};
-    values[0] = __Pyx_Arg_NewRef_FASTCALL(((PyObject *)((PyObject *)Py_False)));
-    values[1] = __Pyx_Arg_NewRef_FASTCALL(((PyObject *)((PyObject *)__pyx_int_neg_1)));
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_as_pandas);
-          if (value) { values[0] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_number_of_max_views);
-          if (value) { values[1] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_all_activity_elements") < 0)) __PYX_ERR(0, 66, __pyx_L3_error)
-      }
-    } else {
-      switch (__pyx_nargs) {
-        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_as_pandas = values[0];
-    __pyx_v_number_of_max_views = values[1];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_all_activity_elements", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 66, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  {
-    Py_ssize_t __pyx_temp;
-    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
-    }
-  }
-  __Pyx_AddTraceback("fragmentparser.get_all_activity_elements", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14fragmentparser_4get_all_activity_elements(__pyx_self, __pyx_v_as_pandas, __pyx_v_number_of_max_views);
+  __Pyx_RefNannySetupContext("execute_sh_command (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_command), (&PyUnicode_Type), 1, "command", 1))) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_r = __pyx_pf_14fragmentparser_2execute_sh_command(__pyx_self, ((PyObject*)__pyx_v_command));
 
   /* function exit code */
-  {
-    Py_ssize_t __pyx_temp;
-    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
-    }
-  }
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "fragmentparser.pyx":67
+static PyObject *__pyx_pf_14fragmentparser_2execute_sh_command(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_command) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("execute_sh_command", 1);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_14fragmentparser_execute_sh_command(__pyx_v_command, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("fragmentparser.execute_sh_command", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fragmentparser.pyx":69
  *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
- *     @cache             # <<<<<<<<<<<<<<
- *     def findchi(ff):
- *         try:
+ * 
+ * @cache             # <<<<<<<<<<<<<<
+ * def findchi(ff):
+ *     try:
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14fragmentparser_25get_all_activity_elements_1findchi(PyObject *__pyx_self, PyObject *__pyx_v_ff); /*proto*/
-static PyMethodDef __pyx_mdef_14fragmentparser_25get_all_activity_elements_1findchi = {"findchi", (PyCFunction)__pyx_pw_14fragmentparser_25get_all_activity_elements_1findchi, METH_O, 0};
-static PyObject *__pyx_pw_14fragmentparser_25get_all_activity_elements_1findchi(PyObject *__pyx_self, PyObject *__pyx_v_ff) {
+static PyObject *__pyx_pw_14fragmentparser_5findchi(PyObject *__pyx_self, PyObject *__pyx_v_ff); /*proto*/
+static PyMethodDef __pyx_mdef_14fragmentparser_5findchi = {"findchi", (PyCFunction)__pyx_pw_14fragmentparser_5findchi, METH_O, 0};
+static PyObject *__pyx_pw_14fragmentparser_5findchi(PyObject *__pyx_self, PyObject *__pyx_v_ff) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("findchi (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(__pyx_self, ((PyObject *)__pyx_v_ff));
+  __pyx_r = __pyx_pf_14fragmentparser_4findchi(__pyx_self, ((PyObject *)__pyx_v_ff));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "fragmentparser.pyx":76
- *                     k: v
- *                     for k, v in sorted(
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True             # <<<<<<<<<<<<<<
- *                     )
- *                 }.items()
+/* "fragmentparser.pyx":78
+ *                 k: v
+ *                 for k, v in sorted(
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True             # <<<<<<<<<<<<<<
+ *                 )
+ *             }.items()
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14fragmentparser_25get_all_activity_elements_7findchi_lambda(PyObject *__pyx_self, PyObject *__pyx_v_q); /*proto*/
-static PyMethodDef __pyx_mdef_14fragmentparser_25get_all_activity_elements_7findchi_lambda = {"lambda", (PyCFunction)__pyx_pw_14fragmentparser_25get_all_activity_elements_7findchi_lambda, METH_O, 0};
-static PyObject *__pyx_pw_14fragmentparser_25get_all_activity_elements_7findchi_lambda(PyObject *__pyx_self, PyObject *__pyx_v_q) {
+static PyObject *__pyx_pw_14fragmentparser_7findchi_lambda(PyObject *__pyx_self, PyObject *__pyx_v_q); /*proto*/
+static PyMethodDef __pyx_mdef_14fragmentparser_7findchi_lambda = {"lambda", (PyCFunction)__pyx_pw_14fragmentparser_7findchi_lambda, METH_O, 0};
+static PyObject *__pyx_pw_14fragmentparser_7findchi_lambda(PyObject *__pyx_self, PyObject *__pyx_v_q) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4575,11 +4394,11 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_q, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_q, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4588,7 +4407,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fragmentparser.findchi.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4596,15 +4415,15 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "fragmentparser.pyx":67
+/* "fragmentparser.pyx":69
  *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
- *     @cache             # <<<<<<<<<<<<<<
- *     def findchi(ff):
- *         try:
+ * 
+ * @cache             # <<<<<<<<<<<<<<
+ * def findchi(ff):
+ *     try:
  */
 
-static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_ff) {
+static PyObject *__pyx_pf_14fragmentparser_4findchi(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_ff) {
   PyObject *__pyx_v_r0 = NULL;
   PyObject *__pyx_v_datadict = NULL;
   PyObject *__pyx_v_maininfos = NULL;
@@ -4634,17 +4453,23 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
   PyObject *__pyx_t_14 = NULL;
   PyObject *__pyx_t_15 = NULL;
   PyObject *__pyx_t_16 = NULL;
+  PyObject *__pyx_t_17 = NULL;
+  int __pyx_t_18;
+  char const *__pyx_t_19;
+  PyObject *__pyx_t_20 = NULL;
+  PyObject *__pyx_t_21 = NULL;
+  PyObject *__pyx_t_22 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("findchi", 1);
 
-  /* "fragmentparser.pyx":69
- *     @cache
- *     def findchi(ff):
- *         try:             # <<<<<<<<<<<<<<
- *             r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
- *             datadict = {}
+  /* "fragmentparser.pyx":71
+ * @cache
+ * def findchi(ff):
+ *     try:             # <<<<<<<<<<<<<<
+ *         r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
+ *         datadict = {}
  */
   {
     __Pyx_PyThreadState_declare
@@ -4655,67 +4480,67 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "fragmentparser.pyx":70
- *     def findchi(ff):
- *         try:
- *             r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)             # <<<<<<<<<<<<<<
- *             datadict = {}
- *             maininfos = list(
+      /* "fragmentparser.pyx":72
+ * def findchi(ff):
+ *     try:
+ *         r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)             # <<<<<<<<<<<<<<
+ *         datadict = {}
+ *         maininfos = list(
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_parse_pairs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L3_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_parse_pairs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_string, __pyx_v_ff) < 0) __PYX_ERR(0, 70, __pyx_L3_error)
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_s1, __pyx_kp_u__2) < 0) __PYX_ERR(0, 70, __pyx_L3_error)
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_s2, __pyx_kp_u__3) < 0) __PYX_ERR(0, 70, __pyx_L3_error)
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_str_regex, Py_False) < 0) __PYX_ERR(0, 70, __pyx_L3_error)
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 70, __pyx_L3_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_string, __pyx_v_ff) < 0) __PYX_ERR(0, 72, __pyx_L3_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_s1, __pyx_kp_u__2) < 0) __PYX_ERR(0, 72, __pyx_L3_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_s2, __pyx_kp_u__3) < 0) __PYX_ERR(0, 72, __pyx_L3_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_str_regex, Py_False) < 0) __PYX_ERR(0, 72, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 72, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_r0 = __pyx_t_6;
       __pyx_t_6 = 0;
 
-      /* "fragmentparser.pyx":71
- *         try:
- *             r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
- *             datadict = {}             # <<<<<<<<<<<<<<
- *             maininfos = list(
- *                 {
+      /* "fragmentparser.pyx":73
+ *     try:
+ *         r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
+ *         datadict = {}             # <<<<<<<<<<<<<<
+ *         maininfos = list(
+ *             {
  */
-      __pyx_t_6 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 71, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 73, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_v_datadict = ((PyObject*)__pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "fragmentparser.pyx":72
- *             r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
- *             datadict = {}
- *             maininfos = list(             # <<<<<<<<<<<<<<
- *                 {
- *                     k: v
+      /* "fragmentparser.pyx":74
+ *         r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
+ *         datadict = {}
+ *         maininfos = list(             # <<<<<<<<<<<<<<
+ *             {
+ *                 k: v
  */
       { /* enter inner scope */
 
-        /* "fragmentparser.pyx":73
- *             datadict = {}
- *             maininfos = list(
- *                 {             # <<<<<<<<<<<<<<
- *                     k: v
- *                     for k, v in sorted(
+        /* "fragmentparser.pyx":75
+ *         datadict = {}
+ *         maininfos = list(
+ *             {             # <<<<<<<<<<<<<<
+ *                 k: v
+ *                 for k, v in sorted(
  */
-        __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 73, __pyx_L11_error)
+        __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 75, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_6);
 
-        /* "fragmentparser.pyx":76
- *                     k: v
- *                     for k, v in sorted(
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True             # <<<<<<<<<<<<<<
- *                     )
- *                 }.items()
+        /* "fragmentparser.pyx":78
+ *                 k: v
+ *                 for k, v in sorted(
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True             # <<<<<<<<<<<<<<
+ *                 )
+ *             }.items()
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_r0, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L11_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_r0, __pyx_n_s_items); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 78, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_7 = NULL;
         __pyx_t_8 = 0;
@@ -4735,47 +4560,47 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
           PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
           __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L11_error)
+          if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
 
-        /* "fragmentparser.pyx":75
- *                 {
- *                     k: v
- *                     for k, v in sorted(             # <<<<<<<<<<<<<<
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True
- *                     )
+        /* "fragmentparser.pyx":77
+ *             {
+ *                 k: v
+ *                 for k, v in sorted(             # <<<<<<<<<<<<<<
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True
+ *                 )
  */
-        __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L11_error)
+        __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_GIVEREF(__pyx_t_5);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5)) __PYX_ERR(0, 75, __pyx_L11_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5)) __PYX_ERR(0, 77, __pyx_L11_error);
         __pyx_t_5 = 0;
 
-        /* "fragmentparser.pyx":76
- *                     k: v
- *                     for k, v in sorted(
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True             # <<<<<<<<<<<<<<
- *                     )
- *                 }.items()
+        /* "fragmentparser.pyx":78
+ *                 k: v
+ *                 for k, v in sorted(
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True             # <<<<<<<<<<<<<<
+ *                 )
+ *             }.items()
  */
-        __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L11_error)
+        __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_25get_all_activity_elements_7findchi_lambda, 0, __pyx_n_s_get_all_activity_elements_locals, NULL, __pyx_n_s_fragmentparser, __pyx_d, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 76, __pyx_L11_error)
+        __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_7findchi_lambda, 0, __pyx_n_s_findchi_locals_lambda, NULL, __pyx_n_s_fragmentparser, __pyx_d, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 78, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_7);
-        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_key, __pyx_t_7) < 0) __PYX_ERR(0, 76, __pyx_L11_error)
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_key, __pyx_t_7) < 0) __PYX_ERR(0, 78, __pyx_L11_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 76, __pyx_L11_error)
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 78, __pyx_L11_error)
 
-        /* "fragmentparser.pyx":75
- *                 {
- *                     k: v
- *                     for k, v in sorted(             # <<<<<<<<<<<<<<
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True
- *                     )
+        /* "fragmentparser.pyx":77
+ *             {
+ *                 k: v
+ *                 for k, v in sorted(             # <<<<<<<<<<<<<<
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True
+ *                 )
  */
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L11_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 77, __pyx_L11_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4784,9 +4609,9 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
           __pyx_t_9 = 0;
           __pyx_t_10 = NULL;
         } else {
-          __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L11_error)
+          __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_10 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 75, __pyx_L11_error)
+          __pyx_t_10 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 77, __pyx_L11_error)
         }
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         for (;;) {
@@ -4795,28 +4620,28 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
               {
                 Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_5);
                 #if !CYTHON_ASSUME_SAFE_MACROS
-                if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 75, __pyx_L11_error)
+                if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 77, __pyx_L11_error)
                 #endif
                 if (__pyx_t_9 >= __pyx_temp) break;
               }
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_7); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 75, __pyx_L11_error)
+              __pyx_t_7 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_7); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 77, __pyx_L11_error)
               #else
-              __pyx_t_7 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L11_error)
+              __pyx_t_7 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 77, __pyx_L11_error)
               __Pyx_GOTREF(__pyx_t_7);
               #endif
             } else {
               {
                 Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_5);
                 #if !CYTHON_ASSUME_SAFE_MACROS
-                if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 75, __pyx_L11_error)
+                if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 77, __pyx_L11_error)
                 #endif
                 if (__pyx_t_9 >= __pyx_temp) break;
               }
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_7); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 75, __pyx_L11_error)
+              __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_7); __pyx_t_9++; if (unlikely((0 < 0))) __PYX_ERR(0, 77, __pyx_L11_error)
               #else
-              __pyx_t_7 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L11_error)
+              __pyx_t_7 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 77, __pyx_L11_error)
               __Pyx_GOTREF(__pyx_t_7);
               #endif
             }
@@ -4826,7 +4651,7 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 75, __pyx_L11_error)
+                else __PYX_ERR(0, 77, __pyx_L11_error)
               }
               break;
             }
@@ -4838,7 +4663,7 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             if (unlikely(size != 2)) {
               if (size > 2) __Pyx_RaiseTooManyValuesError(2);
               else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-              __PYX_ERR(0, 75, __pyx_L11_error)
+              __PYX_ERR(0, 77, __pyx_L11_error)
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
             if (likely(PyTuple_CheckExact(sequence))) {
@@ -4851,15 +4676,15 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             __Pyx_INCREF(__pyx_t_4);
             __Pyx_INCREF(__pyx_t_11);
             #else
-            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L11_error)
+            __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 75, __pyx_L11_error)
+            __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 77, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_12 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 75, __pyx_L11_error)
+            __pyx_t_12 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 77, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
             __pyx_t_13 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_12);
@@ -4867,7 +4692,7 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             __Pyx_GOTREF(__pyx_t_4);
             index = 1; __pyx_t_11 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_11)) goto __pyx_L14_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_11);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 75, __pyx_L11_error)
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 77, __pyx_L11_error)
             __pyx_t_13 = NULL;
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             goto __pyx_L15_unpacking_done;
@@ -4875,7 +4700,7 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_13 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-            __PYX_ERR(0, 75, __pyx_L11_error)
+            __PYX_ERR(0, 77, __pyx_L11_error)
             __pyx_L15_unpacking_done:;
           }
           __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_k, __pyx_t_4);
@@ -4883,21 +4708,21 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
           __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_v, __pyx_t_11);
           __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":74
- *             maininfos = list(
- *                 {
- *                     k: v             # <<<<<<<<<<<<<<
- *                     for k, v in sorted(
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True
+          /* "fragmentparser.pyx":76
+ *         maininfos = list(
+ *             {
+ *                 k: v             # <<<<<<<<<<<<<<
+ *                 for k, v in sorted(
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True
  */
-          if (unlikely(PyDict_SetItem(__pyx_t_6, (PyObject*)__pyx_7genexpr__pyx_v_k, (PyObject*)__pyx_7genexpr__pyx_v_v))) __PYX_ERR(0, 74, __pyx_L11_error)
+          if (unlikely(PyDict_SetItem(__pyx_t_6, (PyObject*)__pyx_7genexpr__pyx_v_k, (PyObject*)__pyx_7genexpr__pyx_v_v))) __PYX_ERR(0, 76, __pyx_L11_error)
 
-          /* "fragmentparser.pyx":75
- *                 {
- *                     k: v
- *                     for k, v in sorted(             # <<<<<<<<<<<<<<
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True
- *                     )
+          /* "fragmentparser.pyx":77
+ *             {
+ *                 k: v
+ *                 for k, v in sorted(             # <<<<<<<<<<<<<<
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True
+ *                 )
  */
         }
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4911,53 +4736,53 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L17_exit_scope:;
       } /* exit inner scope */
 
-      /* "fragmentparser.pyx":78
- *                         r0.items(), key=lambda q: len(q[0]), reverse=True
- *                     )
- *                 }.items()             # <<<<<<<<<<<<<<
- *             )[0]
- *             otherdata = ff.split(maininfos[-1]["text"])
+      /* "fragmentparser.pyx":80
+ *                     r0.items(), key=lambda q: len(q[0]), reverse=True
+ *                 )
+ *             }.items()             # <<<<<<<<<<<<<<
+ *         )[0]
+ *         otherdata = ff.split(maininfos[-1]["text"])
  */
-      __pyx_t_5 = __Pyx_PyDict_Items(__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyDict_Items(__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "fragmentparser.pyx":72
- *             r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
- *             datadict = {}
- *             maininfos = list(             # <<<<<<<<<<<<<<
- *                 {
- *                     k: v
+      /* "fragmentparser.pyx":74
+ *         r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
+ *         datadict = {}
+ *         maininfos = list(             # <<<<<<<<<<<<<<
+ *             {
+ *                 k: v
  */
-      __pyx_t_6 = __Pyx_PySequence_ListKeepNew(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 72, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PySequence_ListKeepNew(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 74, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "fragmentparser.pyx":79
- *                     )
- *                 }.items()
- *             )[0]             # <<<<<<<<<<<<<<
- *             otherdata = ff.split(maininfos[-1]["text"])
- *             t = maininfos[-1]["text"][1:-1] + "  "
+      /* "fragmentparser.pyx":81
+ *                 )
+ *             }.items()
+ *         )[0]             # <<<<<<<<<<<<<<
+ *         otherdata = ff.split(maininfos[-1]["text"])
+ *         t = maininfos[-1]["text"][1:-1] + "  "
  */
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_t_6, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_t_6, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_maininfos = __pyx_t_5;
       __pyx_t_5 = 0;
 
-      /* "fragmentparser.pyx":80
- *                 }.items()
- *             )[0]
- *             otherdata = ff.split(maininfos[-1]["text"])             # <<<<<<<<<<<<<<
- *             t = maininfos[-1]["text"][1:-1] + "  "
- *             infosplit = t.split(maxsplit=5)
+      /* "fragmentparser.pyx":82
+ *             }.items()
+ *         )[0]
+ *         otherdata = ff.split(maininfos[-1]["text"])             # <<<<<<<<<<<<<<
+ *         t = maininfos[-1]["text"][1:-1] + "  "
+ *         infosplit = t.split(maxsplit=5)
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ff, __pyx_n_s_split); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 80, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ff, __pyx_n_s_split); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 82, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_maininfos, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 80, __pyx_L3_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_maininfos, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 82, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_n_u_text); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 80, __pyx_L3_error)
+      __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_t_7, __pyx_n_u_text); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 82, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_7 = NULL;
@@ -4979,200 +4804,200 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L3_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 82, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __pyx_v_otherdata = __pyx_t_5;
       __pyx_t_5 = 0;
 
-      /* "fragmentparser.pyx":81
- *             )[0]
- *             otherdata = ff.split(maininfos[-1]["text"])
- *             t = maininfos[-1]["text"][1:-1] + "  "             # <<<<<<<<<<<<<<
- *             infosplit = t.split(maxsplit=5)
- *             firstimesearch = infosplit[1]
+      /* "fragmentparser.pyx":83
+ *         )[0]
+ *         otherdata = ff.split(maininfos[-1]["text"])
+ *         t = maininfos[-1]["text"][1:-1] + "  "             # <<<<<<<<<<<<<<
+ *         infosplit = t.split(maxsplit=5)
+ *         firstimesearch = infosplit[1]
  */
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_maininfos, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_maininfos, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_5, __pyx_n_u_text); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 81, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_5, __pyx_n_u_text); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 83, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_t_6, 1, -1L, NULL, NULL, &__pyx_slice__4, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 81, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_t_6, 1, -1L, NULL, NULL, &__pyx_slice__4, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = PyNumber_Add(__pyx_t_5, __pyx_kp_u__5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 81, __pyx_L3_error)
+      __pyx_t_6 = PyNumber_Add(__pyx_t_5, __pyx_kp_u__5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 83, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_t = __pyx_t_6;
       __pyx_t_6 = 0;
 
-      /* "fragmentparser.pyx":82
- *             otherdata = ff.split(maininfos[-1]["text"])
- *             t = maininfos[-1]["text"][1:-1] + "  "
- *             infosplit = t.split(maxsplit=5)             # <<<<<<<<<<<<<<
- *             firstimesearch = infosplit[1]
- *             secondtimesearch = infosplit[2]
+      /* "fragmentparser.pyx":84
+ *         otherdata = ff.split(maininfos[-1]["text"])
+ *         t = maininfos[-1]["text"][1:-1] + "  "
+ *         infosplit = t.split(maxsplit=5)             # <<<<<<<<<<<<<<
+ *         firstimesearch = infosplit[1]
+ *         secondtimesearch = infosplit[2]
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_t, __pyx_n_s_split); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 82, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_t, __pyx_n_s_split); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 82, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_maxsplit, __pyx_int_5) < 0) __PYX_ERR(0, 82, __pyx_L3_error)
-      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 82, __pyx_L3_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_maxsplit, __pyx_int_5) < 0) __PYX_ERR(0, 84, __pyx_L3_error)
+      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 84, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_infosplit = __pyx_t_11;
       __pyx_t_11 = 0;
 
-      /* "fragmentparser.pyx":83
- *             t = maininfos[-1]["text"][1:-1] + "  "
- *             infosplit = t.split(maxsplit=5)
- *             firstimesearch = infosplit[1]             # <<<<<<<<<<<<<<
- *             secondtimesearch = infosplit[2]
- *             datadict["START_X"] = -1
+      /* "fragmentparser.pyx":85
+ *         t = maininfos[-1]["text"][1:-1] + "  "
+ *         infosplit = t.split(maxsplit=5)
+ *         firstimesearch = infosplit[1]             # <<<<<<<<<<<<<<
+ *         secondtimesearch = infosplit[2]
+ *         datadict["START_X"] = -1
  */
-      __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_infosplit, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 83, __pyx_L3_error)
+      __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_infosplit, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 85, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_v_firstimesearch = __pyx_t_11;
       __pyx_t_11 = 0;
 
-      /* "fragmentparser.pyx":84
- *             infosplit = t.split(maxsplit=5)
- *             firstimesearch = infosplit[1]
- *             secondtimesearch = infosplit[2]             # <<<<<<<<<<<<<<
- *             datadict["START_X"] = -1
- *             datadict["START_Y"] = -1
+      /* "fragmentparser.pyx":86
+ *         infosplit = t.split(maxsplit=5)
+ *         firstimesearch = infosplit[1]
+ *         secondtimesearch = infosplit[2]             # <<<<<<<<<<<<<<
+ *         datadict["START_X"] = -1
+ *         datadict["START_Y"] = -1
  */
-      __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_infosplit, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 84, __pyx_L3_error)
+      __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_infosplit, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 86, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_v_secondtimesearch = __pyx_t_11;
       __pyx_t_11 = 0;
 
-      /* "fragmentparser.pyx":85
- *             firstimesearch = infosplit[1]
- *             secondtimesearch = infosplit[2]
- *             datadict["START_X"] = -1             # <<<<<<<<<<<<<<
- *             datadict["START_Y"] = -1
- *             datadict["CENTER_X"] = -1
- */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_X, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 85, __pyx_L3_error)
-
-      /* "fragmentparser.pyx":86
- *             secondtimesearch = infosplit[2]
- *             datadict["START_X"] = -1
- *             datadict["START_Y"] = -1             # <<<<<<<<<<<<<<
- *             datadict["CENTER_X"] = -1
- *             datadict["CENTER_Y"] = -1
- */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_Y, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 86, __pyx_L3_error)
-
       /* "fragmentparser.pyx":87
- *             datadict["START_X"] = -1
- *             datadict["START_Y"] = -1
- *             datadict["CENTER_X"] = -1             # <<<<<<<<<<<<<<
- *             datadict["CENTER_Y"] = -1
- *             datadict["AREA"] = -1
+ *         firstimesearch = infosplit[1]
+ *         secondtimesearch = infosplit[2]
+ *         datadict["START_X"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["START_Y"] = -1
+ *         datadict["CENTER_X"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CENTER_X, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 87, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_X, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 87, __pyx_L3_error)
 
       /* "fragmentparser.pyx":88
- *             datadict["START_Y"] = -1
- *             datadict["CENTER_X"] = -1
- *             datadict["CENTER_Y"] = -1             # <<<<<<<<<<<<<<
- *             datadict["AREA"] = -1
- *             datadict["END_X"] = -1
+ *         secondtimesearch = infosplit[2]
+ *         datadict["START_X"] = -1
+ *         datadict["START_Y"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["CENTER_X"] = -1
+ *         datadict["CENTER_Y"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CENTER_Y, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 88, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_Y, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 88, __pyx_L3_error)
 
       /* "fragmentparser.pyx":89
- *             datadict["CENTER_X"] = -1
- *             datadict["CENTER_Y"] = -1
- *             datadict["AREA"] = -1             # <<<<<<<<<<<<<<
- *             datadict["END_X"] = -1
- *             datadict["END_Y"] = -1
+ *         datadict["START_X"] = -1
+ *         datadict["START_Y"] = -1
+ *         datadict["CENTER_X"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["CENTER_Y"] = -1
+ *         datadict["AREA"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_AREA, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 89, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CENTER_X, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 89, __pyx_L3_error)
 
       /* "fragmentparser.pyx":90
- *             datadict["CENTER_Y"] = -1
- *             datadict["AREA"] = -1
- *             datadict["END_X"] = -1             # <<<<<<<<<<<<<<
- *             datadict["END_Y"] = -1
- *             datadict["WIDTH"] = -1
+ *         datadict["START_Y"] = -1
+ *         datadict["CENTER_X"] = -1
+ *         datadict["CENTER_Y"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["AREA"] = -1
+ *         datadict["END_X"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_X, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 90, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CENTER_Y, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 90, __pyx_L3_error)
 
       /* "fragmentparser.pyx":91
- *             datadict["AREA"] = -1
- *             datadict["END_X"] = -1
- *             datadict["END_Y"] = -1             # <<<<<<<<<<<<<<
- *             datadict["WIDTH"] = -1
- *             datadict["HEIGHT"] = -1
+ *         datadict["CENTER_X"] = -1
+ *         datadict["CENTER_Y"] = -1
+ *         datadict["AREA"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["END_X"] = -1
+ *         datadict["END_Y"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_Y, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 91, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_AREA, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 91, __pyx_L3_error)
 
       /* "fragmentparser.pyx":92
- *             datadict["END_X"] = -1
- *             datadict["END_Y"] = -1
- *             datadict["WIDTH"] = -1             # <<<<<<<<<<<<<<
- *             datadict["HEIGHT"] = -1
- *             datadict["START_X_RELATIVE"] = -1
+ *         datadict["CENTER_Y"] = -1
+ *         datadict["AREA"] = -1
+ *         datadict["END_X"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["END_Y"] = -1
+ *         datadict["WIDTH"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_WIDTH, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 92, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_X, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 92, __pyx_L3_error)
 
       /* "fragmentparser.pyx":93
- *             datadict["END_Y"] = -1
- *             datadict["WIDTH"] = -1
- *             datadict["HEIGHT"] = -1             # <<<<<<<<<<<<<<
- *             datadict["START_X_RELATIVE"] = -1
- *             datadict["START_Y_RELATIVE"] = -1
+ *         datadict["AREA"] = -1
+ *         datadict["END_X"] = -1
+ *         datadict["END_Y"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["WIDTH"] = -1
+ *         datadict["HEIGHT"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_HEIGHT, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 93, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_Y, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 93, __pyx_L3_error)
 
       /* "fragmentparser.pyx":94
- *             datadict["WIDTH"] = -1
- *             datadict["HEIGHT"] = -1
- *             datadict["START_X_RELATIVE"] = -1             # <<<<<<<<<<<<<<
- *             datadict["START_Y_RELATIVE"] = -1
- *             datadict["END_X_RELATIVE"] = -1
+ *         datadict["END_X"] = -1
+ *         datadict["END_Y"] = -1
+ *         datadict["WIDTH"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["HEIGHT"] = -1
+ *         datadict["START_X_RELATIVE"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_X_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 94, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_WIDTH, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 94, __pyx_L3_error)
 
       /* "fragmentparser.pyx":95
- *             datadict["HEIGHT"] = -1
- *             datadict["START_X_RELATIVE"] = -1
- *             datadict["START_Y_RELATIVE"] = -1             # <<<<<<<<<<<<<<
- *             datadict["END_X_RELATIVE"] = -1
- *             datadict["END_Y_RELATIVE"] = -1
+ *         datadict["END_Y"] = -1
+ *         datadict["WIDTH"] = -1
+ *         datadict["HEIGHT"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["START_X_RELATIVE"] = -1
+ *         datadict["START_Y_RELATIVE"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_Y_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 95, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_HEIGHT, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 95, __pyx_L3_error)
 
       /* "fragmentparser.pyx":96
- *             datadict["START_X_RELATIVE"] = -1
- *             datadict["START_Y_RELATIVE"] = -1
- *             datadict["END_X_RELATIVE"] = -1             # <<<<<<<<<<<<<<
- *             datadict["END_Y_RELATIVE"] = -1
- * 
+ *         datadict["WIDTH"] = -1
+ *         datadict["HEIGHT"] = -1
+ *         datadict["START_X_RELATIVE"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["START_Y_RELATIVE"] = -1
+ *         datadict["END_X_RELATIVE"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_X_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 96, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_X_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 96, __pyx_L3_error)
 
       /* "fragmentparser.pyx":97
- *             datadict["START_Y_RELATIVE"] = -1
- *             datadict["END_X_RELATIVE"] = -1
- *             datadict["END_Y_RELATIVE"] = -1             # <<<<<<<<<<<<<<
- * 
- *             try:
+ *         datadict["HEIGHT"] = -1
+ *         datadict["START_X_RELATIVE"] = -1
+ *         datadict["START_Y_RELATIVE"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["END_X_RELATIVE"] = -1
+ *         datadict["END_Y_RELATIVE"] = -1
  */
-      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_Y_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 97, __pyx_L3_error)
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_START_Y_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 97, __pyx_L3_error)
+
+      /* "fragmentparser.pyx":98
+ *         datadict["START_X_RELATIVE"] = -1
+ *         datadict["START_Y_RELATIVE"] = -1
+ *         datadict["END_X_RELATIVE"] = -1             # <<<<<<<<<<<<<<
+ *         datadict["END_Y_RELATIVE"] = -1
+ * 
+ */
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_X_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 98, __pyx_L3_error)
 
       /* "fragmentparser.pyx":99
- *             datadict["END_Y_RELATIVE"] = -1
+ *         datadict["START_Y_RELATIVE"] = -1
+ *         datadict["END_X_RELATIVE"] = -1
+ *         datadict["END_Y_RELATIVE"] = -1             # <<<<<<<<<<<<<<
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["COORDS"] = infosplit[-3].rstrip(" ")
- *             except Exception:
+ *         try:
+ */
+      if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_END_Y_RELATIVE, __pyx_int_neg_1) < 0))) __PYX_ERR(0, 99, __pyx_L3_error)
+
+      /* "fragmentparser.pyx":101
+ *         datadict["END_Y_RELATIVE"] = -1
+ * 
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["COORDS"] = infosplit[-3].rstrip(" ")
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -5183,16 +5008,16 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":100
+          /* "fragmentparser.pyx":102
  * 
- *             try:
- *                 datadict["COORDS"] = infosplit[-3].rstrip(" ")             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["COORDS"] = None
+ *         try:
+ *             datadict["COORDS"] = infosplit[-3].rstrip(" ")             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["COORDS"] = None
  */
-          __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_infosplit, -3L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L18_error)
+          __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_infosplit, -3L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L18_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 100, __pyx_L18_error)
+          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 102, __pyx_L18_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_t_5 = NULL;
@@ -5213,19 +5038,19 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_kp_u__6};
             __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
             __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-            if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 100, __pyx_L18_error)
+            if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 102, __pyx_L18_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           }
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_COORDS, __pyx_t_11) < 0))) __PYX_ERR(0, 100, __pyx_L18_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_COORDS, __pyx_t_11) < 0))) __PYX_ERR(0, 102, __pyx_L18_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":99
- *             datadict["END_Y_RELATIVE"] = -1
+          /* "fragmentparser.pyx":101
+ *         datadict["END_Y_RELATIVE"] = -1
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["COORDS"] = infosplit[-3].rstrip(" ")
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["COORDS"] = infosplit[-3].rstrip(" ")
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -5240,29 +5065,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":101
- *             try:
- *                 datadict["COORDS"] = infosplit[-3].rstrip(" ")
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["COORDS"] = None
- *             try:
+        /* "fragmentparser.pyx":103
+ *         try:
+ *             datadict["COORDS"] = infosplit[-3].rstrip(" ")
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["COORDS"] = None
+ *         try:
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_6, &__pyx_t_5) < 0) __PYX_ERR(0, 101, __pyx_L20_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_6, &__pyx_t_5) < 0) __PYX_ERR(0, 103, __pyx_L20_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
 
-          /* "fragmentparser.pyx":102
- *                 datadict["COORDS"] = infosplit[-3].rstrip(" ")
- *             except Exception:
- *                 datadict["COORDS"] = None             # <<<<<<<<<<<<<<
- *             try:
- *                 datadict["INT_COORDS"] = tuple(
+          /* "fragmentparser.pyx":104
+ *             datadict["COORDS"] = infosplit[-3].rstrip(" ")
+ *         except Exception:
+ *             datadict["COORDS"] = None             # <<<<<<<<<<<<<<
+ *         try:
+ *             datadict["INT_COORDS"] = tuple(
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_COORDS, Py_None) < 0))) __PYX_ERR(0, 102, __pyx_L20_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_COORDS, Py_None) < 0))) __PYX_ERR(0, 104, __pyx_L20_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -5270,12 +5095,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L20_except_error;
 
-        /* "fragmentparser.pyx":99
- *             datadict["END_Y_RELATIVE"] = -1
+        /* "fragmentparser.pyx":101
+ *         datadict["END_Y_RELATIVE"] = -1
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["COORDS"] = infosplit[-3].rstrip(" ")
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["COORDS"] = infosplit[-3].rstrip(" ")
+ *         except Exception:
  */
         __pyx_L20_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -5291,12 +5116,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L23_try_end:;
       }
 
-      /* "fragmentparser.pyx":103
- *             except Exception:
- *                 datadict["COORDS"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["INT_COORDS"] = tuple(
- *                     map(int, (refi.findall(datadict["COORDS"])[0]))
+      /* "fragmentparser.pyx":105
+ *         except Exception:
+ *             datadict["COORDS"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["INT_COORDS"] = tuple(
+ *                 map(int, (refi.findall(datadict["COORDS"])[0]))
  */
       {
         __Pyx_PyThreadState_declare
@@ -5307,19 +5132,19 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":105
- *             try:
- *                 datadict["INT_COORDS"] = tuple(
- *                     map(int, (refi.findall(datadict["COORDS"])[0]))             # <<<<<<<<<<<<<<
- *                 )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
- *             except Exception:
+          /* "fragmentparser.pyx":107
+ *         try:
+ *             datadict["INT_COORDS"] = tuple(
+ *                 map(int, (refi.findall(datadict["COORDS"])[0]))             # <<<<<<<<<<<<<<
+ *             )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
+ *         except Exception:
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_refi); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L26_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_refi); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L26_error)
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_findall); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 105, __pyx_L26_error)
+          __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_findall); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 107, __pyx_L26_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_datadict, __pyx_n_u_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L26_error)
+          __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_datadict, __pyx_n_u_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L26_error)
           __Pyx_GOTREF(__pyx_t_6);
           __pyx_t_7 = NULL;
           __pyx_t_8 = 0;
@@ -5340,44 +5165,44 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_11, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
             __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-            if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L26_error)
+            if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L26_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           }
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 105, __pyx_L26_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 107, __pyx_L26_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L26_error)
+          __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L26_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_INCREF((PyObject *)(&PyInt_Type));
           __Pyx_GIVEREF((PyObject *)(&PyInt_Type));
-          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)(&PyInt_Type)))) __PYX_ERR(0, 105, __pyx_L26_error);
+          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)(&PyInt_Type)))) __PYX_ERR(0, 107, __pyx_L26_error);
           __Pyx_GIVEREF(__pyx_t_11);
-          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_11)) __PYX_ERR(0, 105, __pyx_L26_error);
+          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_11)) __PYX_ERR(0, 107, __pyx_L26_error);
           __pyx_t_11 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_5, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 105, __pyx_L26_error)
+          __pyx_t_11 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_5, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 107, __pyx_L26_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "fragmentparser.pyx":104
- *                 datadict["COORDS"] = None
- *             try:
- *                 datadict["INT_COORDS"] = tuple(             # <<<<<<<<<<<<<<
- *                     map(int, (refi.findall(datadict["COORDS"])[0]))
- *                 )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
+          /* "fragmentparser.pyx":106
+ *             datadict["COORDS"] = None
+ *         try:
+ *             datadict["INT_COORDS"] = tuple(             # <<<<<<<<<<<<<<
+ *                 map(int, (refi.findall(datadict["COORDS"])[0]))
+ *             )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
  */
-          __pyx_t_5 = __Pyx_PySequence_Tuple(__pyx_t_11); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L26_error)
+          __pyx_t_5 = __Pyx_PySequence_Tuple(__pyx_t_11); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L26_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_INT_COORDS, __pyx_t_5) < 0))) __PYX_ERR(0, 104, __pyx_L26_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_INT_COORDS, __pyx_t_5) < 0))) __PYX_ERR(0, 106, __pyx_L26_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "fragmentparser.pyx":103
- *             except Exception:
- *                 datadict["COORDS"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["INT_COORDS"] = tuple(
- *                     map(int, (refi.findall(datadict["COORDS"])[0]))
+          /* "fragmentparser.pyx":105
+ *         except Exception:
+ *             datadict["COORDS"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["INT_COORDS"] = tuple(
+ *                 map(int, (refi.findall(datadict["COORDS"])[0]))
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -5392,29 +5217,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":107
- *                     map(int, (refi.findall(datadict["COORDS"])[0]))
- *                 )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["INT_COORDS"] = ()
- *             try:
+        /* "fragmentparser.pyx":109
+ *                 map(int, (refi.findall(datadict["COORDS"])[0]))
+ *             )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["INT_COORDS"] = ()
+ *         try:
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_11, &__pyx_t_6) < 0) __PYX_ERR(0, 107, __pyx_L28_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_11, &__pyx_t_6) < 0) __PYX_ERR(0, 109, __pyx_L28_except_error)
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":108
- *                 )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
- *             except Exception:
- *                 datadict["INT_COORDS"] = ()             # <<<<<<<<<<<<<<
- *             try:
- *                 datadict["CLASSNAME"] = otherdata[0]
+          /* "fragmentparser.pyx":110
+ *             )  # tuple(map(int, re.split(r'\W+', datadict['COORDS'])))
+ *         except Exception:
+ *             datadict["INT_COORDS"] = ()             # <<<<<<<<<<<<<<
+ *         try:
+ *             datadict["CLASSNAME"] = otherdata[0]
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_INT_COORDS, __pyx_empty_tuple) < 0))) __PYX_ERR(0, 108, __pyx_L28_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_INT_COORDS, __pyx_empty_tuple) < 0))) __PYX_ERR(0, 110, __pyx_L28_except_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5422,12 +5247,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L28_except_error;
 
-        /* "fragmentparser.pyx":103
- *             except Exception:
- *                 datadict["COORDS"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["INT_COORDS"] = tuple(
- *                     map(int, (refi.findall(datadict["COORDS"])[0]))
+        /* "fragmentparser.pyx":105
+ *         except Exception:
+ *             datadict["COORDS"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["INT_COORDS"] = tuple(
+ *                 map(int, (refi.findall(datadict["COORDS"])[0]))
  */
         __pyx_L28_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -5443,12 +5268,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L31_try_end:;
       }
 
-      /* "fragmentparser.pyx":109
- *             except Exception:
- *                 datadict["INT_COORDS"] = ()
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CLASSNAME"] = otherdata[0]
- *             except Exception:
+      /* "fragmentparser.pyx":111
+ *         except Exception:
+ *             datadict["INT_COORDS"] = ()
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CLASSNAME"] = otherdata[0]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -5459,24 +5284,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":110
- *                 datadict["INT_COORDS"] = ()
- *             try:
- *                 datadict["CLASSNAME"] = otherdata[0]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["CLASSNAME"] = None
+          /* "fragmentparser.pyx":112
+ *             datadict["INT_COORDS"] = ()
+ *         try:
+ *             datadict["CLASSNAME"] = otherdata[0]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["CLASSNAME"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_otherdata, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L34_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_otherdata, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 112, __pyx_L34_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLASSNAME, __pyx_t_6) < 0))) __PYX_ERR(0, 110, __pyx_L34_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLASSNAME, __pyx_t_6) < 0))) __PYX_ERR(0, 112, __pyx_L34_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":109
- *             except Exception:
- *                 datadict["INT_COORDS"] = ()
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CLASSNAME"] = otherdata[0]
- *             except Exception:
+          /* "fragmentparser.pyx":111
+ *         except Exception:
+ *             datadict["INT_COORDS"] = ()
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CLASSNAME"] = otherdata[0]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -5491,29 +5316,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":111
- *             try:
- *                 datadict["CLASSNAME"] = otherdata[0]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["CLASSNAME"] = None
+        /* "fragmentparser.pyx":113
+ *         try:
+ *             datadict["CLASSNAME"] = otherdata[0]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["CLASSNAME"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_11, &__pyx_t_5) < 0) __PYX_ERR(0, 111, __pyx_L36_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_11, &__pyx_t_5) < 0) __PYX_ERR(0, 113, __pyx_L36_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
 
-          /* "fragmentparser.pyx":112
- *                 datadict["CLASSNAME"] = otherdata[0]
- *             except Exception:
- *                 datadict["CLASSNAME"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":114
+ *             datadict["CLASSNAME"] = otherdata[0]
+ *         except Exception:
+ *             datadict["CLASSNAME"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLASSNAME, Py_None) < 0))) __PYX_ERR(0, 112, __pyx_L36_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLASSNAME, Py_None) < 0))) __PYX_ERR(0, 114, __pyx_L36_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -5521,12 +5346,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L36_except_error;
 
-        /* "fragmentparser.pyx":109
- *             except Exception:
- *                 datadict["INT_COORDS"] = ()
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CLASSNAME"] = otherdata[0]
- *             except Exception:
+        /* "fragmentparser.pyx":111
+ *         except Exception:
+ *             datadict["INT_COORDS"] = ()
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CLASSNAME"] = otherdata[0]
+ *         except Exception:
  */
         __pyx_L36_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -5542,12 +5367,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L39_try_end:;
       }
 
-      /* "fragmentparser.pyx":114
- *                 datadict["CLASSNAME"] = None
+      /* "fragmentparser.pyx":116
+ *             datadict["CLASSNAME"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -5558,16 +5383,16 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":115
+          /* "fragmentparser.pyx":117
  * 
- *             try:
- *                 datadict["HASHCODE"] = infosplit[-2].rstrip(" ")             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["HASHCODE"] = None
+ *         try:
+ *             datadict["HASHCODE"] = infosplit[-2].rstrip(" ")             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["HASHCODE"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_infosplit, -2L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 115, __pyx_L42_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_infosplit, -2L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 117, __pyx_L42_error)
           __Pyx_GOTREF(__pyx_t_11);
-          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L42_error)
+          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 117, __pyx_L42_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __pyx_t_11 = NULL;
@@ -5588,19 +5413,19 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             PyObject *__pyx_callargs[2] = {__pyx_t_11, __pyx_kp_u__6};
             __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
             __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-            if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L42_error)
+            if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L42_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           }
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_HASHCODE, __pyx_t_5) < 0))) __PYX_ERR(0, 115, __pyx_L42_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_HASHCODE, __pyx_t_5) < 0))) __PYX_ERR(0, 117, __pyx_L42_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "fragmentparser.pyx":114
- *                 datadict["CLASSNAME"] = None
+          /* "fragmentparser.pyx":116
+ *             datadict["CLASSNAME"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -5615,29 +5440,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":116
- *             try:
- *                 datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["HASHCODE"] = None
- *             try:
+        /* "fragmentparser.pyx":118
+ *         try:
+ *             datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["HASHCODE"] = None
+ *         try:
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_11) < 0) __PYX_ERR(0, 116, __pyx_L44_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_11) < 0) __PYX_ERR(0, 118, __pyx_L44_except_error)
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":117
- *                 datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
- *             except Exception:
- *                 datadict["HASHCODE"] = None             # <<<<<<<<<<<<<<
- *             try:
- *                 datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
+          /* "fragmentparser.pyx":119
+ *             datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
+ *         except Exception:
+ *             datadict["HASHCODE"] = None             # <<<<<<<<<<<<<<
+ *         try:
+ *             datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_HASHCODE, Py_None) < 0))) __PYX_ERR(0, 117, __pyx_L44_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_HASHCODE, Py_None) < 0))) __PYX_ERR(0, 119, __pyx_L44_except_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -5645,12 +5470,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L44_except_error;
 
-        /* "fragmentparser.pyx":114
- *                 datadict["CLASSNAME"] = None
+        /* "fragmentparser.pyx":116
+ *             datadict["CLASSNAME"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["HASHCODE"] = infosplit[-2].rstrip(" ")
+ *         except Exception:
  */
         __pyx_L44_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -5666,12 +5491,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L47_try_end:;
       }
 
-      /* "fragmentparser.pyx":118
- *             except Exception:
- *                 datadict["HASHCODE"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
- *             except Exception:
+      /* "fragmentparser.pyx":120
+ *         except Exception:
+ *             datadict["HASHCODE"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -5682,16 +5507,16 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":119
- *                 datadict["HASHCODE"] = None
- *             try:
- *                 datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["ELEMENT_ID"] = None
+          /* "fragmentparser.pyx":121
+ *             datadict["HASHCODE"] = None
+ *         try:
+ *             datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["ELEMENT_ID"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_infosplit, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 119, __pyx_L50_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_infosplit, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 121, __pyx_L50_error)
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L50_error)
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L50_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __pyx_t_6 = NULL;
@@ -5712,19 +5537,19 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
             PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_kp_u__6};
             __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
             __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-            if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 119, __pyx_L50_error)
+            if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 121, __pyx_L50_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           }
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ELEMENT_ID, __pyx_t_11) < 0))) __PYX_ERR(0, 119, __pyx_L50_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ELEMENT_ID, __pyx_t_11) < 0))) __PYX_ERR(0, 121, __pyx_L50_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":118
- *             except Exception:
- *                 datadict["HASHCODE"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
- *             except Exception:
+          /* "fragmentparser.pyx":120
+ *         except Exception:
+ *             datadict["HASHCODE"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -5739,29 +5564,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":120
- *             try:
- *                 datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["ELEMENT_ID"] = None
- *             try:
+        /* "fragmentparser.pyx":122
+ *         try:
+ *             datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["ELEMENT_ID"] = None
+ *         try:
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 120, __pyx_L52_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 122, __pyx_L52_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":121
- *                 datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
- *             except Exception:
- *                 datadict["ELEMENT_ID"] = None             # <<<<<<<<<<<<<<
- *             try:
- *                 datadict["MID"] = infosplit[0]
+          /* "fragmentparser.pyx":123
+ *             datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
+ *         except Exception:
+ *             datadict["ELEMENT_ID"] = None             # <<<<<<<<<<<<<<
+ *         try:
+ *             datadict["MID"] = infosplit[0]
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ELEMENT_ID, Py_None) < 0))) __PYX_ERR(0, 121, __pyx_L52_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ELEMENT_ID, Py_None) < 0))) __PYX_ERR(0, 123, __pyx_L52_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5769,12 +5594,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L52_except_error;
 
-        /* "fragmentparser.pyx":118
- *             except Exception:
- *                 datadict["HASHCODE"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
- *             except Exception:
+        /* "fragmentparser.pyx":120
+ *         except Exception:
+ *             datadict["HASHCODE"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["ELEMENT_ID"] = infosplit[-1].rstrip(" ")
+ *         except Exception:
  */
         __pyx_L52_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -5790,12 +5615,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L55_try_end:;
       }
 
-      /* "fragmentparser.pyx":122
- *             except Exception:
- *                 datadict["ELEMENT_ID"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["MID"] = infosplit[0]
- *             except Exception:
+      /* "fragmentparser.pyx":124
+ *         except Exception:
+ *             datadict["ELEMENT_ID"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["MID"] = infosplit[0]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -5806,24 +5631,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":123
- *                 datadict["ELEMENT_ID"] = None
- *             try:
- *                 datadict["MID"] = infosplit[0]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["MID"] = None
+          /* "fragmentparser.pyx":125
+ *             datadict["ELEMENT_ID"] = None
+ *         try:
+ *             datadict["MID"] = infosplit[0]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["MID"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_infosplit, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 123, __pyx_L58_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_infosplit, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 125, __pyx_L58_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_MID, __pyx_t_6) < 0))) __PYX_ERR(0, 123, __pyx_L58_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_MID, __pyx_t_6) < 0))) __PYX_ERR(0, 125, __pyx_L58_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":122
- *             except Exception:
- *                 datadict["ELEMENT_ID"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["MID"] = infosplit[0]
- *             except Exception:
+          /* "fragmentparser.pyx":124
+ *         except Exception:
+ *             datadict["ELEMENT_ID"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["MID"] = infosplit[0]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -5838,29 +5663,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":124
- *             try:
- *                 datadict["MID"] = infosplit[0]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["MID"] = None
- *             try:
+        /* "fragmentparser.pyx":126
+ *         try:
+ *             datadict["MID"] = infosplit[0]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["MID"] = None
+ *         try:
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 124, __pyx_L60_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 126, __pyx_L60_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":125
- *                 datadict["MID"] = infosplit[0]
- *             except Exception:
- *                 datadict["MID"] = None             # <<<<<<<<<<<<<<
- *             try:
- *                 datadict["VISIBILITY"] = firstimesearch[0]
+          /* "fragmentparser.pyx":127
+ *             datadict["MID"] = infosplit[0]
+ *         except Exception:
+ *             datadict["MID"] = None             # <<<<<<<<<<<<<<
+ *         try:
+ *             datadict["VISIBILITY"] = firstimesearch[0]
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_MID, Py_None) < 0))) __PYX_ERR(0, 125, __pyx_L60_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_MID, Py_None) < 0))) __PYX_ERR(0, 127, __pyx_L60_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -5868,12 +5693,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L60_except_error;
 
-        /* "fragmentparser.pyx":122
- *             except Exception:
- *                 datadict["ELEMENT_ID"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["MID"] = infosplit[0]
- *             except Exception:
+        /* "fragmentparser.pyx":124
+ *         except Exception:
+ *             datadict["ELEMENT_ID"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["MID"] = infosplit[0]
+ *         except Exception:
  */
         __pyx_L60_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -5889,12 +5714,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L63_try_end:;
       }
 
-      /* "fragmentparser.pyx":126
- *             except Exception:
- *                 datadict["MID"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["VISIBILITY"] = firstimesearch[0]
- *             except Exception:
+      /* "fragmentparser.pyx":128
+ *         except Exception:
+ *             datadict["MID"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["VISIBILITY"] = firstimesearch[0]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -5905,24 +5730,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":127
- *                 datadict["MID"] = None
- *             try:
- *                 datadict["VISIBILITY"] = firstimesearch[0]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["VISIBILITY"] = None
+          /* "fragmentparser.pyx":129
+ *             datadict["MID"] = None
+ *         try:
+ *             datadict["VISIBILITY"] = firstimesearch[0]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["VISIBILITY"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 127, __pyx_L66_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 129, __pyx_L66_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_VISIBILITY, __pyx_t_11) < 0))) __PYX_ERR(0, 127, __pyx_L66_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_VISIBILITY, __pyx_t_11) < 0))) __PYX_ERR(0, 129, __pyx_L66_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":126
- *             except Exception:
- *                 datadict["MID"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["VISIBILITY"] = firstimesearch[0]
- *             except Exception:
+          /* "fragmentparser.pyx":128
+ *         except Exception:
+ *             datadict["MID"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["VISIBILITY"] = firstimesearch[0]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -5937,29 +5762,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":128
- *             try:
- *                 datadict["VISIBILITY"] = firstimesearch[0]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["VISIBILITY"] = None
+        /* "fragmentparser.pyx":130
+ *         try:
+ *             datadict["VISIBILITY"] = firstimesearch[0]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["VISIBILITY"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 128, __pyx_L68_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 130, __pyx_L68_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":129
- *                 datadict["VISIBILITY"] = firstimesearch[0]
- *             except Exception:
- *                 datadict["VISIBILITY"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":131
+ *             datadict["VISIBILITY"] = firstimesearch[0]
+ *         except Exception:
+ *             datadict["VISIBILITY"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_VISIBILITY, Py_None) < 0))) __PYX_ERR(0, 129, __pyx_L68_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_VISIBILITY, Py_None) < 0))) __PYX_ERR(0, 131, __pyx_L68_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5967,12 +5792,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L68_except_error;
 
-        /* "fragmentparser.pyx":126
- *             except Exception:
- *                 datadict["MID"] = None
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["VISIBILITY"] = firstimesearch[0]
- *             except Exception:
+        /* "fragmentparser.pyx":128
+ *         except Exception:
+ *             datadict["MID"] = None
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["VISIBILITY"] = firstimesearch[0]
+ *         except Exception:
  */
         __pyx_L68_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -5988,12 +5813,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L71_try_end:;
       }
 
-      /* "fragmentparser.pyx":131
- *                 datadict["VISIBILITY"] = None
+      /* "fragmentparser.pyx":133
+ *             datadict["VISIBILITY"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["FOCUSABLE"] = firstimesearch[1]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["FOCUSABLE"] = firstimesearch[1]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6004,24 +5829,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":132
+          /* "fragmentparser.pyx":134
  * 
- *             try:
- *                 datadict["FOCUSABLE"] = firstimesearch[1]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["FOCUSABLE"] = None
+ *         try:
+ *             datadict["FOCUSABLE"] = firstimesearch[1]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["FOCUSABLE"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 132, __pyx_L74_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 134, __pyx_L74_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_FOCUSABLE, __pyx_t_6) < 0))) __PYX_ERR(0, 132, __pyx_L74_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_FOCUSABLE, __pyx_t_6) < 0))) __PYX_ERR(0, 134, __pyx_L74_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":131
- *                 datadict["VISIBILITY"] = None
+          /* "fragmentparser.pyx":133
+ *             datadict["VISIBILITY"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["FOCUSABLE"] = firstimesearch[1]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["FOCUSABLE"] = firstimesearch[1]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -6036,29 +5861,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":133
- *             try:
- *                 datadict["FOCUSABLE"] = firstimesearch[1]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["FOCUSABLE"] = None
+        /* "fragmentparser.pyx":135
+ *         try:
+ *             datadict["FOCUSABLE"] = firstimesearch[1]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["FOCUSABLE"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 133, __pyx_L76_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 135, __pyx_L76_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":134
- *                 datadict["FOCUSABLE"] = firstimesearch[1]
- *             except Exception:
- *                 datadict["FOCUSABLE"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":136
+ *             datadict["FOCUSABLE"] = firstimesearch[1]
+ *         except Exception:
+ *             datadict["FOCUSABLE"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_FOCUSABLE, Py_None) < 0))) __PYX_ERR(0, 134, __pyx_L76_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_FOCUSABLE, Py_None) < 0))) __PYX_ERR(0, 136, __pyx_L76_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -6066,12 +5891,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L76_except_error;
 
-        /* "fragmentparser.pyx":131
- *                 datadict["VISIBILITY"] = None
+        /* "fragmentparser.pyx":133
+ *             datadict["VISIBILITY"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["FOCUSABLE"] = firstimesearch[1]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["FOCUSABLE"] = firstimesearch[1]
+ *         except Exception:
  */
         __pyx_L76_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -6087,12 +5912,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L79_try_end:;
       }
 
-      /* "fragmentparser.pyx":136
- *                 datadict["FOCUSABLE"] = None
+      /* "fragmentparser.pyx":138
+ *             datadict["FOCUSABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["ENABLED"] = firstimesearch[2]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["ENABLED"] = firstimesearch[2]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6103,24 +5928,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":137
+          /* "fragmentparser.pyx":139
  * 
- *             try:
- *                 datadict["ENABLED"] = firstimesearch[2]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["ENABLED"] = None
+ *         try:
+ *             datadict["ENABLED"] = firstimesearch[2]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["ENABLED"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 137, __pyx_L82_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 139, __pyx_L82_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ENABLED, __pyx_t_11) < 0))) __PYX_ERR(0, 137, __pyx_L82_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ENABLED, __pyx_t_11) < 0))) __PYX_ERR(0, 139, __pyx_L82_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":136
- *                 datadict["FOCUSABLE"] = None
+          /* "fragmentparser.pyx":138
+ *             datadict["FOCUSABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["ENABLED"] = firstimesearch[2]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["ENABLED"] = firstimesearch[2]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -6135,29 +5960,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":138
- *             try:
- *                 datadict["ENABLED"] = firstimesearch[2]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["ENABLED"] = None
+        /* "fragmentparser.pyx":140
+ *         try:
+ *             datadict["ENABLED"] = firstimesearch[2]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["ENABLED"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 138, __pyx_L84_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 140, __pyx_L84_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":139
- *                 datadict["ENABLED"] = firstimesearch[2]
- *             except Exception:
- *                 datadict["ENABLED"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":141
+ *             datadict["ENABLED"] = firstimesearch[2]
+ *         except Exception:
+ *             datadict["ENABLED"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ENABLED, Py_None) < 0))) __PYX_ERR(0, 139, __pyx_L84_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_ENABLED, Py_None) < 0))) __PYX_ERR(0, 141, __pyx_L84_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -6165,12 +5990,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L84_except_error;
 
-        /* "fragmentparser.pyx":136
- *                 datadict["FOCUSABLE"] = None
+        /* "fragmentparser.pyx":138
+ *             datadict["FOCUSABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["ENABLED"] = firstimesearch[2]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["ENABLED"] = firstimesearch[2]
+ *         except Exception:
  */
         __pyx_L84_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -6186,12 +6011,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L87_try_end:;
       }
 
-      /* "fragmentparser.pyx":141
- *                 datadict["ENABLED"] = None
+      /* "fragmentparser.pyx":143
+ *             datadict["ENABLED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["DRAWN"] = firstimesearch[3]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["DRAWN"] = firstimesearch[3]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6202,24 +6027,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":142
+          /* "fragmentparser.pyx":144
  * 
- *             try:
- *                 datadict["DRAWN"] = firstimesearch[3]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["DRAWN"] = None
+ *         try:
+ *             datadict["DRAWN"] = firstimesearch[3]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["DRAWN"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 142, __pyx_L90_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 144, __pyx_L90_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_DRAWN, __pyx_t_6) < 0))) __PYX_ERR(0, 142, __pyx_L90_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_DRAWN, __pyx_t_6) < 0))) __PYX_ERR(0, 144, __pyx_L90_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":141
- *                 datadict["ENABLED"] = None
+          /* "fragmentparser.pyx":143
+ *             datadict["ENABLED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["DRAWN"] = firstimesearch[3]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["DRAWN"] = firstimesearch[3]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -6234,29 +6059,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":143
- *             try:
- *                 datadict["DRAWN"] = firstimesearch[3]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["DRAWN"] = None
+        /* "fragmentparser.pyx":145
+ *         try:
+ *             datadict["DRAWN"] = firstimesearch[3]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["DRAWN"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 143, __pyx_L92_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 145, __pyx_L92_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":144
- *                 datadict["DRAWN"] = firstimesearch[3]
- *             except Exception:
- *                 datadict["DRAWN"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":146
+ *             datadict["DRAWN"] = firstimesearch[3]
+ *         except Exception:
+ *             datadict["DRAWN"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_DRAWN, Py_None) < 0))) __PYX_ERR(0, 144, __pyx_L92_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_DRAWN, Py_None) < 0))) __PYX_ERR(0, 146, __pyx_L92_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -6264,12 +6089,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L92_except_error;
 
-        /* "fragmentparser.pyx":141
- *                 datadict["ENABLED"] = None
+        /* "fragmentparser.pyx":143
+ *             datadict["ENABLED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["DRAWN"] = firstimesearch[3]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["DRAWN"] = firstimesearch[3]
+ *         except Exception:
  */
         __pyx_L92_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -6285,12 +6110,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L95_try_end:;
       }
 
-      /* "fragmentparser.pyx":146
- *                 datadict["DRAWN"] = None
+      /* "fragmentparser.pyx":148
+ *             datadict["DRAWN"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6301,24 +6126,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":147
+          /* "fragmentparser.pyx":149
  * 
- *             try:
- *                 datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["SCROLLBARS_HORIZONTAL"] = None
+ *         try:
+ *             datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["SCROLLBARS_HORIZONTAL"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 147, __pyx_L98_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 149, __pyx_L98_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_HORIZONTAL, __pyx_t_11) < 0))) __PYX_ERR(0, 147, __pyx_L98_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_HORIZONTAL, __pyx_t_11) < 0))) __PYX_ERR(0, 149, __pyx_L98_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":146
- *                 datadict["DRAWN"] = None
+          /* "fragmentparser.pyx":148
+ *             datadict["DRAWN"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -6333,29 +6158,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":148
- *             try:
- *                 datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_HORIZONTAL"] = None
+        /* "fragmentparser.pyx":150
+ *         try:
+ *             datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_HORIZONTAL"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 148, __pyx_L100_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 150, __pyx_L100_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":149
- *                 datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
- *             except Exception:
- *                 datadict["SCROLLBARS_HORIZONTAL"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":151
+ *             datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
+ *         except Exception:
+ *             datadict["SCROLLBARS_HORIZONTAL"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_HORIZONTAL, Py_None) < 0))) __PYX_ERR(0, 149, __pyx_L100_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_HORIZONTAL, Py_None) < 0))) __PYX_ERR(0, 151, __pyx_L100_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -6363,12 +6188,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L100_except_error;
 
-        /* "fragmentparser.pyx":146
- *                 datadict["DRAWN"] = None
+        /* "fragmentparser.pyx":148
+ *             datadict["DRAWN"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_HORIZONTAL"] = firstimesearch[4]
+ *         except Exception:
  */
         __pyx_L100_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -6384,12 +6209,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L103_try_end:;
       }
 
-      /* "fragmentparser.pyx":151
- *                 datadict["SCROLLBARS_HORIZONTAL"] = None
+      /* "fragmentparser.pyx":153
+ *             datadict["SCROLLBARS_HORIZONTAL"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6400,24 +6225,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":152
+          /* "fragmentparser.pyx":154
  * 
- *             try:
- *                 datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["SCROLLBARS_VERTICAL"] = None
+ *         try:
+ *             datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["SCROLLBARS_VERTICAL"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 152, __pyx_L106_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 154, __pyx_L106_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_VERTICAL, __pyx_t_6) < 0))) __PYX_ERR(0, 152, __pyx_L106_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_VERTICAL, __pyx_t_6) < 0))) __PYX_ERR(0, 154, __pyx_L106_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":151
- *                 datadict["SCROLLBARS_HORIZONTAL"] = None
+          /* "fragmentparser.pyx":153
+ *             datadict["SCROLLBARS_HORIZONTAL"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -6432,29 +6257,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":153
- *             try:
- *                 datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_VERTICAL"] = None
+        /* "fragmentparser.pyx":155
+ *         try:
+ *             datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_VERTICAL"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 153, __pyx_L108_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 155, __pyx_L108_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":154
- *                 datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
- *             except Exception:
- *                 datadict["SCROLLBARS_VERTICAL"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":156
+ *             datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
+ *         except Exception:
+ *             datadict["SCROLLBARS_VERTICAL"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_VERTICAL, Py_None) < 0))) __PYX_ERR(0, 154, __pyx_L108_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_SCROLLBARS_VERTICAL, Py_None) < 0))) __PYX_ERR(0, 156, __pyx_L108_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -6462,12 +6287,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L108_except_error;
 
-        /* "fragmentparser.pyx":151
- *                 datadict["SCROLLBARS_HORIZONTAL"] = None
+        /* "fragmentparser.pyx":153
+ *             datadict["SCROLLBARS_HORIZONTAL"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["SCROLLBARS_VERTICAL"] = firstimesearch[5]
+ *         except Exception:
  */
         __pyx_L108_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -6483,12 +6308,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L111_try_end:;
       }
 
-      /* "fragmentparser.pyx":156
- *                 datadict["SCROLLBARS_VERTICAL"] = None
+      /* "fragmentparser.pyx":158
+ *             datadict["SCROLLBARS_VERTICAL"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CLICKABLE"] = firstimesearch[6]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CLICKABLE"] = firstimesearch[6]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6499,24 +6324,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":157
+          /* "fragmentparser.pyx":159
  * 
- *             try:
- *                 datadict["CLICKABLE"] = firstimesearch[6]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["CLICKABLE"] = None
+ *         try:
+ *             datadict["CLICKABLE"] = firstimesearch[6]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["CLICKABLE"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 157, __pyx_L114_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 159, __pyx_L114_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLICKABLE, __pyx_t_11) < 0))) __PYX_ERR(0, 157, __pyx_L114_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLICKABLE, __pyx_t_11) < 0))) __PYX_ERR(0, 159, __pyx_L114_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":156
- *                 datadict["SCROLLBARS_VERTICAL"] = None
+          /* "fragmentparser.pyx":158
+ *             datadict["SCROLLBARS_VERTICAL"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CLICKABLE"] = firstimesearch[6]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CLICKABLE"] = firstimesearch[6]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -6531,29 +6356,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":158
- *             try:
- *                 datadict["CLICKABLE"] = firstimesearch[6]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["CLICKABLE"] = None
+        /* "fragmentparser.pyx":160
+ *         try:
+ *             datadict["CLICKABLE"] = firstimesearch[6]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["CLICKABLE"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 158, __pyx_L116_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 160, __pyx_L116_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":159
- *                 datadict["CLICKABLE"] = firstimesearch[6]
- *             except Exception:
- *                 datadict["CLICKABLE"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":161
+ *             datadict["CLICKABLE"] = firstimesearch[6]
+ *         except Exception:
+ *             datadict["CLICKABLE"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLICKABLE, Py_None) < 0))) __PYX_ERR(0, 159, __pyx_L116_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CLICKABLE, Py_None) < 0))) __PYX_ERR(0, 161, __pyx_L116_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -6561,12 +6386,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L116_except_error;
 
-        /* "fragmentparser.pyx":156
- *                 datadict["SCROLLBARS_VERTICAL"] = None
+        /* "fragmentparser.pyx":158
+ *             datadict["SCROLLBARS_VERTICAL"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CLICKABLE"] = firstimesearch[6]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CLICKABLE"] = firstimesearch[6]
+ *         except Exception:
  */
         __pyx_L116_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -6582,12 +6407,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L119_try_end:;
       }
 
-      /* "fragmentparser.pyx":161
- *                 datadict["CLICKABLE"] = None
+      /* "fragmentparser.pyx":163
+ *             datadict["CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["LONG_CLICKABLE"] = firstimesearch[7]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["LONG_CLICKABLE"] = firstimesearch[7]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6598,24 +6423,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":162
+          /* "fragmentparser.pyx":164
  * 
- *             try:
- *                 datadict["LONG_CLICKABLE"] = firstimesearch[7]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["LONG_CLICKABLE"] = None
+ *         try:
+ *             datadict["LONG_CLICKABLE"] = firstimesearch[7]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["LONG_CLICKABLE"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L122_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 164, __pyx_L122_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_LONG_CLICKABLE, __pyx_t_6) < 0))) __PYX_ERR(0, 162, __pyx_L122_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_LONG_CLICKABLE, __pyx_t_6) < 0))) __PYX_ERR(0, 164, __pyx_L122_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":161
- *                 datadict["CLICKABLE"] = None
+          /* "fragmentparser.pyx":163
+ *             datadict["CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["LONG_CLICKABLE"] = firstimesearch[7]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["LONG_CLICKABLE"] = firstimesearch[7]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -6630,29 +6455,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":163
- *             try:
- *                 datadict["LONG_CLICKABLE"] = firstimesearch[7]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["LONG_CLICKABLE"] = None
+        /* "fragmentparser.pyx":165
+ *         try:
+ *             datadict["LONG_CLICKABLE"] = firstimesearch[7]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["LONG_CLICKABLE"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 163, __pyx_L124_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 165, __pyx_L124_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":164
- *                 datadict["LONG_CLICKABLE"] = firstimesearch[7]
- *             except Exception:
- *                 datadict["LONG_CLICKABLE"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":166
+ *             datadict["LONG_CLICKABLE"] = firstimesearch[7]
+ *         except Exception:
+ *             datadict["LONG_CLICKABLE"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_LONG_CLICKABLE, Py_None) < 0))) __PYX_ERR(0, 164, __pyx_L124_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_LONG_CLICKABLE, Py_None) < 0))) __PYX_ERR(0, 166, __pyx_L124_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -6660,12 +6485,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L124_except_error;
 
-        /* "fragmentparser.pyx":161
- *                 datadict["CLICKABLE"] = None
+        /* "fragmentparser.pyx":163
+ *             datadict["CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["LONG_CLICKABLE"] = firstimesearch[7]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["LONG_CLICKABLE"] = firstimesearch[7]
+ *         except Exception:
  */
         __pyx_L124_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -6681,12 +6506,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L127_try_end:;
       }
 
-      /* "fragmentparser.pyx":166
- *                 datadict["LONG_CLICKABLE"] = None
+      /* "fragmentparser.pyx":168
+ *             datadict["LONG_CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6697,24 +6522,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":167
+          /* "fragmentparser.pyx":169
  * 
- *             try:
- *                 datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["CONTEXT_CLICKABLE"] = None
+ *         try:
+ *             datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["CONTEXT_CLICKABLE"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 167, __pyx_L130_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_firstimesearch, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 169, __pyx_L130_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CONTEXT_CLICKABLE, __pyx_t_11) < 0))) __PYX_ERR(0, 167, __pyx_L130_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CONTEXT_CLICKABLE, __pyx_t_11) < 0))) __PYX_ERR(0, 169, __pyx_L130_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":166
- *                 datadict["LONG_CLICKABLE"] = None
+          /* "fragmentparser.pyx":168
+ *             datadict["LONG_CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -6729,29 +6554,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":168
- *             try:
- *                 datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["CONTEXT_CLICKABLE"] = None
+        /* "fragmentparser.pyx":170
+ *         try:
+ *             datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["CONTEXT_CLICKABLE"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 168, __pyx_L132_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 170, __pyx_L132_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":169
- *                 datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
- *             except Exception:
- *                 datadict["CONTEXT_CLICKABLE"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":171
+ *             datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
+ *         except Exception:
+ *             datadict["CONTEXT_CLICKABLE"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CONTEXT_CLICKABLE, Py_None) < 0))) __PYX_ERR(0, 169, __pyx_L132_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_CONTEXT_CLICKABLE, Py_None) < 0))) __PYX_ERR(0, 171, __pyx_L132_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -6759,12 +6584,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L132_except_error;
 
-        /* "fragmentparser.pyx":166
- *                 datadict["LONG_CLICKABLE"] = None
+        /* "fragmentparser.pyx":168
+ *             datadict["LONG_CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["CONTEXT_CLICKABLE"] = firstimesearch[8]
+ *         except Exception:
  */
         __pyx_L132_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -6780,12 +6605,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L135_try_end:;
       }
 
-      /* "fragmentparser.pyx":171
- *                 datadict["CONTEXT_CLICKABLE"] = None
+      /* "fragmentparser.pyx":173
+ *             datadict["CONTEXT_CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6796,24 +6621,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":172
+          /* "fragmentparser.pyx":174
  * 
- *             try:
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
+ *         try:
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L138_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L138_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_IS_ROOT_NAMESPACE, __pyx_t_6) < 0))) __PYX_ERR(0, 172, __pyx_L138_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_IS_ROOT_NAMESPACE, __pyx_t_6) < 0))) __PYX_ERR(0, 174, __pyx_L138_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":171
- *                 datadict["CONTEXT_CLICKABLE"] = None
+          /* "fragmentparser.pyx":173
+ *             datadict["CONTEXT_CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -6828,29 +6653,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":173
- *             try:
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
+        /* "fragmentparser.pyx":175
+ *         try:
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 173, __pyx_L140_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 175, __pyx_L140_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":174
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
- *             except Exception:
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":176
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
+ *         except Exception:
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_IS_ROOT_NAMESPACE, Py_None) < 0))) __PYX_ERR(0, 174, __pyx_L140_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_IS_ROOT_NAMESPACE, Py_None) < 0))) __PYX_ERR(0, 176, __pyx_L140_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -6858,12 +6683,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L140_except_error;
 
-        /* "fragmentparser.pyx":171
- *                 datadict["CONTEXT_CLICKABLE"] = None
+        /* "fragmentparser.pyx":173
+ *             datadict["CONTEXT_CLICKABLE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = secondtimesearch[0]
+ *         except Exception:
  */
         __pyx_L140_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -6879,12 +6704,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L143_try_end:;
       }
 
-      /* "fragmentparser.pyx":176
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
+      /* "fragmentparser.pyx":178
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6895,24 +6720,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":177
+          /* "fragmentparser.pyx":179
  * 
- *             try:
- *                 datadict["PFLAG_FOCUSED"] = secondtimesearch[1]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_FOCUSED"] = None
+ *         try:
+ *             datadict["PFLAG_FOCUSED"] = secondtimesearch[1]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_FOCUSED"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 177, __pyx_L146_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 179, __pyx_L146_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_FOCUSED, __pyx_t_11) < 0))) __PYX_ERR(0, 177, __pyx_L146_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_FOCUSED, __pyx_t_11) < 0))) __PYX_ERR(0, 179, __pyx_L146_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":176
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
+          /* "fragmentparser.pyx":178
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -6927,29 +6752,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":178
- *             try:
- *                 datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_FOCUSED"] = None
+        /* "fragmentparser.pyx":180
+ *         try:
+ *             datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_FOCUSED"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 178, __pyx_L148_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 180, __pyx_L148_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":179
- *                 datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
- *             except Exception:
- *                 datadict["PFLAG_FOCUSED"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":181
+ *             datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
+ *         except Exception:
+ *             datadict["PFLAG_FOCUSED"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_FOCUSED, Py_None) < 0))) __PYX_ERR(0, 179, __pyx_L148_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_FOCUSED, Py_None) < 0))) __PYX_ERR(0, 181, __pyx_L148_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -6957,12 +6782,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L148_except_error;
 
-        /* "fragmentparser.pyx":176
- *                 datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
+        /* "fragmentparser.pyx":178
+ *             datadict["PFLAG_IS_ROOT_NAMESPACE"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_FOCUSED"] = secondtimesearch[1]
+ *         except Exception:
  */
         __pyx_L148_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -6978,12 +6803,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L151_try_end:;
       }
 
-      /* "fragmentparser.pyx":181
- *                 datadict["PFLAG_FOCUSED"] = None
+      /* "fragmentparser.pyx":183
+ *             datadict["PFLAG_FOCUSED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_SELECTED"] = secondtimesearch[2]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_SELECTED"] = secondtimesearch[2]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -6994,24 +6819,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":182
+          /* "fragmentparser.pyx":184
  * 
- *             try:
- *                 datadict["PFLAG_SELECTED"] = secondtimesearch[2]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_SELECTED"] = None
+ *         try:
+ *             datadict["PFLAG_SELECTED"] = secondtimesearch[2]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_SELECTED"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 182, __pyx_L154_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 184, __pyx_L154_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_SELECTED, __pyx_t_6) < 0))) __PYX_ERR(0, 182, __pyx_L154_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_SELECTED, __pyx_t_6) < 0))) __PYX_ERR(0, 184, __pyx_L154_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":181
- *                 datadict["PFLAG_FOCUSED"] = None
+          /* "fragmentparser.pyx":183
+ *             datadict["PFLAG_FOCUSED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_SELECTED"] = secondtimesearch[2]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_SELECTED"] = secondtimesearch[2]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -7026,29 +6851,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":183
- *             try:
- *                 datadict["PFLAG_SELECTED"] = secondtimesearch[2]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_SELECTED"] = None
+        /* "fragmentparser.pyx":185
+ *         try:
+ *             datadict["PFLAG_SELECTED"] = secondtimesearch[2]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_SELECTED"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 183, __pyx_L156_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 185, __pyx_L156_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":184
- *                 datadict["PFLAG_SELECTED"] = secondtimesearch[2]
- *             except Exception:
- *                 datadict["PFLAG_SELECTED"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":186
+ *             datadict["PFLAG_SELECTED"] = secondtimesearch[2]
+ *         except Exception:
+ *             datadict["PFLAG_SELECTED"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_SELECTED, Py_None) < 0))) __PYX_ERR(0, 184, __pyx_L156_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_SELECTED, Py_None) < 0))) __PYX_ERR(0, 186, __pyx_L156_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -7056,12 +6881,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L156_except_error;
 
-        /* "fragmentparser.pyx":181
- *                 datadict["PFLAG_FOCUSED"] = None
+        /* "fragmentparser.pyx":183
+ *             datadict["PFLAG_FOCUSED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_SELECTED"] = secondtimesearch[2]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_SELECTED"] = secondtimesearch[2]
+ *         except Exception:
  */
         __pyx_L156_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -7077,12 +6902,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L159_try_end:;
       }
 
-      /* "fragmentparser.pyx":186
- *                 datadict["PFLAG_SELECTED"] = None
+      /* "fragmentparser.pyx":188
+ *             datadict["PFLAG_SELECTED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -7093,24 +6918,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":187
+          /* "fragmentparser.pyx":189
  * 
- *             try:
- *                 datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_PREPRESSED"] = None
+ *         try:
+ *             datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_PREPRESSED"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 187, __pyx_L162_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 189, __pyx_L162_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_PREPRESSED, __pyx_t_11) < 0))) __PYX_ERR(0, 187, __pyx_L162_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_PREPRESSED, __pyx_t_11) < 0))) __PYX_ERR(0, 189, __pyx_L162_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":186
- *                 datadict["PFLAG_SELECTED"] = None
+          /* "fragmentparser.pyx":188
+ *             datadict["PFLAG_SELECTED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -7125,29 +6950,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":188
- *             try:
- *                 datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_PREPRESSED"] = None
+        /* "fragmentparser.pyx":190
+ *         try:
+ *             datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_PREPRESSED"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 188, __pyx_L164_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 190, __pyx_L164_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":189
- *                 datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
- *             except Exception:
- *                 datadict["PFLAG_PREPRESSED"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":191
+ *             datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
+ *         except Exception:
+ *             datadict["PFLAG_PREPRESSED"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_PREPRESSED, Py_None) < 0))) __PYX_ERR(0, 189, __pyx_L164_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_PREPRESSED, Py_None) < 0))) __PYX_ERR(0, 191, __pyx_L164_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -7155,12 +6980,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L164_except_error;
 
-        /* "fragmentparser.pyx":186
- *                 datadict["PFLAG_SELECTED"] = None
+        /* "fragmentparser.pyx":188
+ *             datadict["PFLAG_SELECTED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_PREPRESSED"] = secondtimesearch[3]
+ *         except Exception:
  */
         __pyx_L164_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -7176,12 +7001,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L167_try_end:;
       }
 
-      /* "fragmentparser.pyx":191
- *                 datadict["PFLAG_PREPRESSED"] = None
+      /* "fragmentparser.pyx":193
+ *             datadict["PFLAG_PREPRESSED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_HOVERED"] = secondtimesearch[4]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_HOVERED"] = secondtimesearch[4]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -7192,24 +7017,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":192
+          /* "fragmentparser.pyx":194
  * 
- *             try:
- *                 datadict["PFLAG_HOVERED"] = secondtimesearch[4]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_HOVERED"] = None
+ *         try:
+ *             datadict["PFLAG_HOVERED"] = secondtimesearch[4]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_HOVERED"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 192, __pyx_L170_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 194, __pyx_L170_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_HOVERED, __pyx_t_6) < 0))) __PYX_ERR(0, 192, __pyx_L170_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_HOVERED, __pyx_t_6) < 0))) __PYX_ERR(0, 194, __pyx_L170_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":191
- *                 datadict["PFLAG_PREPRESSED"] = None
+          /* "fragmentparser.pyx":193
+ *             datadict["PFLAG_PREPRESSED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_HOVERED"] = secondtimesearch[4]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_HOVERED"] = secondtimesearch[4]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -7224,29 +7049,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":193
- *             try:
- *                 datadict["PFLAG_HOVERED"] = secondtimesearch[4]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_HOVERED"] = None
+        /* "fragmentparser.pyx":195
+ *         try:
+ *             datadict["PFLAG_HOVERED"] = secondtimesearch[4]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_HOVERED"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 193, __pyx_L172_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 195, __pyx_L172_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":194
- *                 datadict["PFLAG_HOVERED"] = secondtimesearch[4]
- *             except Exception:
- *                 datadict["PFLAG_HOVERED"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":196
+ *             datadict["PFLAG_HOVERED"] = secondtimesearch[4]
+ *         except Exception:
+ *             datadict["PFLAG_HOVERED"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_HOVERED, Py_None) < 0))) __PYX_ERR(0, 194, __pyx_L172_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_HOVERED, Py_None) < 0))) __PYX_ERR(0, 196, __pyx_L172_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -7254,12 +7079,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L172_except_error;
 
-        /* "fragmentparser.pyx":191
- *                 datadict["PFLAG_PREPRESSED"] = None
+        /* "fragmentparser.pyx":193
+ *             datadict["PFLAG_PREPRESSED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_HOVERED"] = secondtimesearch[4]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_HOVERED"] = secondtimesearch[4]
+ *         except Exception:
  */
         __pyx_L172_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -7275,12 +7100,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L175_try_end:;
       }
 
-      /* "fragmentparser.pyx":196
- *                 datadict["PFLAG_HOVERED"] = None
+      /* "fragmentparser.pyx":198
+ *             datadict["PFLAG_HOVERED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -7291,24 +7116,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":197
+          /* "fragmentparser.pyx":199
  * 
- *             try:
- *                 datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_ACTIVATED"] = None
+ *         try:
+ *             datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_ACTIVATED"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 197, __pyx_L178_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 199, __pyx_L178_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_ACTIVATED, __pyx_t_11) < 0))) __PYX_ERR(0, 197, __pyx_L178_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_ACTIVATED, __pyx_t_11) < 0))) __PYX_ERR(0, 199, __pyx_L178_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":196
- *                 datadict["PFLAG_HOVERED"] = None
+          /* "fragmentparser.pyx":198
+ *             datadict["PFLAG_HOVERED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -7323,29 +7148,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":198
- *             try:
- *                 datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_ACTIVATED"] = None
+        /* "fragmentparser.pyx":200
+ *         try:
+ *             datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_ACTIVATED"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 198, __pyx_L180_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 200, __pyx_L180_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":199
- *                 datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
- *             except Exception:
- *                 datadict["PFLAG_ACTIVATED"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":201
+ *             datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
+ *         except Exception:
+ *             datadict["PFLAG_ACTIVATED"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_ACTIVATED, Py_None) < 0))) __PYX_ERR(0, 199, __pyx_L180_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_ACTIVATED, Py_None) < 0))) __PYX_ERR(0, 201, __pyx_L180_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -7353,12 +7178,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L180_except_error;
 
-        /* "fragmentparser.pyx":196
- *                 datadict["PFLAG_HOVERED"] = None
+        /* "fragmentparser.pyx":198
+ *             datadict["PFLAG_HOVERED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_ACTIVATED"] = secondtimesearch[5]
+ *         except Exception:
  */
         __pyx_L180_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -7374,12 +7199,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L183_try_end:;
       }
 
-      /* "fragmentparser.pyx":201
- *                 datadict["PFLAG_ACTIVATED"] = None
+      /* "fragmentparser.pyx":203
+ *             datadict["PFLAG_ACTIVATED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -7390,24 +7215,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":202
+          /* "fragmentparser.pyx":204
  * 
- *             try:
- *                 datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_INVALIDATED"] = None
+ *         try:
+ *             datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_INVALIDATED"] = None
  */
-          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 202, __pyx_L186_error)
+          __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 204, __pyx_L186_error)
           __Pyx_GOTREF(__pyx_t_6);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_INVALIDATED, __pyx_t_6) < 0))) __PYX_ERR(0, 202, __pyx_L186_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_INVALIDATED, __pyx_t_6) < 0))) __PYX_ERR(0, 204, __pyx_L186_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":201
- *                 datadict["PFLAG_ACTIVATED"] = None
+          /* "fragmentparser.pyx":203
+ *             datadict["PFLAG_ACTIVATED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -7422,29 +7247,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":203
- *             try:
- *                 datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_INVALIDATED"] = None
+        /* "fragmentparser.pyx":205
+ *         try:
+ *             datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_INVALIDATED"] = None
  * 
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 203, __pyx_L188_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 205, __pyx_L188_except_error)
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_11);
 
-          /* "fragmentparser.pyx":204
- *                 datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
- *             except Exception:
- *                 datadict["PFLAG_INVALIDATED"] = None             # <<<<<<<<<<<<<<
+          /* "fragmentparser.pyx":206
+ *             datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
+ *         except Exception:
+ *             datadict["PFLAG_INVALIDATED"] = None             # <<<<<<<<<<<<<<
  * 
- *             try:
+ *         try:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_INVALIDATED, Py_None) < 0))) __PYX_ERR(0, 204, __pyx_L188_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_INVALIDATED, Py_None) < 0))) __PYX_ERR(0, 206, __pyx_L188_except_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -7452,12 +7277,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L188_except_error;
 
-        /* "fragmentparser.pyx":201
- *                 datadict["PFLAG_ACTIVATED"] = None
+        /* "fragmentparser.pyx":203
+ *             datadict["PFLAG_ACTIVATED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_INVALIDATED"] = secondtimesearch[6]
+ *         except Exception:
  */
         __pyx_L188_except_error:;
         __Pyx_XGIVEREF(__pyx_t_16);
@@ -7473,12 +7298,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L191_try_end:;
       }
 
-      /* "fragmentparser.pyx":206
- *                 datadict["PFLAG_INVALIDATED"] = None
+      /* "fragmentparser.pyx":208
+ *             datadict["PFLAG_INVALIDATED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
+ *         except Exception:
  */
       {
         __Pyx_PyThreadState_declare
@@ -7489,24 +7314,24 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "fragmentparser.pyx":207
+          /* "fragmentparser.pyx":209
  * 
- *             try:
- *                 datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]             # <<<<<<<<<<<<<<
- *             except Exception:
- *                 datadict["PFLAG_DIRTY_MASK"] = None
+ *         try:
+ *             datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]             # <<<<<<<<<<<<<<
+ *         except Exception:
+ *             datadict["PFLAG_DIRTY_MASK"] = None
  */
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 207, __pyx_L194_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_secondtimesearch, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 209, __pyx_L194_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_DIRTY_MASK, __pyx_t_11) < 0))) __PYX_ERR(0, 207, __pyx_L194_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_DIRTY_MASK, __pyx_t_11) < 0))) __PYX_ERR(0, 209, __pyx_L194_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-          /* "fragmentparser.pyx":206
- *                 datadict["PFLAG_INVALIDATED"] = None
+          /* "fragmentparser.pyx":208
+ *             datadict["PFLAG_INVALIDATED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
+ *         except Exception:
  */
         }
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -7521,29 +7346,29 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":208
- *             try:
- *                 datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
- *             except Exception:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_DIRTY_MASK"] = None
- *             return maininfos, otherdata, datadict
+        /* "fragmentparser.pyx":210
+ *         try:
+ *             datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
+ *         except Exception:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_DIRTY_MASK"] = None
+ *         return maininfos, otherdata, datadict
  */
         __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
         if (__pyx_t_8) {
-          __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 208, __pyx_L196_except_error)
+          __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_11, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 210, __pyx_L196_except_error)
           __Pyx_XGOTREF(__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_6);
 
-          /* "fragmentparser.pyx":209
- *                 datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
- *             except Exception:
- *                 datadict["PFLAG_DIRTY_MASK"] = None             # <<<<<<<<<<<<<<
- *             return maininfos, otherdata, datadict
- *         except Exception as fe:
+          /* "fragmentparser.pyx":211
+ *             datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
+ *         except Exception:
+ *             datadict["PFLAG_DIRTY_MASK"] = None             # <<<<<<<<<<<<<<
+ *         return maininfos, otherdata, datadict
+ *     except Exception as fe:
  */
-          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_DIRTY_MASK, Py_None) < 0))) __PYX_ERR(0, 209, __pyx_L196_except_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_datadict, __pyx_n_u_PFLAG_DIRTY_MASK, Py_None) < 0))) __PYX_ERR(0, 211, __pyx_L196_except_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -7551,12 +7376,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         }
         goto __pyx_L196_except_error;
 
-        /* "fragmentparser.pyx":206
- *                 datadict["PFLAG_INVALIDATED"] = None
+        /* "fragmentparser.pyx":208
+ *             datadict["PFLAG_INVALIDATED"] = None
  * 
- *             try:             # <<<<<<<<<<<<<<
- *                 datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
- *             except Exception:
+ *         try:             # <<<<<<<<<<<<<<
+ *             datadict["PFLAG_DIRTY_MASK"] = secondtimesearch[7]
+ *         except Exception:
  */
         __pyx_L196_except_error:;
         __Pyx_XGIVEREF(__pyx_t_14);
@@ -7572,35 +7397,35 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
         __pyx_L199_try_end:;
       }
 
-      /* "fragmentparser.pyx":210
- *             except Exception:
- *                 datadict["PFLAG_DIRTY_MASK"] = None
- *             return maininfos, otherdata, datadict             # <<<<<<<<<<<<<<
- *         except Exception as fe:
- *             # sys.stderr.write(f'{fe}')
+      /* "fragmentparser.pyx":212
+ *         except Exception:
+ *             datadict["PFLAG_DIRTY_MASK"] = None
+ *         return maininfos, otherdata, datadict             # <<<<<<<<<<<<<<
+ *     except Exception as fe:
+ *         # sys.stderr.write(f'{fe}')
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 210, __pyx_L3_error)
+      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_v_maininfos);
       __Pyx_GIVEREF(__pyx_v_maininfos);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_maininfos)) __PYX_ERR(0, 210, __pyx_L3_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_maininfos)) __PYX_ERR(0, 212, __pyx_L3_error);
       __Pyx_INCREF(__pyx_v_otherdata);
       __Pyx_GIVEREF(__pyx_v_otherdata);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_otherdata)) __PYX_ERR(0, 210, __pyx_L3_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_otherdata)) __PYX_ERR(0, 212, __pyx_L3_error);
       __Pyx_INCREF(__pyx_v_datadict);
       __Pyx_GIVEREF(__pyx_v_datadict);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_datadict)) __PYX_ERR(0, 210, __pyx_L3_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_datadict)) __PYX_ERR(0, 212, __pyx_L3_error);
       __pyx_r = __pyx_t_6;
       __pyx_t_6 = 0;
       goto __pyx_L7_try_return;
 
-      /* "fragmentparser.pyx":69
- *     @cache
- *     def findchi(ff):
- *         try:             # <<<<<<<<<<<<<<
- *             r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
- *             datadict = {}
+      /* "fragmentparser.pyx":71
+ * @cache
+ * def findchi(ff):
+ *     try:             # <<<<<<<<<<<<<<
+ *         r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
+ *         datadict = {}
  */
     }
     __pyx_L3_error:;
@@ -7611,17 +7436,17 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "fragmentparser.pyx":211
- *                 datadict["PFLAG_DIRTY_MASK"] = None
- *             return maininfos, otherdata, datadict
- *         except Exception as fe:             # <<<<<<<<<<<<<<
- *             # sys.stderr.write(f'{fe}')
- *             return None
+    /* "fragmentparser.pyx":213
+ *             datadict["PFLAG_DIRTY_MASK"] = None
+ *         return maininfos, otherdata, datadict
+ *     except Exception as fe:             # <<<<<<<<<<<<<<
+ *         # sys.stderr.write(f'{fe}')
+ *         return [],[],{}
  */
     __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_8) {
-      __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 211, __pyx_L5_except_error)
+      __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_5, &__pyx_t_11) < 0) __PYX_ERR(0, 213, __pyx_L5_except_error)
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_5);
       __Pyx_XGOTREF(__pyx_t_11);
@@ -7629,47 +7454,100 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
       __pyx_v_fe = __pyx_t_5;
       /*try:*/ {
 
-        /* "fragmentparser.pyx":213
- *         except Exception as fe:
- *             # sys.stderr.write(f'{fe}')
- *             return None             # <<<<<<<<<<<<<<
+        /* "fragmentparser.pyx":215
+ *     except Exception as fe:
+ *         # sys.stderr.write(f'{fe}')
+ *         return [],[],{}             # <<<<<<<<<<<<<<
  * 
- *     allda = execute_sh_command(
+ * cpdef list[list[dict]] get_all_activity_elements(cython.bint as_pandas=False, cython.Py_ssize_t number_of_max_views=-1):
  */
         __Pyx_XDECREF(__pyx_r);
-        __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+        __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 215, __pyx_L207_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 215, __pyx_L207_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_12 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 215, __pyx_L207_error)
+        __Pyx_GOTREF(__pyx_t_12);
+        __pyx_t_17 = PyTuple_New(3); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 215, __pyx_L207_error)
+        __Pyx_GOTREF(__pyx_t_17);
+        __Pyx_GIVEREF(__pyx_t_7);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_7)) __PYX_ERR(0, 215, __pyx_L207_error);
+        __Pyx_GIVEREF(__pyx_t_4);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_17, 1, __pyx_t_4)) __PYX_ERR(0, 215, __pyx_L207_error);
+        __Pyx_GIVEREF(__pyx_t_12);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_17, 2, __pyx_t_12)) __PYX_ERR(0, 215, __pyx_L207_error);
+        __pyx_t_7 = 0;
+        __pyx_t_4 = 0;
+        __pyx_t_12 = 0;
+        __pyx_r = __pyx_t_17;
+        __pyx_t_17 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         goto __pyx_L206_return;
       }
 
-      /* "fragmentparser.pyx":211
- *                 datadict["PFLAG_DIRTY_MASK"] = None
- *             return maininfos, otherdata, datadict
- *         except Exception as fe:             # <<<<<<<<<<<<<<
- *             # sys.stderr.write(f'{fe}')
- *             return None
+      /* "fragmentparser.pyx":213
+ *             datadict["PFLAG_DIRTY_MASK"] = None
+ *         return maininfos, otherdata, datadict
+ *     except Exception as fe:             # <<<<<<<<<<<<<<
+ *         # sys.stderr.write(f'{fe}')
+ *         return [],[],{}
  */
       /*finally:*/ {
+        __pyx_L207_error:;
+        /*exception exit:*/{
+          __Pyx_PyThreadState_declare
+          __Pyx_PyThreadState_assign
+          __pyx_t_16 = 0; __pyx_t_15 = 0; __pyx_t_14 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0; __pyx_t_22 = 0;
+          __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+          __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+          if (PY_MAJOR_VERSION >= 3) __Pyx_ExceptionSwap(&__pyx_t_20, &__pyx_t_21, &__pyx_t_22);
+          if ((PY_MAJOR_VERSION < 3) || unlikely(__Pyx_GetException(&__pyx_t_16, &__pyx_t_15, &__pyx_t_14) < 0)) __Pyx_ErrFetch(&__pyx_t_16, &__pyx_t_15, &__pyx_t_14);
+          __Pyx_XGOTREF(__pyx_t_16);
+          __Pyx_XGOTREF(__pyx_t_15);
+          __Pyx_XGOTREF(__pyx_t_14);
+          __Pyx_XGOTREF(__pyx_t_20);
+          __Pyx_XGOTREF(__pyx_t_21);
+          __Pyx_XGOTREF(__pyx_t_22);
+          __pyx_t_8 = __pyx_lineno; __pyx_t_18 = __pyx_clineno; __pyx_t_19 = __pyx_filename;
+          {
+            __Pyx_DECREF(__pyx_v_fe); __pyx_v_fe = 0;
+          }
+          if (PY_MAJOR_VERSION >= 3) {
+            __Pyx_XGIVEREF(__pyx_t_20);
+            __Pyx_XGIVEREF(__pyx_t_21);
+            __Pyx_XGIVEREF(__pyx_t_22);
+            __Pyx_ExceptionReset(__pyx_t_20, __pyx_t_21, __pyx_t_22);
+          }
+          __Pyx_XGIVEREF(__pyx_t_16);
+          __Pyx_XGIVEREF(__pyx_t_15);
+          __Pyx_XGIVEREF(__pyx_t_14);
+          __Pyx_ErrRestore(__pyx_t_16, __pyx_t_15, __pyx_t_14);
+          __pyx_t_16 = 0; __pyx_t_15 = 0; __pyx_t_14 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0; __pyx_t_22 = 0;
+          __pyx_lineno = __pyx_t_8; __pyx_clineno = __pyx_t_18; __pyx_filename = __pyx_t_19;
+          goto __pyx_L5_except_error;
+        }
         __pyx_L206_return: {
-          __pyx_t_16 = __pyx_r;
+          __pyx_t_22 = __pyx_r;
           __pyx_r = 0;
           __Pyx_DECREF(__pyx_v_fe); __pyx_v_fe = 0;
-          __pyx_r = __pyx_t_16;
-          __pyx_t_16 = 0;
+          __pyx_r = __pyx_t_22;
+          __pyx_t_22 = 0;
           goto __pyx_L6_except_return;
         }
       }
     }
     goto __pyx_L5_except_error;
 
-    /* "fragmentparser.pyx":69
- *     @cache
- *     def findchi(ff):
- *         try:             # <<<<<<<<<<<<<<
- *             r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
- *             datadict = {}
+    /* "fragmentparser.pyx":71
+ * @cache
+ * def findchi(ff):
+ *     try:             # <<<<<<<<<<<<<<
+ *         r0 = parse_pairs(string=ff, s1="{", s2="}", str_regex=False)
+ *         datadict = {}
  */
     __pyx_L5_except_error:;
     __Pyx_XGIVEREF(__pyx_t_1);
@@ -7691,12 +7569,12 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
     goto __pyx_L0;
   }
 
-  /* "fragmentparser.pyx":67
+  /* "fragmentparser.pyx":69
  *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
- *     @cache             # <<<<<<<<<<<<<<
- *     def findchi(ff):
- *         try:
+ * 
+ * @cache             # <<<<<<<<<<<<<<
+ * def findchi(ff):
+ *     try:
  */
 
   /* function exit code */
@@ -7707,7 +7585,8 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_AddTraceback("fragmentparser.get_all_activity_elements.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_17);
+  __Pyx_AddTraceback("fragmentparser.findchi", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_r0);
@@ -7726,34 +7605,41 @@ static PyObject *__pyx_pf_14fragmentparser_25get_all_activity_elements_findchi(C
   return __pyx_r;
 }
 
-/* "fragmentparser.pyx":66
- *         )
- *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):             # <<<<<<<<<<<<<<
- *     @cache
- *     def findchi(ff):
+/* "fragmentparser.pyx":217
+ *         return [],[],{}
+ * 
+ * cpdef list[list[dict]] get_all_activity_elements(cython.bint as_pandas=False, cython.Py_ssize_t number_of_max_views=-1):             # <<<<<<<<<<<<<<
+ *     cdef:
+ *         dict[str,Any] datadict,datadict2
  */
 
-static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_as_pandas, PyObject *__pyx_v_number_of_max_views) {
-  PyObject *__pyx_v_findchi = 0;
-  PyObject *__pyx_v_allda = NULL;
-  PyObject *__pyx_v_allsi = NULL;
+static PyObject *__pyx_pw_14fragmentparser_7get_all_activity_elements(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyObject *__pyx_f_14fragmentparser_get_all_activity_elements(CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_14fragmentparser_get_all_activity_elements *__pyx_optional_args) {
+  Py_ssize_t __pyx_v_number_of_max_views = ((Py_ssize_t)-1L);
+  PyObject *__pyx_v_datadict = 0;
+  PyObject *__pyx_v_datadict2 = 0;
+  PyObject *__pyx_v_allda = 0;
+  PyObject *__pyx_v_allsi = 0;
+  PyObject *__pyx_v_allchildrendata = 0;
+  Py_ssize_t __pyx_v_elemtindex;
+  Py_ssize_t __pyx_v_hierachcounter;
+  Py_ssize_t __pyx_v_hierachcounter2;
+  PyObject *__pyx_v_allconvdata = 0;
   PyObject *__pyx_v_allsplits = NULL;
-  PyObject *__pyx_v_allconvdata = NULL;
-  PyObject *__pyx_v_elemtindex = NULL;
   PyObject *__pyx_v_a = NULL;
   PyObject *__pyx_v_di = NULL;
-  PyObject *__pyx_v_e = NULL;
-  PyObject *__pyx_v_allchildrendata = NULL;
-  long __pyx_v_hierachcounter;
+  CYTHON_UNUSED PyObject *__pyx_v_e = NULL;
   PyObject *__pyx_v_f = NULL;
-  long __pyx_v_hierachcounter2;
   PyObject *__pyx_v_ff = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_maininfos2 = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_otherdata2 = NULL;
-  PyObject *__pyx_v_datadict2 = NULL;
-  PyObject *__pyx_v_datadict = NULL;
-  PyObject *__pyx_8genexpr1__pyx_v_i = NULL;
+  Py_ssize_t __pyx_8genexpr1__pyx_v_i;
   PyObject *__pyx_8genexpr1__pyx_v_x = NULL;
   PyObject *__pyx_8genexpr2__pyx_v_x = NULL;
   PyObject *__pyx_8genexpr3__pyx_v_x = NULL;
@@ -7762,343 +7648,242 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  PyObject *(*__pyx_t_7)(PyObject *);
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
-  int __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
+  Py_ssize_t __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  int __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
+  PyObject *__pyx_t_11 = NULL;
   PyObject *__pyx_t_12 = NULL;
   PyObject *__pyx_t_13 = NULL;
-  PyObject *__pyx_t_14 = NULL;
-  int __pyx_t_15;
-  char const *__pyx_t_16;
-  PyObject *__pyx_t_17 = NULL;
-  PyObject *__pyx_t_18 = NULL;
+  Py_ssize_t __pyx_t_14;
+  PyObject *(*__pyx_t_15)(PyObject *);
+  int __pyx_t_16;
+  Py_ssize_t __pyx_t_17;
+  PyObject *(*__pyx_t_18)(PyObject *);
   PyObject *__pyx_t_19 = NULL;
   PyObject *__pyx_t_20 = NULL;
   PyObject *__pyx_t_21 = NULL;
   PyObject *__pyx_t_22 = NULL;
-  int __pyx_t_23;
-  Py_ssize_t __pyx_t_24;
-  PyObject *(*__pyx_t_25)(PyObject *);
-  PyObject *__pyx_t_26 = NULL;
-  PyObject *__pyx_t_27 = NULL;
-  PyObject *__pyx_t_28 = NULL;
-  PyObject *(*__pyx_t_29)(PyObject *);
-  Py_ssize_t __pyx_t_30;
-  PyObject *(*__pyx_t_31)(PyObject *);
+  PyObject *__pyx_t_23 = NULL;
+  PyObject *(*__pyx_t_24)(PyObject *);
+  Py_ssize_t __pyx_t_25;
+  PyObject *(*__pyx_t_26)(PyObject *);
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_all_activity_elements", 1);
-
-  /* "fragmentparser.pyx":67
- *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
- *     @cache             # <<<<<<<<<<<<<<
- *     def findchi(ff):
- *         try:
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cache); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_25get_all_activity_elements_1findchi, 0, __pyx_n_s_get_all_activity_elements_locals_2, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_5 = 1;
+  if (__pyx_optional_args) {
+    if (__pyx_optional_args->__pyx_n > 1) {
+      __pyx_v_number_of_max_views = __pyx_optional_args->number_of_max_views;
     }
   }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  }
-  __pyx_v_findchi = __pyx_t_1;
-  __pyx_t_1 = 0;
 
-  /* "fragmentparser.pyx":215
- *             return None
- * 
- *     allda = execute_sh_command(             # <<<<<<<<<<<<<<
- *         ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS,
- *     )
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_execute_sh_command); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-
-  /* "fragmentparser.pyx":216
+  /* "fragmentparser.pyx":227
  * 
  *     allda = execute_sh_command(
  *         ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS,             # <<<<<<<<<<<<<<
  *     )
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  __pyx_t_5 = 0;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_5 = 1;
-    }
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  }
-  __pyx_v_allda = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("unicode", __pyx_t_1))) __PYX_ERR(0, 227, __pyx_L1_error)
 
-  /* "fragmentparser.pyx":220
+  /* "fragmentparser.pyx":226
+ *         #list allsplits,maininfos2, otherdata2
+ * 
+ *     allda = execute_sh_command(             # <<<<<<<<<<<<<<
+ *         ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS,
+ *     )
+ */
+  __pyx_t_2 = __pyx_f_14fragmentparser_execute_sh_command(((PyObject*)__pyx_t_1), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_allda = ((PyObject*)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "fragmentparser.pyx":231
  * 
  *     allsi = list_split(
  *         allda,             # <<<<<<<<<<<<<<
  *         [
  *             i
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_allda))||((__pyx_v_allda) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_v_allda))) __PYX_ERR(0, 220, __pyx_L1_error)
   { /* enter inner scope */
 
-    /* "fragmentparser.pyx":221
+    /* "fragmentparser.pyx":232
  *     allsi = list_split(
  *         allda,
  *         [             # <<<<<<<<<<<<<<
  *             i
  *             for i, x in enumerate(allda)
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L5_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_INCREF(__pyx_int_0);
-    __pyx_t_2 = __pyx_int_0;
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L5_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = 0;
 
-    /* "fragmentparser.pyx":223
+    /* "fragmentparser.pyx":234
  *         [
  *             i
  *             for i, x in enumerate(allda)             # <<<<<<<<<<<<<<
- *             if re.search(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))", x)
+ *             if hierachyregex.search(x)
  *         ],
  */
-    if (likely(PyList_CheckExact(__pyx_v_allda)) || PyTuple_CheckExact(__pyx_v_allda)) {
-      __pyx_t_3 = __pyx_v_allda; __Pyx_INCREF(__pyx_t_3);
-      __pyx_t_6 = 0;
-      __pyx_t_7 = NULL;
-    } else {
-      __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_allda); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L5_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 223, __pyx_L5_error)
-    }
+    __pyx_t_1 = __pyx_v_allda; __Pyx_INCREF(__pyx_t_1);
+    __pyx_t_4 = 0;
     for (;;) {
-      if (likely(!__pyx_t_7)) {
-        if (likely(PyList_CheckExact(__pyx_t_3))) {
-          {
-            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
-            #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 223, __pyx_L5_error)
-            #endif
-            if (__pyx_t_6 >= __pyx_temp) break;
-          }
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 223, __pyx_L5_error)
-          #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L5_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          #endif
-        } else {
-          {
-            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
-            #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 223, __pyx_L5_error)
-            #endif
-            if (__pyx_t_6 >= __pyx_temp) break;
-          }
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 223, __pyx_L5_error)
-          #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L5_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          #endif
-        }
-      } else {
-        __pyx_t_4 = __pyx_t_7(__pyx_t_3);
-        if (unlikely(!__pyx_t_4)) {
-          PyObject* exc_type = PyErr_Occurred();
-          if (exc_type) {
-            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 223, __pyx_L5_error)
-          }
-          break;
-        }
-        __Pyx_GOTREF(__pyx_t_4);
+      {
+        Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
+        #if !CYTHON_ASSUME_SAFE_MACROS
+        if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 234, __pyx_L5_error)
+        #endif
+        if (__pyx_t_4 >= __pyx_temp) break;
       }
-      __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_x, __pyx_t_4);
-      __pyx_t_4 = 0;
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_i, __pyx_t_2);
-      __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L5_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_2);
-      __pyx_t_2 = __pyx_t_4;
-      __pyx_t_4 = 0;
+      #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 234, __pyx_L5_error)
+      #else
+      __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L5_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      #endif
+      __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_x, __pyx_t_5);
+      __pyx_t_5 = 0;
+      __pyx_8genexpr1__pyx_v_i = __pyx_t_3;
+      __pyx_t_3 = (__pyx_t_3 + 1);
 
-      /* "fragmentparser.pyx":224
+      /* "fragmentparser.pyx":235
  *             i
  *             for i, x in enumerate(allda)
- *             if re.search(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))", x)             # <<<<<<<<<<<<<<
+ *             if hierachyregex.search(x)             # <<<<<<<<<<<<<<
  *         ],
  *     )
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_re); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 224, __pyx_L5_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_search); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 224, __pyx_L5_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = NULL;
-      __pyx_t_5 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_hierachyregex); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 235, __pyx_L5_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_search); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 235, __pyx_L5_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_6 = NULL;
+      __pyx_t_8 = 0;
       #if CYTHON_UNPACK_METHODS
-      if (unlikely(PyMethod_Check(__pyx_t_9))) {
-        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
-        if (likely(__pyx_t_8)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-          __Pyx_INCREF(__pyx_t_8);
+      if (unlikely(PyMethod_Check(__pyx_t_7))) {
+        __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_7);
+        if (likely(__pyx_t_6)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+          __Pyx_INCREF(__pyx_t_6);
           __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_9, function);
-          __pyx_t_5 = 1;
+          __Pyx_DECREF_SET(__pyx_t_7, function);
+          __pyx_t_8 = 1;
         }
       }
       #endif
       {
-        PyObject *__pyx_callargs[3] = {__pyx_t_8, __pyx_kp_b_s_View_Hierarchy_Looper, __pyx_8genexpr1__pyx_v_x};
-        __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
-        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 224, __pyx_L5_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_8genexpr1__pyx_v_x};
+        __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+        __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 224, __pyx_L5_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (__pyx_t_10) {
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 235, __pyx_L5_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (__pyx_t_9) {
 
-        /* "fragmentparser.pyx":222
+        /* "fragmentparser.pyx":233
  *         allda,
  *         [
  *             i             # <<<<<<<<<<<<<<
  *             for i, x in enumerate(allda)
- *             if re.search(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))", x)
+ *             if hierachyregex.search(x)
  */
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_8genexpr1__pyx_v_i))) __PYX_ERR(0, 221, __pyx_L5_error)
+        __pyx_t_5 = PyInt_FromSsize_t(__pyx_8genexpr1__pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 232, __pyx_L5_error)
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "fragmentparser.pyx":224
+        /* "fragmentparser.pyx":235
  *             i
  *             for i, x in enumerate(allda)
- *             if re.search(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))", x)             # <<<<<<<<<<<<<<
+ *             if hierachyregex.search(x)             # <<<<<<<<<<<<<<
  *         ],
  *     )
  */
       }
 
-      /* "fragmentparser.pyx":223
+      /* "fragmentparser.pyx":234
  *         [
  *             i
  *             for i, x in enumerate(allda)             # <<<<<<<<<<<<<<
- *             if re.search(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))", x)
+ *             if hierachyregex.search(x)
  *         ],
  */
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_XDECREF(__pyx_8genexpr1__pyx_v_i); __pyx_8genexpr1__pyx_v_i = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF(__pyx_8genexpr1__pyx_v_x); __pyx_8genexpr1__pyx_v_x = 0;
     goto __pyx_L10_exit_scope;
     __pyx_L5_error:;
-    __Pyx_XDECREF(__pyx_8genexpr1__pyx_v_i); __pyx_8genexpr1__pyx_v_i = 0;
     __Pyx_XDECREF(__pyx_8genexpr1__pyx_v_x); __pyx_8genexpr1__pyx_v_x = 0;
     goto __pyx_L1_error;
     __pyx_L10_exit_scope:;
   } /* exit inner scope */
 
-  /* "fragmentparser.pyx":219
+  /* "fragmentparser.pyx":230
  *     )
  * 
  *     allsi = list_split(             # <<<<<<<<<<<<<<
  *         allda,
  *         [
  */
-  __pyx_t_2 = __pyx_f_14fragmentparser_list_split(((PyObject*)__pyx_v_allda), ((PyObject*)__pyx_t_1), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_allsi = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __pyx_t_1 = __pyx_f_14fragmentparser_list_split(__pyx_v_allda, ((PyObject*)__pyx_t_2), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_allsi = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
 
-  /* "fragmentparser.pyx":227
+  /* "fragmentparser.pyx":238
  *         ],
  *     )
  *     allsplits = [x for x in allsi if b"View Hierarchy:" in x[0]]             # <<<<<<<<<<<<<<
- *     if number_of_max_views  >0:
+ *     if number_of_max_views > 0:
  *         allsplits = allsplits[-number_of_max_views:]
  */
   { /* enter inner scope */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L13_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L13_error)
+    __Pyx_GOTREF(__pyx_t_1);
     if (unlikely(__pyx_v_allsi == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 227, __pyx_L13_error)
+      __PYX_ERR(0, 238, __pyx_L13_error)
     }
-    __pyx_t_1 = __pyx_v_allsi; __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_6 = 0;
+    __pyx_t_2 = __pyx_v_allsi; __Pyx_INCREF(__pyx_t_2);
+    __pyx_t_3 = 0;
     for (;;) {
       {
-        Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
+        Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
         #if !CYTHON_ASSUME_SAFE_MACROS
-        if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 227, __pyx_L13_error)
+        if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 238, __pyx_L13_error)
         #endif
-        if (__pyx_t_6 >= __pyx_temp) break;
+        if (__pyx_t_3 >= __pyx_temp) break;
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 227, __pyx_L13_error)
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 238, __pyx_L13_error)
       #else
-      __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L13_error)
-      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 238, __pyx_L13_error)
+      __Pyx_GOTREF(__pyx_t_5);
       #endif
-      __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_x, __pyx_t_3);
-      __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_8genexpr2__pyx_v_x, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L13_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_10 = (__Pyx_PySequence_ContainsTF(__pyx_kp_b_View_Hierarchy, __pyx_t_3, Py_EQ)); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 227, __pyx_L13_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (__pyx_t_10) {
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_8genexpr2__pyx_v_x))) __PYX_ERR(0, 227, __pyx_L13_error)
+      __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_x, __pyx_t_5);
+      __pyx_t_5 = 0;
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_8genexpr2__pyx_v_x, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 238, __pyx_L13_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_9 = (__Pyx_PySequence_ContainsTF(__pyx_kp_b_View_Hierarchy, __pyx_t_5, Py_EQ)); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 238, __pyx_L13_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (__pyx_t_9) {
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_8genexpr2__pyx_v_x))) __PYX_ERR(0, 238, __pyx_L13_error)
       }
     }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_8genexpr2__pyx_v_x); __pyx_8genexpr2__pyx_v_x = 0;
     goto __pyx_L18_exit_scope;
     __pyx_L13_error:;
@@ -8106,102 +7891,79 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
     goto __pyx_L1_error;
     __pyx_L18_exit_scope:;
   } /* exit inner scope */
-  __pyx_v_allsplits = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __pyx_v_allsplits = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
 
-  /* "fragmentparser.pyx":228
+  /* "fragmentparser.pyx":239
  *     )
  *     allsplits = [x for x in allsi if b"View Hierarchy:" in x[0]]
- *     if number_of_max_views  >0:             # <<<<<<<<<<<<<<
+ *     if number_of_max_views > 0:             # <<<<<<<<<<<<<<
  *         allsplits = allsplits[-number_of_max_views:]
  * 
  */
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_number_of_max_views, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_10 < 0))) __PYX_ERR(0, 228, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_t_10) {
+  __pyx_t_9 = (__pyx_v_number_of_max_views > 0);
+  if (__pyx_t_9) {
 
-    /* "fragmentparser.pyx":229
+    /* "fragmentparser.pyx":240
  *     allsplits = [x for x in allsi if b"View Hierarchy:" in x[0]]
- *     if number_of_max_views  >0:
+ *     if number_of_max_views > 0:
  *         allsplits = allsplits[-number_of_max_views:]             # <<<<<<<<<<<<<<
  * 
  *     allconvdata = []
  */
-    __pyx_t_2 = PyNumber_Negative(__pyx_v_number_of_max_views); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = (__pyx_t_2 == Py_None);
-    if (__pyx_t_10) {
-      __pyx_t_6 = 0;
-    } else {
-      __pyx_t_11 = __Pyx_PyIndex_AsSsize_t(__pyx_t_2); if (unlikely((__pyx_t_11 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 229, __pyx_L1_error)
-      __pyx_t_6 = __pyx_t_11;
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyList_GetSlice(__pyx_v_allsplits, __pyx_t_6, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF_SET(__pyx_v_allsplits, ((PyObject*)__pyx_t_2));
-    __pyx_t_2 = 0;
+    __pyx_t_1 = __Pyx_PyList_GetSlice(__pyx_v_allsplits, (-__pyx_v_number_of_max_views), PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF_SET(__pyx_v_allsplits, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
 
-    /* "fragmentparser.pyx":228
+    /* "fragmentparser.pyx":239
  *     )
  *     allsplits = [x for x in allsi if b"View Hierarchy:" in x[0]]
- *     if number_of_max_views  >0:             # <<<<<<<<<<<<<<
+ *     if number_of_max_views > 0:             # <<<<<<<<<<<<<<
  *         allsplits = allsplits[-number_of_max_views:]
  * 
  */
   }
 
-  /* "fragmentparser.pyx":231
+  /* "fragmentparser.pyx":242
  *         allsplits = allsplits[-number_of_max_views:]
  * 
  *     allconvdata = []             # <<<<<<<<<<<<<<
- *     # for vxa in allsplits:
- *     #     for h in range(len(vxa)):
+ *     for elemtindex in range(len(allsplits)):
+ *         a=allsplits[elemtindex]
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_v_allconvdata = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_allconvdata = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
 
-  /* "fragmentparser.pyx":240
- *     #             continue
+  /* "fragmentparser.pyx":243
  * 
- *     for elemtindex, a in enumerate(allsplits):             # <<<<<<<<<<<<<<
+ *     allconvdata = []
+ *     for elemtindex in range(len(allsplits)):             # <<<<<<<<<<<<<<
+ *         a=allsplits[elemtindex]
+ *         try:
+ */
+  __pyx_t_3 = __Pyx_PyList_GET_SIZE(__pyx_v_allsplits); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_4 = __pyx_t_3;
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_4; __pyx_t_10+=1) {
+    __pyx_v_elemtindex = __pyx_t_10;
+
+    /* "fragmentparser.pyx":244
+ *     allconvdata = []
+ *     for elemtindex in range(len(allsplits)):
+ *         a=allsplits[elemtindex]             # <<<<<<<<<<<<<<
  *         try:
  *             di = indent2dict(
  */
-  __Pyx_INCREF(__pyx_int_0);
-  __pyx_t_2 = __pyx_int_0;
-  __pyx_t_1 = __pyx_v_allsplits; __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_6 = 0;
-  for (;;) {
-    {
-      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
-      #if !CYTHON_ASSUME_SAFE_MACROS
-      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 240, __pyx_L1_error)
-      #endif
-      if (__pyx_t_6 >= __pyx_temp) break;
-    }
-    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 240, __pyx_L1_error)
-    #else
-    __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 240, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    #endif
-    __Pyx_XDECREF_SET(__pyx_v_a, __pyx_t_3);
-    __pyx_t_3 = 0;
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_XDECREF_SET(__pyx_v_elemtindex, __pyx_t_2);
-    __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 240, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2);
-    __pyx_t_2 = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_allsplits, __pyx_v_elemtindex, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_XDECREF_SET(__pyx_v_a, __pyx_t_1);
+    __pyx_t_1 = 0;
 
-    /* "fragmentparser.pyx":241
- * 
- *     for elemtindex, a in enumerate(allsplits):
+    /* "fragmentparser.pyx":245
+ *     for elemtindex in range(len(allsplits)):
+ *         a=allsplits[elemtindex]
  *         try:             # <<<<<<<<<<<<<<
  *             di = indent2dict(
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
@@ -8209,130 +7971,120 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
     {
       __Pyx_PyThreadState_declare
       __Pyx_PyThreadState_assign
-      __Pyx_ExceptionSave(&__pyx_t_12, &__pyx_t_13, &__pyx_t_14);
+      __Pyx_ExceptionSave(&__pyx_t_11, &__pyx_t_12, &__pyx_t_13);
+      __Pyx_XGOTREF(__pyx_t_11);
       __Pyx_XGOTREF(__pyx_t_12);
       __Pyx_XGOTREF(__pyx_t_13);
-      __Pyx_XGOTREF(__pyx_t_14);
       /*try:*/ {
 
-        /* "fragmentparser.pyx":242
- *     for elemtindex, a in enumerate(allsplits):
+        /* "fragmentparser.pyx":246
+ *         a=allsplits[elemtindex]
  *         try:
  *             di = indent2dict(             # <<<<<<<<<<<<<<
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
  *             )
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_indent2dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 242, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_indent2dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_1);
 
-        /* "fragmentparser.pyx":243
+        /* "fragmentparser.pyx":247
  *         try:
  *             di = indent2dict(
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True             # <<<<<<<<<<<<<<
  *             )
  *         except Exception as e :
  */
-        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_a, 0, 0, NULL, NULL, &__pyx_slice__10, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 243, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_9 = __Pyx_PyBytes_Join(__pyx_kp_b__9, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 243, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_decode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 243, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 243, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_a, 0, 0, NULL, NULL, &__pyx_slice__8, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_5 = __Pyx_PyBytes_Join(__pyx_kp_b__7, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 247, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_decode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 247, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "fragmentparser.pyx":242
- *     for elemtindex, a in enumerate(allsplits):
+        /* "fragmentparser.pyx":246
+ *         a=allsplits[elemtindex]
  *         try:
  *             di = indent2dict(             # <<<<<<<<<<<<<<
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
  *             )
  */
-        __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 242, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_GIVEREF(__pyx_t_9);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_9)) __PYX_ERR(0, 242, __pyx_L22_error);
-        __pyx_t_9 = 0;
+        __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GIVEREF(__pyx_t_5);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5)) __PYX_ERR(0, 246, __pyx_L22_error);
+        __pyx_t_5 = 0;
 
-        /* "fragmentparser.pyx":243
+        /* "fragmentparser.pyx":247
  *         try:
  *             di = indent2dict(
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True             # <<<<<<<<<<<<<<
  *             )
  *         except Exception as e :
  */
-        __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 243, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_removespaces, Py_True) < 0) __PYX_ERR(0, 243, __pyx_L22_error)
+        __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 247, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_removespaces, Py_True) < 0) __PYX_ERR(0, 247, __pyx_L22_error)
 
-        /* "fragmentparser.pyx":242
- *     for elemtindex, a in enumerate(allsplits):
+        /* "fragmentparser.pyx":246
+ *         a=allsplits[elemtindex]
  *         try:
  *             di = indent2dict(             # <<<<<<<<<<<<<<
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
  *             )
  */
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 242, __pyx_L22_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_XDECREF_SET(__pyx_v_di, __pyx_t_8);
-        __pyx_t_8 = 0;
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 246, __pyx_L22_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_di, __pyx_t_7);
+        __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":241
- * 
- *     for elemtindex, a in enumerate(allsplits):
+        /* "fragmentparser.pyx":245
+ *     for elemtindex in range(len(allsplits)):
+ *         a=allsplits[elemtindex]
  *         try:             # <<<<<<<<<<<<<<
  *             di = indent2dict(
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
  */
       }
+      __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
       goto __pyx_L29_try_end;
       __pyx_L22_error:;
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "fragmentparser.pyx":245
+      /* "fragmentparser.pyx":249
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
  *             )
  *         except Exception as e :             # <<<<<<<<<<<<<<
- *             print(e)
+ *             #print(e)
  *             continue
  */
-      __pyx_t_5 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
-      if (__pyx_t_5) {
+      __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
+      if (__pyx_t_8) {
         __Pyx_AddTraceback("fragmentparser.get_all_activity_elements", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_9, &__pyx_t_4) < 0) __PYX_ERR(0, 245, __pyx_L24_except_error)
-        __Pyx_XGOTREF(__pyx_t_8);
-        __Pyx_XGOTREF(__pyx_t_9);
-        __Pyx_XGOTREF(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_9);
-        __pyx_v_e = __pyx_t_9;
+        if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_5, &__pyx_t_2) < 0) __PYX_ERR(0, 249, __pyx_L24_except_error)
+        __Pyx_XGOTREF(__pyx_t_7);
+        __Pyx_XGOTREF(__pyx_t_5);
+        __Pyx_XGOTREF(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_5);
+        __pyx_v_e = __pyx_t_5;
         /*try:*/ {
 
-          /* "fragmentparser.pyx":246
- *             )
+          /* "fragmentparser.pyx":251
  *         except Exception as e :
- *             print(e)             # <<<<<<<<<<<<<<
- *             continue
- *         allchildrendata = []
- */
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_v_e); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L35_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-          /* "fragmentparser.pyx":247
- *         except Exception as e :
- *             print(e)
+ *             #print(e)
  *             continue             # <<<<<<<<<<<<<<
  *         allchildrendata = []
  *         hierachcounter = 0
@@ -8340,94 +8092,62 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
           goto __pyx_L32_continue;
         }
 
-        /* "fragmentparser.pyx":245
+        /* "fragmentparser.pyx":249
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
  *             )
  *         except Exception as e :             # <<<<<<<<<<<<<<
- *             print(e)
+ *             #print(e)
  *             continue
  */
         /*finally:*/ {
-          __pyx_L35_error:;
-          /*exception exit:*/{
-            __Pyx_PyThreadState_declare
-            __Pyx_PyThreadState_assign
-            __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0; __pyx_t_22 = 0;
-            __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (PY_MAJOR_VERSION >= 3) __Pyx_ExceptionSwap(&__pyx_t_20, &__pyx_t_21, &__pyx_t_22);
-            if ((PY_MAJOR_VERSION < 3) || unlikely(__Pyx_GetException(&__pyx_t_17, &__pyx_t_18, &__pyx_t_19) < 0)) __Pyx_ErrFetch(&__pyx_t_17, &__pyx_t_18, &__pyx_t_19);
-            __Pyx_XGOTREF(__pyx_t_17);
-            __Pyx_XGOTREF(__pyx_t_18);
-            __Pyx_XGOTREF(__pyx_t_19);
-            __Pyx_XGOTREF(__pyx_t_20);
-            __Pyx_XGOTREF(__pyx_t_21);
-            __Pyx_XGOTREF(__pyx_t_22);
-            __pyx_t_5 = __pyx_lineno; __pyx_t_15 = __pyx_clineno; __pyx_t_16 = __pyx_filename;
-            {
-              __Pyx_DECREF(__pyx_v_e); __pyx_v_e = 0;
-            }
-            if (PY_MAJOR_VERSION >= 3) {
-              __Pyx_XGIVEREF(__pyx_t_20);
-              __Pyx_XGIVEREF(__pyx_t_21);
-              __Pyx_XGIVEREF(__pyx_t_22);
-              __Pyx_ExceptionReset(__pyx_t_20, __pyx_t_21, __pyx_t_22);
-            }
-            __Pyx_XGIVEREF(__pyx_t_17);
-            __Pyx_XGIVEREF(__pyx_t_18);
-            __Pyx_XGIVEREF(__pyx_t_19);
-            __Pyx_ErrRestore(__pyx_t_17, __pyx_t_18, __pyx_t_19);
-            __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0; __pyx_t_22 = 0;
-            __pyx_lineno = __pyx_t_5; __pyx_clineno = __pyx_t_15; __pyx_filename = __pyx_t_16;
-            goto __pyx_L24_except_error;
-          }
           __pyx_L32_continue: {
             __Pyx_DECREF(__pyx_v_e); __pyx_v_e = 0;
             goto __pyx_L30_except_continue;
           }
         }
         __pyx_L30_except_continue:;
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         goto __pyx_L28_try_continue;
       }
       goto __pyx_L24_except_error;
 
-      /* "fragmentparser.pyx":241
- * 
- *     for elemtindex, a in enumerate(allsplits):
+      /* "fragmentparser.pyx":245
+ *     for elemtindex in range(len(allsplits)):
+ *         a=allsplits[elemtindex]
  *         try:             # <<<<<<<<<<<<<<
  *             di = indent2dict(
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True
  */
       __pyx_L24_except_error:;
+      __Pyx_XGIVEREF(__pyx_t_11);
       __Pyx_XGIVEREF(__pyx_t_12);
       __Pyx_XGIVEREF(__pyx_t_13);
-      __Pyx_XGIVEREF(__pyx_t_14);
-      __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+      __Pyx_ExceptionReset(__pyx_t_11, __pyx_t_12, __pyx_t_13);
       goto __pyx_L1_error;
       __pyx_L28_try_continue:;
+      __Pyx_XGIVEREF(__pyx_t_11);
       __Pyx_XGIVEREF(__pyx_t_12);
       __Pyx_XGIVEREF(__pyx_t_13);
-      __Pyx_XGIVEREF(__pyx_t_14);
-      __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+      __Pyx_ExceptionReset(__pyx_t_11, __pyx_t_12, __pyx_t_13);
       goto __pyx_L20_continue;
       __pyx_L29_try_end:;
     }
 
-    /* "fragmentparser.pyx":248
- *             print(e)
+    /* "fragmentparser.pyx":252
+ *             #print(e)
  *             continue
  *         allchildrendata = []             # <<<<<<<<<<<<<<
  *         hierachcounter = 0
  *         for f in fla_tu(di):
  */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_XDECREF_SET(__pyx_v_allchildrendata, ((PyObject*)__pyx_t_4));
-    __pyx_t_4 = 0;
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_XDECREF_SET(__pyx_v_allchildrendata, ((PyObject*)__pyx_t_2));
+    __pyx_t_2 = 0;
 
-    /* "fragmentparser.pyx":249
+    /* "fragmentparser.pyx":253
  *             continue
  *         allchildrendata = []
  *         hierachcounter = 0             # <<<<<<<<<<<<<<
@@ -8436,106 +8156,106 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  */
     __pyx_v_hierachcounter = 0;
 
-    /* "fragmentparser.pyx":250
+    /* "fragmentparser.pyx":254
  *         allchildrendata = []
  *         hierachcounter = 0
  *         for f in fla_tu(di):             # <<<<<<<<<<<<<<
  *             allchildrendata.append([])
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_fla_tu); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 250, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = NULL;
-    __pyx_t_15 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_fla_tu); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_7 = NULL;
+    __pyx_t_8 = 0;
     #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_9))) {
-      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
-      if (likely(__pyx_t_8)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-        __Pyx_INCREF(__pyx_t_8);
+    if (unlikely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_7)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_7);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_9, function);
-        __pyx_t_15 = 1;
+        __Pyx_DECREF_SET(__pyx_t_5, function);
+        __pyx_t_8 = 1;
       }
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_di};
-      __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_15, 1+__pyx_t_15);
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_v_di};
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
-      __pyx_t_9 = __pyx_t_4; __Pyx_INCREF(__pyx_t_9);
-      __pyx_t_11 = 0;
-      __pyx_t_7 = NULL;
+    if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
+      __pyx_t_5 = __pyx_t_2; __Pyx_INCREF(__pyx_t_5);
+      __pyx_t_14 = 0;
+      __pyx_t_15 = NULL;
     } else {
-      __pyx_t_11 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 250, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __pyx_t_14 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 254, __pyx_L1_error)
     }
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (;;) {
-      if (likely(!__pyx_t_7)) {
-        if (likely(PyList_CheckExact(__pyx_t_9))) {
+      if (likely(!__pyx_t_15)) {
+        if (likely(PyList_CheckExact(__pyx_t_5))) {
           {
-            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_9);
+            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_5);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 250, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 254, __pyx_L1_error)
             #endif
-            if (__pyx_t_11 >= __pyx_temp) break;
+            if (__pyx_t_14 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_11); __Pyx_INCREF(__pyx_t_4); __pyx_t_11++; if (unlikely((0 < 0))) __PYX_ERR(0, 250, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_14); __Pyx_INCREF(__pyx_t_2); __pyx_t_14++; if (unlikely((0 < 0))) __PYX_ERR(0, 254, __pyx_L1_error)
           #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_9, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
+          __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           {
-            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_9);
+            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_5);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 250, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 254, __pyx_L1_error)
             #endif
-            if (__pyx_t_11 >= __pyx_temp) break;
+            if (__pyx_t_14 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_11); __Pyx_INCREF(__pyx_t_4); __pyx_t_11++; if (unlikely((0 < 0))) __PYX_ERR(0, 250, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_14); __Pyx_INCREF(__pyx_t_2); __pyx_t_14++; if (unlikely((0 < 0))) __PYX_ERR(0, 254, __pyx_L1_error)
           #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_9, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
+          __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
       } else {
-        __pyx_t_4 = __pyx_t_7(__pyx_t_9);
-        if (unlikely(!__pyx_t_4)) {
+        __pyx_t_2 = __pyx_t_15(__pyx_t_5);
+        if (unlikely(!__pyx_t_2)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 250, __pyx_L1_error)
+            else __PYX_ERR(0, 254, __pyx_L1_error)
           }
           break;
         }
-        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GOTREF(__pyx_t_2);
       }
-      __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_4);
-      __pyx_t_4 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_2);
+      __pyx_t_2 = 0;
 
-      /* "fragmentparser.pyx":251
+      /* "fragmentparser.pyx":255
  *         hierachcounter = 0
  *         for f in fla_tu(di):
  *             allchildrendata.append([])             # <<<<<<<<<<<<<<
  * 
  *             hierachcounter += 1
  */
-      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 251, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_23 = __Pyx_PyList_Append(__pyx_v_allchildrendata, __pyx_t_4); if (unlikely(__pyx_t_23 == ((int)-1))) __PYX_ERR(0, 251, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_16 = __Pyx_PyList_Append(__pyx_v_allchildrendata, __pyx_t_2); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 255, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "fragmentparser.pyx":253
+      /* "fragmentparser.pyx":257
  *             allchildrendata.append([])
  * 
  *             hierachcounter += 1             # <<<<<<<<<<<<<<
@@ -8544,7 +8264,7 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  */
       __pyx_v_hierachcounter = (__pyx_v_hierachcounter + 1);
 
-      /* "fragmentparser.pyx":254
+      /* "fragmentparser.pyx":258
  * 
  *             hierachcounter += 1
  *             hierachcounter2 = 0             # <<<<<<<<<<<<<<
@@ -8553,72 +8273,72 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  */
       __pyx_v_hierachcounter2 = 0;
 
-      /* "fragmentparser.pyx":255
+      /* "fragmentparser.pyx":259
  *             hierachcounter += 1
  *             hierachcounter2 = 0
  *             for ff in f[1]:             # <<<<<<<<<<<<<<
  *                 try:
  *                     try:
  */
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_f, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
-        __pyx_t_8 = __pyx_t_4; __Pyx_INCREF(__pyx_t_8);
-        __pyx_t_24 = 0;
-        __pyx_t_25 = NULL;
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_f, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
+        __pyx_t_7 = __pyx_t_2; __Pyx_INCREF(__pyx_t_7);
+        __pyx_t_17 = 0;
+        __pyx_t_18 = NULL;
       } else {
-        __pyx_t_24 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 255, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_25 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_8); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 255, __pyx_L1_error)
+        __pyx_t_17 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_7); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 259, __pyx_L1_error)
       }
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       for (;;) {
-        if (likely(!__pyx_t_25)) {
-          if (likely(PyList_CheckExact(__pyx_t_8))) {
+        if (likely(!__pyx_t_18)) {
+          if (likely(PyList_CheckExact(__pyx_t_7))) {
             {
-              Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_8);
+              Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_7);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 255, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 259, __pyx_L1_error)
               #endif
-              if (__pyx_t_24 >= __pyx_temp) break;
+              if (__pyx_t_17 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_4 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_24); __Pyx_INCREF(__pyx_t_4); __pyx_t_24++; if (unlikely((0 < 0))) __PYX_ERR(0, 255, __pyx_L1_error)
+            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_17); __Pyx_INCREF(__pyx_t_2); __pyx_t_17++; if (unlikely((0 < 0))) __PYX_ERR(0, 259, __pyx_L1_error)
             #else
-            __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_8, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_4);
+            __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_7, __pyx_t_17); __pyx_t_17++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
             #endif
           } else {
             {
-              Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_8);
+              Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_7);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 255, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 259, __pyx_L1_error)
               #endif
-              if (__pyx_t_24 >= __pyx_temp) break;
+              if (__pyx_t_17 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_24); __Pyx_INCREF(__pyx_t_4); __pyx_t_24++; if (unlikely((0 < 0))) __PYX_ERR(0, 255, __pyx_L1_error)
+            __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_17); __Pyx_INCREF(__pyx_t_2); __pyx_t_17++; if (unlikely((0 < 0))) __PYX_ERR(0, 259, __pyx_L1_error)
             #else
-            __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_8, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_4);
+            __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_7, __pyx_t_17); __pyx_t_17++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
             #endif
           }
         } else {
-          __pyx_t_4 = __pyx_t_25(__pyx_t_8);
-          if (unlikely(!__pyx_t_4)) {
+          __pyx_t_2 = __pyx_t_18(__pyx_t_7);
+          if (unlikely(!__pyx_t_2)) {
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 255, __pyx_L1_error)
+              else __PYX_ERR(0, 259, __pyx_L1_error)
             }
             break;
           }
-          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_GOTREF(__pyx_t_2);
         }
-        __Pyx_XDECREF_SET(__pyx_v_ff, __pyx_t_4);
-        __pyx_t_4 = 0;
+        __Pyx_XDECREF_SET(__pyx_v_ff, __pyx_t_2);
+        __pyx_t_2 = 0;
 
-        /* "fragmentparser.pyx":256
+        /* "fragmentparser.pyx":260
  *             hierachcounter2 = 0
  *             for ff in f[1]:
  *                 try:             # <<<<<<<<<<<<<<
@@ -8628,13 +8348,13 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
         {
           __Pyx_PyThreadState_declare
           __Pyx_PyThreadState_assign
-          __Pyx_ExceptionSave(&__pyx_t_14, &__pyx_t_13, &__pyx_t_12);
-          __Pyx_XGOTREF(__pyx_t_14);
+          __Pyx_ExceptionSave(&__pyx_t_13, &__pyx_t_12, &__pyx_t_11);
           __Pyx_XGOTREF(__pyx_t_13);
           __Pyx_XGOTREF(__pyx_t_12);
+          __Pyx_XGOTREF(__pyx_t_11);
           /*try:*/ {
 
-            /* "fragmentparser.pyx":257
+            /* "fragmentparser.pyx":261
  *             for ff in f[1]:
  *                 try:
  *                     try:             # <<<<<<<<<<<<<<
@@ -8644,137 +8364,140 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
             {
               __Pyx_PyThreadState_declare
               __Pyx_PyThreadState_assign
-              __Pyx_ExceptionSave(&__pyx_t_22, &__pyx_t_21, &__pyx_t_20);
-              __Pyx_XGOTREF(__pyx_t_22);
-              __Pyx_XGOTREF(__pyx_t_21);
+              __Pyx_ExceptionSave(&__pyx_t_19, &__pyx_t_20, &__pyx_t_21);
+              __Pyx_XGOTREF(__pyx_t_19);
               __Pyx_XGOTREF(__pyx_t_20);
+              __Pyx_XGOTREF(__pyx_t_21);
               /*try:*/ {
 
-                /* "fragmentparser.pyx":258
+                /* "fragmentparser.pyx":262
  *                 try:
  *                     try:
  *                         maininfos2, otherdata2, datadict2 = findchi(ff)             # <<<<<<<<<<<<<<
  *                         datadict = deepcopy(datadict2)
  *                     except Exception:
  */
-                __Pyx_INCREF(__pyx_v_findchi);
-                __pyx_t_3 = __pyx_v_findchi; __pyx_t_26 = NULL;
-                __pyx_t_15 = 0;
+                __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_findchi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L49_error)
+                __Pyx_GOTREF(__pyx_t_1);
+                __pyx_t_6 = NULL;
+                __pyx_t_8 = 0;
                 #if CYTHON_UNPACK_METHODS
-                if (unlikely(PyMethod_Check(__pyx_t_3))) {
-                  __pyx_t_26 = PyMethod_GET_SELF(__pyx_t_3);
-                  if (likely(__pyx_t_26)) {
-                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-                    __Pyx_INCREF(__pyx_t_26);
+                if (unlikely(PyMethod_Check(__pyx_t_1))) {
+                  __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_1);
+                  if (likely(__pyx_t_6)) {
+                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+                    __Pyx_INCREF(__pyx_t_6);
                     __Pyx_INCREF(function);
-                    __Pyx_DECREF_SET(__pyx_t_3, function);
-                    __pyx_t_15 = 1;
+                    __Pyx_DECREF_SET(__pyx_t_1, function);
+                    __pyx_t_8 = 1;
                   }
                 }
                 #endif
                 {
-                  PyObject *__pyx_callargs[2] = {__pyx_t_26, __pyx_v_ff};
-                  __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_15, 1+__pyx_t_15);
-                  __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-                  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L53_error)
-                  __Pyx_GOTREF(__pyx_t_4);
-                  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                  PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_v_ff};
+                  __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+                  __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+                  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L49_error)
+                  __Pyx_GOTREF(__pyx_t_2);
+                  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                 }
-                if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
-                  PyObject* sequence = __pyx_t_4;
+                if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
+                  PyObject* sequence = __pyx_t_2;
                   Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
                   if (unlikely(size != 3)) {
                     if (size > 3) __Pyx_RaiseTooManyValuesError(3);
                     else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-                    __PYX_ERR(0, 258, __pyx_L53_error)
+                    __PYX_ERR(0, 262, __pyx_L49_error)
                   }
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
                   if (likely(PyTuple_CheckExact(sequence))) {
-                    __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
-                    __pyx_t_26 = PyTuple_GET_ITEM(sequence, 1); 
-                    __pyx_t_27 = PyTuple_GET_ITEM(sequence, 2); 
+                    __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
+                    __pyx_t_6 = PyTuple_GET_ITEM(sequence, 1); 
+                    __pyx_t_22 = PyTuple_GET_ITEM(sequence, 2); 
                   } else {
-                    __pyx_t_3 = PyList_GET_ITEM(sequence, 0); 
-                    __pyx_t_26 = PyList_GET_ITEM(sequence, 1); 
-                    __pyx_t_27 = PyList_GET_ITEM(sequence, 2); 
+                    __pyx_t_1 = PyList_GET_ITEM(sequence, 0); 
+                    __pyx_t_6 = PyList_GET_ITEM(sequence, 1); 
+                    __pyx_t_22 = PyList_GET_ITEM(sequence, 2); 
                   }
-                  __Pyx_INCREF(__pyx_t_3);
-                  __Pyx_INCREF(__pyx_t_26);
-                  __Pyx_INCREF(__pyx_t_27);
+                  __Pyx_INCREF(__pyx_t_1);
+                  __Pyx_INCREF(__pyx_t_6);
+                  __Pyx_INCREF(__pyx_t_22);
                   #else
-                  __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L53_error)
-                  __Pyx_GOTREF(__pyx_t_3);
-                  __pyx_t_26 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 258, __pyx_L53_error)
-                  __Pyx_GOTREF(__pyx_t_26);
-                  __pyx_t_27 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 258, __pyx_L53_error)
-                  __Pyx_GOTREF(__pyx_t_27);
+                  __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L49_error)
+                  __Pyx_GOTREF(__pyx_t_1);
+                  __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 262, __pyx_L49_error)
+                  __Pyx_GOTREF(__pyx_t_6);
+                  __pyx_t_22 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 262, __pyx_L49_error)
+                  __Pyx_GOTREF(__pyx_t_22);
                   #endif
-                  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+                  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 } else {
                   Py_ssize_t index = -1;
-                  __pyx_t_28 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_28)) __PYX_ERR(0, 258, __pyx_L53_error)
-                  __Pyx_GOTREF(__pyx_t_28);
-                  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-                  __pyx_t_29 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_28);
-                  index = 0; __pyx_t_3 = __pyx_t_29(__pyx_t_28); if (unlikely(!__pyx_t_3)) goto __pyx_L61_unpacking_failed;
-                  __Pyx_GOTREF(__pyx_t_3);
-                  index = 1; __pyx_t_26 = __pyx_t_29(__pyx_t_28); if (unlikely(!__pyx_t_26)) goto __pyx_L61_unpacking_failed;
-                  __Pyx_GOTREF(__pyx_t_26);
-                  index = 2; __pyx_t_27 = __pyx_t_29(__pyx_t_28); if (unlikely(!__pyx_t_27)) goto __pyx_L61_unpacking_failed;
-                  __Pyx_GOTREF(__pyx_t_27);
-                  if (__Pyx_IternextUnpackEndCheck(__pyx_t_29(__pyx_t_28), 3) < 0) __PYX_ERR(0, 258, __pyx_L53_error)
-                  __pyx_t_29 = NULL;
-                  __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
-                  goto __pyx_L62_unpacking_done;
-                  __pyx_L61_unpacking_failed:;
-                  __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
-                  __pyx_t_29 = NULL;
+                  __pyx_t_23 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 262, __pyx_L49_error)
+                  __Pyx_GOTREF(__pyx_t_23);
+                  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                  __pyx_t_24 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_23);
+                  index = 0; __pyx_t_1 = __pyx_t_24(__pyx_t_23); if (unlikely(!__pyx_t_1)) goto __pyx_L57_unpacking_failed;
+                  __Pyx_GOTREF(__pyx_t_1);
+                  index = 1; __pyx_t_6 = __pyx_t_24(__pyx_t_23); if (unlikely(!__pyx_t_6)) goto __pyx_L57_unpacking_failed;
+                  __Pyx_GOTREF(__pyx_t_6);
+                  index = 2; __pyx_t_22 = __pyx_t_24(__pyx_t_23); if (unlikely(!__pyx_t_22)) goto __pyx_L57_unpacking_failed;
+                  __Pyx_GOTREF(__pyx_t_22);
+                  if (__Pyx_IternextUnpackEndCheck(__pyx_t_24(__pyx_t_23), 3) < 0) __PYX_ERR(0, 262, __pyx_L49_error)
+                  __pyx_t_24 = NULL;
+                  __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+                  goto __pyx_L58_unpacking_done;
+                  __pyx_L57_unpacking_failed:;
+                  __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+                  __pyx_t_24 = NULL;
                   if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-                  __PYX_ERR(0, 258, __pyx_L53_error)
-                  __pyx_L62_unpacking_done:;
+                  __PYX_ERR(0, 262, __pyx_L49_error)
+                  __pyx_L58_unpacking_done:;
                 }
-                __Pyx_XDECREF_SET(__pyx_v_maininfos2, __pyx_t_3);
-                __pyx_t_3 = 0;
-                __Pyx_XDECREF_SET(__pyx_v_otherdata2, __pyx_t_26);
-                __pyx_t_26 = 0;
-                __Pyx_XDECREF_SET(__pyx_v_datadict2, __pyx_t_27);
-                __pyx_t_27 = 0;
+                if (!(likely(PyDict_CheckExact(__pyx_t_22))||((__pyx_t_22) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_t_22))) __PYX_ERR(0, 262, __pyx_L49_error)
+                __Pyx_XDECREF_SET(__pyx_v_maininfos2, __pyx_t_1);
+                __pyx_t_1 = 0;
+                __Pyx_XDECREF_SET(__pyx_v_otherdata2, __pyx_t_6);
+                __pyx_t_6 = 0;
+                __Pyx_XDECREF_SET(__pyx_v_datadict2, ((PyObject*)__pyx_t_22));
+                __pyx_t_22 = 0;
 
-                /* "fragmentparser.pyx":259
+                /* "fragmentparser.pyx":263
  *                     try:
  *                         maininfos2, otherdata2, datadict2 = findchi(ff)
  *                         datadict = deepcopy(datadict2)             # <<<<<<<<<<<<<<
  *                     except Exception:
  *                         continue
  */
-                __Pyx_GetModuleGlobalName(__pyx_t_27, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 259, __pyx_L53_error)
-                __Pyx_GOTREF(__pyx_t_27);
-                __pyx_t_26 = NULL;
-                __pyx_t_15 = 0;
+                __Pyx_GetModuleGlobalName(__pyx_t_22, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 263, __pyx_L49_error)
+                __Pyx_GOTREF(__pyx_t_22);
+                __pyx_t_6 = NULL;
+                __pyx_t_8 = 0;
                 #if CYTHON_UNPACK_METHODS
-                if (unlikely(PyMethod_Check(__pyx_t_27))) {
-                  __pyx_t_26 = PyMethod_GET_SELF(__pyx_t_27);
-                  if (likely(__pyx_t_26)) {
-                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_27);
-                    __Pyx_INCREF(__pyx_t_26);
+                if (unlikely(PyMethod_Check(__pyx_t_22))) {
+                  __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_22);
+                  if (likely(__pyx_t_6)) {
+                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_22);
+                    __Pyx_INCREF(__pyx_t_6);
                     __Pyx_INCREF(function);
-                    __Pyx_DECREF_SET(__pyx_t_27, function);
-                    __pyx_t_15 = 1;
+                    __Pyx_DECREF_SET(__pyx_t_22, function);
+                    __pyx_t_8 = 1;
                   }
                 }
                 #endif
                 {
-                  PyObject *__pyx_callargs[2] = {__pyx_t_26, __pyx_v_datadict2};
-                  __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_27, __pyx_callargs+1-__pyx_t_15, 1+__pyx_t_15);
-                  __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-                  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L53_error)
-                  __Pyx_GOTREF(__pyx_t_4);
-                  __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+                  PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_v_datadict2};
+                  __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_22, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+                  __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+                  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L49_error)
+                  __Pyx_GOTREF(__pyx_t_2);
+                  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
                 }
-                __Pyx_XDECREF_SET(__pyx_v_datadict, __pyx_t_4);
-                __pyx_t_4 = 0;
+                if (!(likely(PyDict_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_t_2))) __PYX_ERR(0, 263, __pyx_L49_error)
+                __Pyx_XDECREF_SET(__pyx_v_datadict, ((PyObject*)__pyx_t_2));
+                __pyx_t_2 = 0;
 
-                /* "fragmentparser.pyx":257
+                /* "fragmentparser.pyx":261
  *             for ff in f[1]:
  *                 try:
  *                     try:             # <<<<<<<<<<<<<<
@@ -8782,83 +8505,83 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  *                         datadict = deepcopy(datadict2)
  */
               }
-              __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-              __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
+              __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
               __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-              goto __pyx_L60_try_end;
-              __pyx_L53_error:;
-              __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-              __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-              __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
-              __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+              __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
+              goto __pyx_L56_try_end;
+              __pyx_L49_error:;
+              __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+              __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+              __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
+              __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+              __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-              /* "fragmentparser.pyx":260
+              /* "fragmentparser.pyx":264
  *                         maininfos2, otherdata2, datadict2 = findchi(ff)
  *                         datadict = deepcopy(datadict2)
  *                     except Exception:             # <<<<<<<<<<<<<<
  *                         continue
  *                     allchildrendata[-1].append(datadict)
  */
-              __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
-              if (__pyx_t_15) {
+              __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
+              if (__pyx_t_8) {
                 __Pyx_AddTraceback("fragmentparser.get_all_activity_elements", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_27, &__pyx_t_26) < 0) __PYX_ERR(0, 260, __pyx_L55_except_error)
-                __Pyx_XGOTREF(__pyx_t_4);
-                __Pyx_XGOTREF(__pyx_t_27);
-                __Pyx_XGOTREF(__pyx_t_26);
+                if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_22, &__pyx_t_6) < 0) __PYX_ERR(0, 264, __pyx_L51_except_error)
+                __Pyx_XGOTREF(__pyx_t_2);
+                __Pyx_XGOTREF(__pyx_t_22);
+                __Pyx_XGOTREF(__pyx_t_6);
 
-                /* "fragmentparser.pyx":261
+                /* "fragmentparser.pyx":265
  *                         datadict = deepcopy(datadict2)
  *                     except Exception:
  *                         continue             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1].append(datadict)
  *                     allchildrendata[-1][-1]["START_X"] = sum(
  */
-                goto __pyx_L63_except_continue;
-                __pyx_L63_except_continue:;
-                __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-                __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-                goto __pyx_L59_try_continue;
+                goto __pyx_L59_except_continue;
+                __pyx_L59_except_continue:;
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+                __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+                goto __pyx_L55_try_continue;
               }
-              goto __pyx_L55_except_error;
+              goto __pyx_L51_except_error;
 
-              /* "fragmentparser.pyx":257
+              /* "fragmentparser.pyx":261
  *             for ff in f[1]:
  *                 try:
  *                     try:             # <<<<<<<<<<<<<<
  *                         maininfos2, otherdata2, datadict2 = findchi(ff)
  *                         datadict = deepcopy(datadict2)
  */
-              __pyx_L55_except_error:;
-              __Pyx_XGIVEREF(__pyx_t_22);
-              __Pyx_XGIVEREF(__pyx_t_21);
+              __pyx_L51_except_error:;
+              __Pyx_XGIVEREF(__pyx_t_19);
               __Pyx_XGIVEREF(__pyx_t_20);
-              __Pyx_ExceptionReset(__pyx_t_22, __pyx_t_21, __pyx_t_20);
-              goto __pyx_L45_error;
-              __pyx_L59_try_continue:;
-              __Pyx_XGIVEREF(__pyx_t_22);
               __Pyx_XGIVEREF(__pyx_t_21);
+              __Pyx_ExceptionReset(__pyx_t_19, __pyx_t_20, __pyx_t_21);
+              goto __pyx_L41_error;
+              __pyx_L55_try_continue:;
+              __Pyx_XGIVEREF(__pyx_t_19);
               __Pyx_XGIVEREF(__pyx_t_20);
-              __Pyx_ExceptionReset(__pyx_t_22, __pyx_t_21, __pyx_t_20);
-              goto __pyx_L51_try_continue;
-              __pyx_L60_try_end:;
+              __Pyx_XGIVEREF(__pyx_t_21);
+              __Pyx_ExceptionReset(__pyx_t_19, __pyx_t_20, __pyx_t_21);
+              goto __pyx_L47_try_continue;
+              __pyx_L56_try_end:;
             }
 
-            /* "fragmentparser.pyx":262
+            /* "fragmentparser.pyx":266
  *                     except Exception:
  *                         continue
  *                     allchildrendata[-1].append(datadict)             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["START_X"] = sum(
  *                         [x["INT_COORDS"][0] for x in allchildrendata[-1]]
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 262, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_23 = __Pyx_PyObject_Append(__pyx_t_26, __pyx_v_datadict); if (unlikely(__pyx_t_23 == ((int)-1))) __PYX_ERR(0, 262, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 266, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_v_datadict); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 266, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":263
+            /* "fragmentparser.pyx":267
  *                         continue
  *                     allchildrendata[-1].append(datadict)
  *                     allchildrendata[-1][-1]["START_X"] = sum(             # <<<<<<<<<<<<<<
@@ -8867,109 +8590,109 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  */
             { /* enter inner scope */
 
-              /* "fragmentparser.pyx":264
+              /* "fragmentparser.pyx":268
  *                     allchildrendata[-1].append(datadict)
  *                     allchildrendata[-1][-1]["START_X"] = sum(
  *                         [x["INT_COORDS"][0] for x in allchildrendata[-1]]             # <<<<<<<<<<<<<<
  *                     )
  *                     allchildrendata[-1][-1]["START_Y"] = sum(
  */
-              __pyx_t_26 = PyList_New(0); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 264, __pyx_L67_error)
-              __Pyx_GOTREF(__pyx_t_26);
-              __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 264, __pyx_L67_error)
-              __Pyx_GOTREF(__pyx_t_27);
-              if (likely(PyList_CheckExact(__pyx_t_27)) || PyTuple_CheckExact(__pyx_t_27)) {
-                __pyx_t_4 = __pyx_t_27; __Pyx_INCREF(__pyx_t_4);
-                __pyx_t_30 = 0;
-                __pyx_t_31 = NULL;
+              __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 268, __pyx_L63_error)
+              __Pyx_GOTREF(__pyx_t_6);
+              __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 268, __pyx_L63_error)
+              __Pyx_GOTREF(__pyx_t_22);
+              if (likely(PyList_CheckExact(__pyx_t_22)) || PyTuple_CheckExact(__pyx_t_22)) {
+                __pyx_t_2 = __pyx_t_22; __Pyx_INCREF(__pyx_t_2);
+                __pyx_t_25 = 0;
+                __pyx_t_26 = NULL;
               } else {
-                __pyx_t_30 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_27); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L67_error)
-                __Pyx_GOTREF(__pyx_t_4);
-                __pyx_t_31 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_31)) __PYX_ERR(0, 264, __pyx_L67_error)
+                __pyx_t_25 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_22); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L63_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __pyx_t_26 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 268, __pyx_L63_error)
               }
-              __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+              __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
               for (;;) {
-                if (likely(!__pyx_t_31)) {
-                  if (likely(PyList_CheckExact(__pyx_t_4))) {
+                if (likely(!__pyx_t_26)) {
+                  if (likely(PyList_CheckExact(__pyx_t_2))) {
                     {
-                      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
+                      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
                       #if !CYTHON_ASSUME_SAFE_MACROS
-                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 264, __pyx_L67_error)
+                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 268, __pyx_L63_error)
                       #endif
-                      if (__pyx_t_30 >= __pyx_temp) break;
+                      if (__pyx_t_25 >= __pyx_temp) break;
                     }
                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                    __pyx_t_27 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_30); __Pyx_INCREF(__pyx_t_27); __pyx_t_30++; if (unlikely((0 < 0))) __PYX_ERR(0, 264, __pyx_L67_error)
+                    __pyx_t_22 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_25); __Pyx_INCREF(__pyx_t_22); __pyx_t_25++; if (unlikely((0 < 0))) __PYX_ERR(0, 268, __pyx_L63_error)
                     #else
-                    __pyx_t_27 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_30); __pyx_t_30++; if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 264, __pyx_L67_error)
-                    __Pyx_GOTREF(__pyx_t_27);
+                    __pyx_t_22 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_25); __pyx_t_25++; if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 268, __pyx_L63_error)
+                    __Pyx_GOTREF(__pyx_t_22);
                     #endif
                   } else {
                     {
-                      Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
+                      Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
                       #if !CYTHON_ASSUME_SAFE_MACROS
-                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 264, __pyx_L67_error)
+                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 268, __pyx_L63_error)
                       #endif
-                      if (__pyx_t_30 >= __pyx_temp) break;
+                      if (__pyx_t_25 >= __pyx_temp) break;
                     }
                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                    __pyx_t_27 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_30); __Pyx_INCREF(__pyx_t_27); __pyx_t_30++; if (unlikely((0 < 0))) __PYX_ERR(0, 264, __pyx_L67_error)
+                    __pyx_t_22 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_25); __Pyx_INCREF(__pyx_t_22); __pyx_t_25++; if (unlikely((0 < 0))) __PYX_ERR(0, 268, __pyx_L63_error)
                     #else
-                    __pyx_t_27 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_30); __pyx_t_30++; if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 264, __pyx_L67_error)
-                    __Pyx_GOTREF(__pyx_t_27);
+                    __pyx_t_22 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_25); __pyx_t_25++; if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 268, __pyx_L63_error)
+                    __Pyx_GOTREF(__pyx_t_22);
                     #endif
                   }
                 } else {
-                  __pyx_t_27 = __pyx_t_31(__pyx_t_4);
-                  if (unlikely(!__pyx_t_27)) {
+                  __pyx_t_22 = __pyx_t_26(__pyx_t_2);
+                  if (unlikely(!__pyx_t_22)) {
                     PyObject* exc_type = PyErr_Occurred();
                     if (exc_type) {
                       if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                      else __PYX_ERR(0, 264, __pyx_L67_error)
+                      else __PYX_ERR(0, 268, __pyx_L63_error)
                     }
                     break;
                   }
-                  __Pyx_GOTREF(__pyx_t_27);
+                  __Pyx_GOTREF(__pyx_t_22);
                 }
-                __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_x, __pyx_t_27);
-                __pyx_t_27 = 0;
-                __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_8genexpr3__pyx_v_x, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 264, __pyx_L67_error)
-                __Pyx_GOTREF(__pyx_t_27);
-                __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_27, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 264, __pyx_L67_error)
-                __Pyx_GOTREF(__pyx_t_3);
-                __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                if (unlikely(__Pyx_ListComp_Append(__pyx_t_26, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 264, __pyx_L67_error)
-                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_x, __pyx_t_22);
+                __pyx_t_22 = 0;
+                __pyx_t_22 = __Pyx_PyObject_Dict_GetItem(__pyx_8genexpr3__pyx_v_x, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 268, __pyx_L63_error)
+                __Pyx_GOTREF(__pyx_t_22);
+                __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_22, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L63_error)
+                __Pyx_GOTREF(__pyx_t_1);
+                __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+                if (unlikely(__Pyx_ListComp_Append(__pyx_t_6, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 268, __pyx_L63_error)
+                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
               }
-              __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+              __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               __Pyx_XDECREF(__pyx_8genexpr3__pyx_v_x); __pyx_8genexpr3__pyx_v_x = 0;
-              goto __pyx_L71_exit_scope;
-              __pyx_L67_error:;
+              goto __pyx_L67_exit_scope;
+              __pyx_L63_error:;
               __Pyx_XDECREF(__pyx_8genexpr3__pyx_v_x); __pyx_8genexpr3__pyx_v_x = 0;
-              goto __pyx_L45_error;
-              __pyx_L71_exit_scope:;
+              goto __pyx_L41_error;
+              __pyx_L67_exit_scope:;
             } /* exit inner scope */
 
-            /* "fragmentparser.pyx":263
+            /* "fragmentparser.pyx":267
  *                         continue
  *                     allchildrendata[-1].append(datadict)
  *                     allchildrendata[-1][-1]["START_X"] = sum(             # <<<<<<<<<<<<<<
  *                         [x["INT_COORDS"][0] for x in allchildrendata[-1]]
  *                     )
  */
-            __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_t_26); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 263, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_3);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_3, __pyx_n_u_START_X, __pyx_t_4) < 0))) __PYX_ERR(0, 263, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_1, __pyx_n_u_START_X, __pyx_t_2) < 0))) __PYX_ERR(0, 267, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":266
+            /* "fragmentparser.pyx":270
  *                         [x["INT_COORDS"][0] for x in allchildrendata[-1]]
  *                     )
  *                     allchildrendata[-1][-1]["START_Y"] = sum(             # <<<<<<<<<<<<<<
@@ -8978,729 +8701,732 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  */
             { /* enter inner scope */
 
-              /* "fragmentparser.pyx":267
+              /* "fragmentparser.pyx":271
  *                     )
  *                     allchildrendata[-1][-1]["START_Y"] = sum(
  *                         [x["INT_COORDS"][1] for x in allchildrendata[-1]]             # <<<<<<<<<<<<<<
  *                     )
  *                     allchildrendata[-1][-1]["WIDTH"] = (
  */
-              __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 267, __pyx_L74_error)
-              __Pyx_GOTREF(__pyx_t_4);
-              __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L74_error)
-              __Pyx_GOTREF(__pyx_t_3);
-              if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
-                __pyx_t_26 = __pyx_t_3; __Pyx_INCREF(__pyx_t_26);
-                __pyx_t_30 = 0;
-                __pyx_t_31 = NULL;
+              __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L70_error)
+              __Pyx_GOTREF(__pyx_t_2);
+              __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L70_error)
+              __Pyx_GOTREF(__pyx_t_1);
+              if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
+                __pyx_t_6 = __pyx_t_1; __Pyx_INCREF(__pyx_t_6);
+                __pyx_t_25 = 0;
+                __pyx_t_26 = NULL;
               } else {
-                __pyx_t_30 = -1; __pyx_t_26 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 267, __pyx_L74_error)
-                __Pyx_GOTREF(__pyx_t_26);
-                __pyx_t_31 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_26); if (unlikely(!__pyx_t_31)) __PYX_ERR(0, 267, __pyx_L74_error)
+                __pyx_t_25 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 271, __pyx_L70_error)
+                __Pyx_GOTREF(__pyx_t_6);
+                __pyx_t_26 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 271, __pyx_L70_error)
               }
-              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
               for (;;) {
-                if (likely(!__pyx_t_31)) {
-                  if (likely(PyList_CheckExact(__pyx_t_26))) {
+                if (likely(!__pyx_t_26)) {
+                  if (likely(PyList_CheckExact(__pyx_t_6))) {
                     {
-                      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_26);
+                      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_6);
                       #if !CYTHON_ASSUME_SAFE_MACROS
-                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 267, __pyx_L74_error)
+                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 271, __pyx_L70_error)
                       #endif
-                      if (__pyx_t_30 >= __pyx_temp) break;
+                      if (__pyx_t_25 >= __pyx_temp) break;
                     }
                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_26, __pyx_t_30); __Pyx_INCREF(__pyx_t_3); __pyx_t_30++; if (unlikely((0 < 0))) __PYX_ERR(0, 267, __pyx_L74_error)
+                    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_25); __Pyx_INCREF(__pyx_t_1); __pyx_t_25++; if (unlikely((0 < 0))) __PYX_ERR(0, 271, __pyx_L70_error)
                     #else
-                    __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_26, __pyx_t_30); __pyx_t_30++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L74_error)
-                    __Pyx_GOTREF(__pyx_t_3);
+                    __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_25); __pyx_t_25++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L70_error)
+                    __Pyx_GOTREF(__pyx_t_1);
                     #endif
                   } else {
                     {
-                      Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_26);
+                      Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_6);
                       #if !CYTHON_ASSUME_SAFE_MACROS
-                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 267, __pyx_L74_error)
+                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 271, __pyx_L70_error)
                       #endif
-                      if (__pyx_t_30 >= __pyx_temp) break;
+                      if (__pyx_t_25 >= __pyx_temp) break;
                     }
                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                    __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_26, __pyx_t_30); __Pyx_INCREF(__pyx_t_3); __pyx_t_30++; if (unlikely((0 < 0))) __PYX_ERR(0, 267, __pyx_L74_error)
+                    __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_25); __Pyx_INCREF(__pyx_t_1); __pyx_t_25++; if (unlikely((0 < 0))) __PYX_ERR(0, 271, __pyx_L70_error)
                     #else
-                    __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_26, __pyx_t_30); __pyx_t_30++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L74_error)
-                    __Pyx_GOTREF(__pyx_t_3);
+                    __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_25); __pyx_t_25++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L70_error)
+                    __Pyx_GOTREF(__pyx_t_1);
                     #endif
                   }
                 } else {
-                  __pyx_t_3 = __pyx_t_31(__pyx_t_26);
-                  if (unlikely(!__pyx_t_3)) {
+                  __pyx_t_1 = __pyx_t_26(__pyx_t_6);
+                  if (unlikely(!__pyx_t_1)) {
                     PyObject* exc_type = PyErr_Occurred();
                     if (exc_type) {
                       if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                      else __PYX_ERR(0, 267, __pyx_L74_error)
+                      else __PYX_ERR(0, 271, __pyx_L70_error)
                     }
                     break;
                   }
-                  __Pyx_GOTREF(__pyx_t_3);
+                  __Pyx_GOTREF(__pyx_t_1);
                 }
-                __Pyx_XDECREF_SET(__pyx_8genexpr4__pyx_v_x, __pyx_t_3);
-                __pyx_t_3 = 0;
-                __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_8genexpr4__pyx_v_x, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L74_error)
-                __Pyx_GOTREF(__pyx_t_3);
-                __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 267, __pyx_L74_error)
-                __Pyx_GOTREF(__pyx_t_27);
-                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_27))) __PYX_ERR(0, 267, __pyx_L74_error)
-                __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+                __Pyx_XDECREF_SET(__pyx_8genexpr4__pyx_v_x, __pyx_t_1);
+                __pyx_t_1 = 0;
+                __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_8genexpr4__pyx_v_x, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L70_error)
+                __Pyx_GOTREF(__pyx_t_1);
+                __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 271, __pyx_L70_error)
+                __Pyx_GOTREF(__pyx_t_22);
+                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_22))) __PYX_ERR(0, 271, __pyx_L70_error)
+                __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
               }
-              __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+              __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
               __Pyx_XDECREF(__pyx_8genexpr4__pyx_v_x); __pyx_8genexpr4__pyx_v_x = 0;
-              goto __pyx_L78_exit_scope;
-              __pyx_L74_error:;
+              goto __pyx_L74_exit_scope;
+              __pyx_L70_error:;
               __Pyx_XDECREF(__pyx_8genexpr4__pyx_v_x); __pyx_8genexpr4__pyx_v_x = 0;
-              goto __pyx_L45_error;
-              __pyx_L78_exit_scope:;
+              goto __pyx_L41_error;
+              __pyx_L74_exit_scope:;
             } /* exit inner scope */
 
-            /* "fragmentparser.pyx":266
+            /* "fragmentparser.pyx":270
  *                         [x["INT_COORDS"][0] for x in allchildrendata[-1]]
  *                     )
  *                     allchildrendata[-1][-1]["START_Y"] = sum(             # <<<<<<<<<<<<<<
  *                         [x["INT_COORDS"][1] for x in allchildrendata[-1]]
  *                     )
  */
-            __pyx_t_26 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_t_4); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 266, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 266, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 266, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_n_u_START_Y, __pyx_t_26) < 0))) __PYX_ERR(0, 266, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 270, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 270, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_22, __pyx_n_u_START_Y, __pyx_t_6) < 0))) __PYX_ERR(0, 270, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":270
+            /* "fragmentparser.pyx":274
  *                     )
  *                     allchildrendata[-1][-1]["WIDTH"] = (
  *                         allchildrendata[-1][-1]["INT_COORDS"][2]             # <<<<<<<<<<<<<<
  *                         - allchildrendata[-1][-1]["INT_COORDS"][0]
  *                     )
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 270, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 270, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 270, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 270, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 274, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 274, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_22, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 274, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 274, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":271
+            /* "fragmentparser.pyx":275
  *                     allchildrendata[-1][-1]["WIDTH"] = (
  *                         allchildrendata[-1][-1]["INT_COORDS"][2]
  *                         - allchildrendata[-1][-1]["INT_COORDS"][0]             # <<<<<<<<<<<<<<
  *                     )
  *                     allchildrendata[-1][-1]["HEIGHT"] = (
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 271, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 271, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = PyNumber_Subtract(__pyx_t_27, __pyx_t_4); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 271, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 275, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 275, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = PyNumber_Subtract(__pyx_t_22, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 275, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":269
+            /* "fragmentparser.pyx":273
  *                         [x["INT_COORDS"][1] for x in allchildrendata[-1]]
  *                     )
  *                     allchildrendata[-1][-1]["WIDTH"] = (             # <<<<<<<<<<<<<<
  *                         allchildrendata[-1][-1]["INT_COORDS"][2]
  *                         - allchildrendata[-1][-1]["INT_COORDS"][0]
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 269, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_n_u_WIDTH, __pyx_t_26) < 0))) __PYX_ERR(0, 269, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 273, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 273, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_22, __pyx_n_u_WIDTH, __pyx_t_6) < 0))) __PYX_ERR(0, 273, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":274
+            /* "fragmentparser.pyx":278
  *                     )
  *                     allchildrendata[-1][-1]["HEIGHT"] = (
  *                         allchildrendata[-1][-1]["INT_COORDS"][3]             # <<<<<<<<<<<<<<
  *                         - allchildrendata[-1][-1]["INT_COORDS"][1]
  *                     )
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 274, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 274, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 274, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 274, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 278, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 278, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_22, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 278, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 278, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":275
+            /* "fragmentparser.pyx":279
  *                     allchildrendata[-1][-1]["HEIGHT"] = (
  *                         allchildrendata[-1][-1]["INT_COORDS"][3]
  *                         - allchildrendata[-1][-1]["INT_COORDS"][1]             # <<<<<<<<<<<<<<
  *                     )
  * 
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 275, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 275, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = PyNumber_Subtract(__pyx_t_27, __pyx_t_4); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 275, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 279, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 279, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = PyNumber_Subtract(__pyx_t_22, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 279, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":273
+            /* "fragmentparser.pyx":277
  *                         - allchildrendata[-1][-1]["INT_COORDS"][0]
  *                     )
  *                     allchildrendata[-1][-1]["HEIGHT"] = (             # <<<<<<<<<<<<<<
  *                         allchildrendata[-1][-1]["INT_COORDS"][3]
  *                         - allchildrendata[-1][-1]["INT_COORDS"][1]
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 273, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_n_u_HEIGHT, __pyx_t_26) < 0))) __PYX_ERR(0, 273, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 277, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_22, __pyx_n_u_HEIGHT, __pyx_t_6) < 0))) __PYX_ERR(0, 277, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":279
+            /* "fragmentparser.pyx":283
  * 
  *                     allchildrendata[-1][-1]["END_X"] = (
  *                         allchildrendata[-1][-1]["START_X"]             # <<<<<<<<<<<<<<
  *                         + allchildrendata[-1][-1]["WIDTH"]
  *                     )
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 279, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 279, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_n_u_START_X); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 279, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 283, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 283, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_22, __pyx_n_u_START_X); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 283, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":280
+            /* "fragmentparser.pyx":284
  *                     allchildrendata[-1][-1]["END_X"] = (
  *                         allchildrendata[-1][-1]["START_X"]
  *                         + allchildrendata[-1][-1]["WIDTH"]             # <<<<<<<<<<<<<<
  *                     )
  *                     allchildrendata[-1][-1]["END_Y"] = (
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 280, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_WIDTH); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 280, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = PyNumber_Add(__pyx_t_26, __pyx_t_27); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 284, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_WIDTH); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 284, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = PyNumber_Add(__pyx_t_6, __pyx_t_22); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":278
+            /* "fragmentparser.pyx":282
  *                     )
  * 
  *                     allchildrendata[-1][-1]["END_X"] = (             # <<<<<<<<<<<<<<
  *                         allchildrendata[-1][-1]["START_X"]
  *                         + allchildrendata[-1][-1]["WIDTH"]
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 278, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 278, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_26, __pyx_n_u_END_X, __pyx_t_4) < 0))) __PYX_ERR(0, 278, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 282, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 282, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_6, __pyx_n_u_END_X, __pyx_t_2) < 0))) __PYX_ERR(0, 282, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":283
+            /* "fragmentparser.pyx":287
  *                     )
  *                     allchildrendata[-1][-1]["END_Y"] = (
  *                         allchildrendata[-1][-1]["START_Y"]             # <<<<<<<<<<<<<<
  *                         + allchildrendata[-1][-1]["HEIGHT"]
  *                     )
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 283, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 283, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_26, __pyx_n_u_START_Y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 283, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 287, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_n_u_START_Y); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":284
+            /* "fragmentparser.pyx":288
  *                     allchildrendata[-1][-1]["END_Y"] = (
  *                         allchildrendata[-1][-1]["START_Y"]
  *                         + allchildrendata[-1][-1]["HEIGHT"]             # <<<<<<<<<<<<<<
  *                     )
  *                     allchildrendata[-1][-1]["CENTER_X"] = allchildrendata[-1][-1][
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 284, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 284, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_n_u_HEIGHT); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 284, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = PyNumber_Add(__pyx_t_4, __pyx_t_26); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 284, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 288, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 288, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_22, __pyx_n_u_HEIGHT); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 288, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = PyNumber_Add(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 288, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":282
+            /* "fragmentparser.pyx":286
  *                         + allchildrendata[-1][-1]["WIDTH"]
  *                     )
  *                     allchildrendata[-1][-1]["END_Y"] = (             # <<<<<<<<<<<<<<
  *                         allchildrendata[-1][-1]["START_Y"]
  *                         + allchildrendata[-1][-1]["HEIGHT"]
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 282, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 282, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_n_u_END_Y, __pyx_t_27) < 0))) __PYX_ERR(0, 282, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 286, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_2, __pyx_n_u_END_Y, __pyx_t_22) < 0))) __PYX_ERR(0, 286, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":286
+            /* "fragmentparser.pyx":290
  *                         + allchildrendata[-1][-1]["HEIGHT"]
  *                     )
  *                     allchildrendata[-1][-1]["CENTER_X"] = allchildrendata[-1][-1][             # <<<<<<<<<<<<<<
  *                         "START_X"
  *                     ] + (allchildrendata[-1][-1]["WIDTH"] // 2)
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 286, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 286, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_START_X); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 286, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 290, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 290, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_START_X); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 290, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":288
+            /* "fragmentparser.pyx":292
  *                     allchildrendata[-1][-1]["CENTER_X"] = allchildrendata[-1][-1][
  *                         "START_X"
  *                     ] + (allchildrendata[-1][-1]["WIDTH"] // 2)             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["CENTER_Y"] = allchildrendata[-1][-1][
  *                         "START_Y"
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 288, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_26, __pyx_n_u_WIDTH); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_4, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 288, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = PyNumber_Add(__pyx_t_27, __pyx_t_26); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 292, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_n_u_WIDTH); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_2, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 292, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = PyNumber_Add(__pyx_t_22, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":286
+            /* "fragmentparser.pyx":290
  *                         + allchildrendata[-1][-1]["HEIGHT"]
  *                     )
  *                     allchildrendata[-1][-1]["CENTER_X"] = allchildrendata[-1][-1][             # <<<<<<<<<<<<<<
  *                         "START_X"
  *                     ] + (allchildrendata[-1][-1]["WIDTH"] // 2)
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 286, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 286, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_n_u_CENTER_X, __pyx_t_4) < 0))) __PYX_ERR(0, 286, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 290, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 290, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_22, __pyx_n_u_CENTER_X, __pyx_t_2) < 0))) __PYX_ERR(0, 290, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":289
+            /* "fragmentparser.pyx":293
  *                         "START_X"
  *                     ] + (allchildrendata[-1][-1]["WIDTH"] // 2)
  *                     allchildrendata[-1][-1]["CENTER_Y"] = allchildrendata[-1][-1][             # <<<<<<<<<<<<<<
  *                         "START_Y"
  *                     ] + (allchildrendata[-1][-1]["HEIGHT"] // 2)
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 289, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_n_u_START_Y); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 293, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_22, __pyx_n_u_START_Y); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":291
+            /* "fragmentparser.pyx":295
  *                     allchildrendata[-1][-1]["CENTER_Y"] = allchildrendata[-1][-1][
  *                         "START_Y"
  *                     ] + (allchildrendata[-1][-1]["HEIGHT"] // 2)             # <<<<<<<<<<<<<<
  * 
  *                     allchildrendata[-1][-1]["AREA"] = (
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 291, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 291, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_26, __pyx_n_u_HEIGHT); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 291, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_27, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 291, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = PyNumber_Add(__pyx_t_4, __pyx_t_26); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 291, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 295, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_n_u_HEIGHT); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 295, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyInt_FloorDivideObjC(__pyx_t_22, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = PyNumber_Add(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 295, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":289
+            /* "fragmentparser.pyx":293
  *                         "START_X"
  *                     ] + (allchildrendata[-1][-1]["WIDTH"] // 2)
  *                     allchildrendata[-1][-1]["CENTER_Y"] = allchildrendata[-1][-1][             # <<<<<<<<<<<<<<
  *                         "START_Y"
  *                     ] + (allchildrendata[-1][-1]["HEIGHT"] // 2)
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 289, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_n_u_CENTER_Y, __pyx_t_27) < 0))) __PYX_ERR(0, 289, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 293, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_2, __pyx_n_u_CENTER_Y, __pyx_t_22) < 0))) __PYX_ERR(0, 293, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":294
+            /* "fragmentparser.pyx":298
  * 
  *                     allchildrendata[-1][-1]["AREA"] = (
  *                         allchildrendata[-1][-1]["HEIGHT"]             # <<<<<<<<<<<<<<
  *                         * allchildrendata[-1][-1]["WIDTH"]
  *                     )
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 294, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_HEIGHT); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 294, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 298, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_HEIGHT); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 298, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":295
+            /* "fragmentparser.pyx":299
  *                     allchildrendata[-1][-1]["AREA"] = (
  *                         allchildrendata[-1][-1]["HEIGHT"]
  *                         * allchildrendata[-1][-1]["WIDTH"]             # <<<<<<<<<<<<<<
  *                     )
  * 
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 295, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_26, __pyx_n_u_WIDTH); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = PyNumber_Multiply(__pyx_t_27, __pyx_t_4); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 295, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 299, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_n_u_WIDTH); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = PyNumber_Multiply(__pyx_t_22, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 299, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":293
+            /* "fragmentparser.pyx":297
  *                     ] + (allchildrendata[-1][-1]["HEIGHT"] // 2)
  * 
  *                     allchildrendata[-1][-1]["AREA"] = (             # <<<<<<<<<<<<<<
  *                         allchildrendata[-1][-1]["HEIGHT"]
  *                         * allchildrendata[-1][-1]["WIDTH"]
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 293, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_n_u_AREA, __pyx_t_26) < 0))) __PYX_ERR(0, 293, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 297, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_22, __pyx_n_u_AREA, __pyx_t_6) < 0))) __PYX_ERR(0, 297, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":298
+            /* "fragmentparser.pyx":302
  *                     )
  * 
  *                     allchildrendata[-1][-1]["START_X_RELATIVE"] = allchildrendata[             # <<<<<<<<<<<<<<
  *                         -1
  *                     ][-1]["INT_COORDS"][0]
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 298, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
 
-            /* "fragmentparser.pyx":300
+            /* "fragmentparser.pyx":304
  *                     allchildrendata[-1][-1]["START_X_RELATIVE"] = allchildrendata[
  *                         -1
  *                     ][-1]["INT_COORDS"][0]             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["START_Y_RELATIVE"] = allchildrendata[
  *                         -1
  */
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 300, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 300, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 300, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 304, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_22, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 304, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 304, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":298
+            /* "fragmentparser.pyx":302
  *                     )
  * 
  *                     allchildrendata[-1][-1]["START_X_RELATIVE"] = allchildrendata[             # <<<<<<<<<<<<<<
  *                         -1
  *                     ][-1]["INT_COORDS"][0]
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 298, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_n_u_START_X_RELATIVE, __pyx_t_27) < 0))) __PYX_ERR(0, 298, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_2, __pyx_n_u_START_X_RELATIVE, __pyx_t_22) < 0))) __PYX_ERR(0, 302, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":301
+            /* "fragmentparser.pyx":305
  *                         -1
  *                     ][-1]["INT_COORDS"][0]
  *                     allchildrendata[-1][-1]["START_Y_RELATIVE"] = allchildrendata[             # <<<<<<<<<<<<<<
  *                         -1
  *                     ][-1]["INT_COORDS"][1]
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 301, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 305, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
 
-            /* "fragmentparser.pyx":303
+            /* "fragmentparser.pyx":307
  *                     allchildrendata[-1][-1]["START_Y_RELATIVE"] = allchildrendata[
  *                         -1
  *                     ][-1]["INT_COORDS"][1]             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["END_X_RELATIVE"] = allchildrendata[-1][
  *                         -1
  */
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 303, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_27, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 307, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_PyObject_Dict_GetItem(__pyx_t_2, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 307, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_22, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 307, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":301
+            /* "fragmentparser.pyx":305
  *                         -1
  *                     ][-1]["INT_COORDS"][0]
  *                     allchildrendata[-1][-1]["START_Y_RELATIVE"] = allchildrendata[             # <<<<<<<<<<<<<<
  *                         -1
  *                     ][-1]["INT_COORDS"][1]
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 301, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 301, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_26, __pyx_n_u_START_Y_RELATIVE, __pyx_t_4) < 0))) __PYX_ERR(0, 301, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 305, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 305, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_6, __pyx_n_u_START_Y_RELATIVE, __pyx_t_2) < 0))) __PYX_ERR(0, 305, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":304
+            /* "fragmentparser.pyx":308
  *                         -1
  *                     ][-1]["INT_COORDS"][1]
  *                     allchildrendata[-1][-1]["END_X_RELATIVE"] = allchildrendata[-1][             # <<<<<<<<<<<<<<
  *                         -1
  *                     ]["INT_COORDS"][2]
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 304, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 308, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":306
+            /* "fragmentparser.pyx":310
  *                     allchildrendata[-1][-1]["END_X_RELATIVE"] = allchildrendata[-1][
  *                         -1
  *                     ]["INT_COORDS"][2]             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["END_Y_RELATIVE"] = allchildrendata[-1][
  *                         -1
  */
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_26, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_4, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 306, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_2, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 310, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":304
+            /* "fragmentparser.pyx":308
  *                         -1
  *                     ][-1]["INT_COORDS"][1]
  *                     allchildrendata[-1][-1]["END_X_RELATIVE"] = allchildrendata[-1][             # <<<<<<<<<<<<<<
  *                         -1
  *                     ]["INT_COORDS"][2]
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 304, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_n_u_END_X_RELATIVE, __pyx_t_26) < 0))) __PYX_ERR(0, 304, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_2, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 308, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_22, __pyx_n_u_END_X_RELATIVE, __pyx_t_6) < 0))) __PYX_ERR(0, 308, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":307
+            /* "fragmentparser.pyx":311
  *                         -1
  *                     ]["INT_COORDS"][2]
  *                     allchildrendata[-1][-1]["END_Y_RELATIVE"] = allchildrendata[-1][             # <<<<<<<<<<<<<<
  *                         -1
  *                     ]["INT_COORDS"][3]
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 307, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 307, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 311, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 311, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":309
+            /* "fragmentparser.pyx":313
  *                     allchildrendata[-1][-1]["END_Y_RELATIVE"] = allchildrendata[-1][
  *                         -1
  *                     ]["INT_COORDS"][3]             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["IS_PARENT"] = True
  *                     allchildrendata[-1][-1]["VIEW_INDEX"] = elemtindex
  */
-            __pyx_t_26 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 309, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_26, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 309, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
+            __pyx_t_6 = __Pyx_PyObject_Dict_GetItem(__pyx_t_22, __pyx_n_u_INT_COORDS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 313, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 313, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-            /* "fragmentparser.pyx":307
+            /* "fragmentparser.pyx":311
  *                         -1
  *                     ]["INT_COORDS"][2]
  *                     allchildrendata[-1][-1]["END_Y_RELATIVE"] = allchildrendata[-1][             # <<<<<<<<<<<<<<
  *                         -1
  *                     ]["INT_COORDS"][3]
  */
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 307, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 307, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_n_u_END_Y_RELATIVE, __pyx_t_27) < 0))) __PYX_ERR(0, 307, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 311, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_2, __pyx_n_u_END_Y_RELATIVE, __pyx_t_22) < 0))) __PYX_ERR(0, 311, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-            /* "fragmentparser.pyx":310
+            /* "fragmentparser.pyx":314
  *                         -1
  *                     ]["INT_COORDS"][3]
  *                     allchildrendata[-1][-1]["IS_PARENT"] = True             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["VIEW_INDEX"] = elemtindex
  *                     allchildrendata[-1][-1]["HIERACHY_CLUSTER"] = hierachcounter
  */
-            __pyx_t_27 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 310, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_27, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 310, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_n_u_IS_PARENT, Py_True) < 0))) __PYX_ERR(0, 310, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 314, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 314, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_2, __pyx_n_u_IS_PARENT, Py_True) < 0))) __PYX_ERR(0, 314, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":311
+            /* "fragmentparser.pyx":315
  *                     ]["INT_COORDS"][3]
  *                     allchildrendata[-1][-1]["IS_PARENT"] = True
  *                     allchildrendata[-1][-1]["VIEW_INDEX"] = elemtindex             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["HIERACHY_CLUSTER"] = hierachcounter
  *                     allchildrendata[-1][-1]["HIERACHY_SINGLE"] = hierachcounter2
  */
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 311, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_27 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 311, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_n_u_VIEW_INDEX, __pyx_v_elemtindex) < 0))) __PYX_ERR(0, 311, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_elemtindex); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 315, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 315, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 315, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_6, __pyx_n_u_VIEW_INDEX, __pyx_t_2) < 0))) __PYX_ERR(0, 315, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":312
+            /* "fragmentparser.pyx":316
  *                     allchildrendata[-1][-1]["IS_PARENT"] = True
  *                     allchildrendata[-1][-1]["VIEW_INDEX"] = elemtindex
  *                     allchildrendata[-1][-1]["HIERACHY_CLUSTER"] = hierachcounter             # <<<<<<<<<<<<<<
  *                     allchildrendata[-1][-1]["HIERACHY_SINGLE"] = hierachcounter2
  *                     hierachcounter2 = hierachcounter2 + 1
  */
-            __pyx_t_27 = __Pyx_PyInt_From_long(__pyx_v_hierachcounter); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 312, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 312, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_26 = __Pyx_GetItemInt(__pyx_t_4, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 312, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_26, __pyx_n_u_HIERACHY_CLUSTER, __pyx_t_27) < 0))) __PYX_ERR(0, 312, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_hierachcounter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 316, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 316, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_6, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 316, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_22, __pyx_n_u_HIERACHY_CLUSTER, __pyx_t_2) < 0))) __PYX_ERR(0, 316, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":313
+            /* "fragmentparser.pyx":317
  *                     allchildrendata[-1][-1]["VIEW_INDEX"] = elemtindex
  *                     allchildrendata[-1][-1]["HIERACHY_CLUSTER"] = hierachcounter
  *                     allchildrendata[-1][-1]["HIERACHY_SINGLE"] = hierachcounter2             # <<<<<<<<<<<<<<
  *                     hierachcounter2 = hierachcounter2 + 1
  * 
  */
-            __pyx_t_27 = __Pyx_PyInt_From_long(__pyx_v_hierachcounter2); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 313, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_27);
-            __pyx_t_26 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_26)) __PYX_ERR(0, 313, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_26);
-            __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_26, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L45_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_DECREF(__pyx_t_26); __pyx_t_26 = 0;
-            if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_n_u_HIERACHY_SINGLE, __pyx_t_27) < 0))) __PYX_ERR(0, 313, __pyx_L45_error)
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+            __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_hierachcounter2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 317, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            __pyx_t_22 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 317, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_22);
+            __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_22, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 317, __pyx_L41_error)
+            __Pyx_GOTREF(__pyx_t_6);
+            __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+            if (unlikely((PyObject_SetItem(__pyx_t_6, __pyx_n_u_HIERACHY_SINGLE, __pyx_t_2) < 0))) __PYX_ERR(0, 317, __pyx_L41_error)
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "fragmentparser.pyx":314
+            /* "fragmentparser.pyx":318
  *                     allchildrendata[-1][-1]["HIERACHY_CLUSTER"] = hierachcounter
  *                     allchildrendata[-1][-1]["HIERACHY_SINGLE"] = hierachcounter2
  *                     hierachcounter2 = hierachcounter2 + 1             # <<<<<<<<<<<<<<
@@ -9709,7 +9435,7 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  */
             __pyx_v_hierachcounter2 = (__pyx_v_hierachcounter2 + 1);
 
-            /* "fragmentparser.pyx":256
+            /* "fragmentparser.pyx":260
  *             hierachcounter2 = 0
  *             for ff in f[1]:
  *                 try:             # <<<<<<<<<<<<<<
@@ -9717,46 +9443,46 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  *                         maininfos2, otherdata2, datadict2 = findchi(ff)
  */
           }
-          __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-          goto __pyx_L52_try_end;
-          __pyx_L45_error:;
-          __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-          __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-          __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
+          goto __pyx_L48_try_end;
+          __pyx_L41_error:;
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
+          __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+          __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "fragmentparser.pyx":316
+          /* "fragmentparser.pyx":320
  *                     hierachcounter2 = hierachcounter2 + 1
  * 
  *                 except Exception as e:             # <<<<<<<<<<<<<<
  *                     continue
  * 
  */
-          __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
-          if (__pyx_t_15) {
+          __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
+          if (__pyx_t_8) {
             __Pyx_AddTraceback("fragmentparser.get_all_activity_elements", __pyx_clineno, __pyx_lineno, __pyx_filename);
-            if (__Pyx_GetException(&__pyx_t_27, &__pyx_t_4, &__pyx_t_26) < 0) __PYX_ERR(0, 316, __pyx_L47_except_error)
-            __Pyx_XGOTREF(__pyx_t_27);
-            __Pyx_XGOTREF(__pyx_t_4);
-            __Pyx_XGOTREF(__pyx_t_26);
-            __Pyx_INCREF(__pyx_t_4);
-            __pyx_v_e = __pyx_t_4;
+            if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_6, &__pyx_t_22) < 0) __PYX_ERR(0, 320, __pyx_L43_except_error)
+            __Pyx_XGOTREF(__pyx_t_2);
+            __Pyx_XGOTREF(__pyx_t_6);
+            __Pyx_XGOTREF(__pyx_t_22);
+            __Pyx_INCREF(__pyx_t_6);
+            __pyx_v_e = __pyx_t_6;
             /*try:*/ {
 
-              /* "fragmentparser.pyx":317
+              /* "fragmentparser.pyx":321
  * 
  *                 except Exception as e:
  *                     continue             # <<<<<<<<<<<<<<
  * 
  *         try:
  */
-              goto __pyx_L81_continue;
+              goto __pyx_L77_continue;
             }
 
-            /* "fragmentparser.pyx":316
+            /* "fragmentparser.pyx":320
  *                     hierachcounter2 = hierachcounter2 + 1
  * 
  *                 except Exception as e:             # <<<<<<<<<<<<<<
@@ -9764,53 +9490,53 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  * 
  */
             /*finally:*/ {
-              __pyx_L81_continue: {
+              __pyx_L77_continue: {
                 __Pyx_DECREF(__pyx_v_e); __pyx_v_e = 0;
-                goto __pyx_L79_except_continue;
+                goto __pyx_L75_except_continue;
               }
             }
-            __pyx_L79_except_continue:;
-            __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-            goto __pyx_L51_try_continue;
+            __pyx_L75_except_continue:;
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
+            goto __pyx_L47_try_continue;
           }
-          goto __pyx_L47_except_error;
+          goto __pyx_L43_except_error;
 
-          /* "fragmentparser.pyx":256
+          /* "fragmentparser.pyx":260
  *             hierachcounter2 = 0
  *             for ff in f[1]:
  *                 try:             # <<<<<<<<<<<<<<
  *                     try:
  *                         maininfos2, otherdata2, datadict2 = findchi(ff)
  */
-          __pyx_L47_except_error:;
-          __Pyx_XGIVEREF(__pyx_t_14);
+          __pyx_L43_except_error:;
           __Pyx_XGIVEREF(__pyx_t_13);
           __Pyx_XGIVEREF(__pyx_t_12);
-          __Pyx_ExceptionReset(__pyx_t_14, __pyx_t_13, __pyx_t_12);
+          __Pyx_XGIVEREF(__pyx_t_11);
+          __Pyx_ExceptionReset(__pyx_t_13, __pyx_t_12, __pyx_t_11);
           goto __pyx_L1_error;
-          __pyx_L51_try_continue:;
-          __Pyx_XGIVEREF(__pyx_t_14);
+          __pyx_L47_try_continue:;
           __Pyx_XGIVEREF(__pyx_t_13);
           __Pyx_XGIVEREF(__pyx_t_12);
-          __Pyx_ExceptionReset(__pyx_t_14, __pyx_t_13, __pyx_t_12);
-          goto __pyx_L43_continue;
-          __pyx_L52_try_end:;
+          __Pyx_XGIVEREF(__pyx_t_11);
+          __Pyx_ExceptionReset(__pyx_t_13, __pyx_t_12, __pyx_t_11);
+          goto __pyx_L39_continue;
+          __pyx_L48_try_end:;
         }
 
-        /* "fragmentparser.pyx":255
+        /* "fragmentparser.pyx":259
  *             hierachcounter += 1
  *             hierachcounter2 = 0
  *             for ff in f[1]:             # <<<<<<<<<<<<<<
  *                 try:
  *                     try:
  */
-        __pyx_L43_continue:;
+        __pyx_L39_continue:;
       }
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "fragmentparser.pyx":250
+      /* "fragmentparser.pyx":254
  *         allchildrendata = []
  *         hierachcounter = 0
  *         for f in fla_tu(di):             # <<<<<<<<<<<<<<
@@ -9818,9 +9544,9 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  * 
  */
     }
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "fragmentparser.pyx":319
+    /* "fragmentparser.pyx":323
  *                     continue
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -9830,62 +9556,62 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
     {
       __Pyx_PyThreadState_declare
       __Pyx_PyThreadState_assign
-      __Pyx_ExceptionSave(&__pyx_t_12, &__pyx_t_13, &__pyx_t_14);
+      __Pyx_ExceptionSave(&__pyx_t_11, &__pyx_t_12, &__pyx_t_13);
+      __Pyx_XGOTREF(__pyx_t_11);
       __Pyx_XGOTREF(__pyx_t_12);
       __Pyx_XGOTREF(__pyx_t_13);
-      __Pyx_XGOTREF(__pyx_t_14);
       /*try:*/ {
 
-        /* "fragmentparser.pyx":320
+        /* "fragmentparser.pyx":324
  * 
  *         try:
  *             allchildrendata[-1][-1]["IS_PARENT"] = False             # <<<<<<<<<<<<<<
  *             allconvdata.append(deepcopy(allchildrendata))
  * 
  */
-        __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 320, __pyx_L88_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_9, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 320, __pyx_L88_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely((PyObject_SetItem(__pyx_t_8, __pyx_n_u_IS_PARENT, Py_False) < 0))) __PYX_ERR(0, 320, __pyx_L88_error)
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_allchildrendata, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L84_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_5, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 324, __pyx_L84_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        if (unlikely((PyObject_SetItem(__pyx_t_7, __pyx_n_u_IS_PARENT, Py_False) < 0))) __PYX_ERR(0, 324, __pyx_L84_error)
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":321
+        /* "fragmentparser.pyx":325
  *         try:
  *             allchildrendata[-1][-1]["IS_PARENT"] = False
  *             allconvdata.append(deepcopy(allchildrendata))             # <<<<<<<<<<<<<<
  * 
  *         except Exception:
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 321, __pyx_L88_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_26 = NULL;
-        __pyx_t_15 = 0;
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L84_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_22 = NULL;
+        __pyx_t_8 = 0;
         #if CYTHON_UNPACK_METHODS
-        if (unlikely(PyMethod_Check(__pyx_t_9))) {
-          __pyx_t_26 = PyMethod_GET_SELF(__pyx_t_9);
-          if (likely(__pyx_t_26)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-            __Pyx_INCREF(__pyx_t_26);
+        if (unlikely(PyMethod_Check(__pyx_t_5))) {
+          __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_5);
+          if (likely(__pyx_t_22)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+            __Pyx_INCREF(__pyx_t_22);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_9, function);
-            __pyx_t_15 = 1;
+            __Pyx_DECREF_SET(__pyx_t_5, function);
+            __pyx_t_8 = 1;
           }
         }
         #endif
         {
-          PyObject *__pyx_callargs[2] = {__pyx_t_26, __pyx_v_allchildrendata};
-          __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_15, 1+__pyx_t_15);
-          __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 321, __pyx_L88_error)
-          __Pyx_GOTREF(__pyx_t_8);
-          __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+          PyObject *__pyx_callargs[2] = {__pyx_t_22, __pyx_v_allchildrendata};
+          __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+          __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
+          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 325, __pyx_L84_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
-        __pyx_t_23 = __Pyx_PyList_Append(__pyx_v_allconvdata, __pyx_t_8); if (unlikely(__pyx_t_23 == ((int)-1))) __PYX_ERR(0, 321, __pyx_L88_error)
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __pyx_t_16 = __Pyx_PyList_Append(__pyx_v_allconvdata, __pyx_t_7); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 325, __pyx_L84_error)
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "fragmentparser.pyx":319
+        /* "fragmentparser.pyx":323
  *                     continue
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -9893,69 +9619,94 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
  *             allconvdata.append(deepcopy(allchildrendata))
  */
       }
+      __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      goto __pyx_L95_try_end;
-      __pyx_L88_error:;
-      __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
-      __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-      __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+      goto __pyx_L91_try_end;
+      __pyx_L84_error:;
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
+      __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "fragmentparser.pyx":323
+      /* "fragmentparser.pyx":327
  *             allconvdata.append(deepcopy(allchildrendata))
  * 
  *         except Exception:             # <<<<<<<<<<<<<<
  *             pass
- * 
+ *     findchi.cache_clear()
  */
-      __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
-      if (__pyx_t_15) {
+      __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
+      if (__pyx_t_8) {
         __Pyx_ErrRestore(0,0,0);
-        goto __pyx_L89_exception_handled;
+        goto __pyx_L85_exception_handled;
       }
-      goto __pyx_L90_except_error;
+      goto __pyx_L86_except_error;
 
-      /* "fragmentparser.pyx":319
+      /* "fragmentparser.pyx":323
  *                     continue
  * 
  *         try:             # <<<<<<<<<<<<<<
  *             allchildrendata[-1][-1]["IS_PARENT"] = False
  *             allconvdata.append(deepcopy(allchildrendata))
  */
-      __pyx_L90_except_error:;
+      __pyx_L86_except_error:;
+      __Pyx_XGIVEREF(__pyx_t_11);
       __Pyx_XGIVEREF(__pyx_t_12);
       __Pyx_XGIVEREF(__pyx_t_13);
-      __Pyx_XGIVEREF(__pyx_t_14);
-      __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+      __Pyx_ExceptionReset(__pyx_t_11, __pyx_t_12, __pyx_t_13);
       goto __pyx_L1_error;
-      __pyx_L89_exception_handled:;
+      __pyx_L85_exception_handled:;
+      __Pyx_XGIVEREF(__pyx_t_11);
       __Pyx_XGIVEREF(__pyx_t_12);
       __Pyx_XGIVEREF(__pyx_t_13);
-      __Pyx_XGIVEREF(__pyx_t_14);
-      __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
-      __pyx_L95_try_end:;
+      __Pyx_ExceptionReset(__pyx_t_11, __pyx_t_12, __pyx_t_13);
+      __pyx_L91_try_end:;
     }
-
-    /* "fragmentparser.pyx":240
- *     #             continue
- * 
- *     for elemtindex, a in enumerate(allsplits):             # <<<<<<<<<<<<<<
- *         try:
- *             di = indent2dict(
- */
     __pyx_L20_continue:;
   }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fragmentparser.pyx":326
+  /* "fragmentparser.pyx":329
+ *         except Exception:
  *             pass
- * 
+ *     findchi.cache_clear()             # <<<<<<<<<<<<<<
+ *     return allconvdata
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_findchi); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_cache_clear); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = NULL;
+  __pyx_t_8 = 0;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_22))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_22);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_22);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_22, function);
+      __pyx_t_8 = 1;
+    }
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
+    __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_22, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 329, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+  /* "fragmentparser.pyx":330
+ *             pass
+ *     findchi.cache_clear()
  *     return allconvdata             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
@@ -9963,49 +9714,193 @@ static PyObject *__pyx_pf_14fragmentparser_4get_all_activity_elements(CYTHON_UNU
   __pyx_r = __pyx_v_allconvdata;
   goto __pyx_L0;
 
-  /* "fragmentparser.pyx":66
- *         )
- *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):             # <<<<<<<<<<<<<<
- *     @cache
- *     def findchi(ff):
+  /* "fragmentparser.pyx":217
+ *         return [],[],{}
+ * 
+ * cpdef list[list[dict]] get_all_activity_elements(cython.bint as_pandas=False, cython.Py_ssize_t number_of_max_views=-1):             # <<<<<<<<<<<<<<
+ *     cdef:
+ *         dict[str,Any] datadict,datadict2
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_XDECREF(__pyx_t_26);
-  __Pyx_XDECREF(__pyx_t_27);
-  __Pyx_XDECREF(__pyx_t_28);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_22);
+  __Pyx_XDECREF(__pyx_t_23);
   __Pyx_AddTraceback("fragmentparser.get_all_activity_elements", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
+  __pyx_r = 0;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_findchi);
+  __Pyx_XDECREF(__pyx_v_datadict);
+  __Pyx_XDECREF(__pyx_v_datadict2);
   __Pyx_XDECREF(__pyx_v_allda);
   __Pyx_XDECREF(__pyx_v_allsi);
-  __Pyx_XDECREF(__pyx_v_allsplits);
+  __Pyx_XDECREF(__pyx_v_allchildrendata);
   __Pyx_XDECREF(__pyx_v_allconvdata);
-  __Pyx_XDECREF(__pyx_v_elemtindex);
+  __Pyx_XDECREF(__pyx_v_allsplits);
   __Pyx_XDECREF(__pyx_v_a);
   __Pyx_XDECREF(__pyx_v_di);
   __Pyx_XDECREF(__pyx_v_e);
-  __Pyx_XDECREF(__pyx_v_allchildrendata);
   __Pyx_XDECREF(__pyx_v_f);
   __Pyx_XDECREF(__pyx_v_ff);
   __Pyx_XDECREF(__pyx_v_maininfos2);
   __Pyx_XDECREF(__pyx_v_otherdata2);
-  __Pyx_XDECREF(__pyx_v_datadict2);
-  __Pyx_XDECREF(__pyx_v_datadict);
-  __Pyx_XDECREF(__pyx_8genexpr1__pyx_v_i);
   __Pyx_XDECREF(__pyx_8genexpr1__pyx_v_x);
   __Pyx_XDECREF(__pyx_8genexpr2__pyx_v_x);
   __Pyx_XDECREF(__pyx_8genexpr3__pyx_v_x);
   __Pyx_XDECREF(__pyx_8genexpr4__pyx_v_x);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_14fragmentparser_7get_all_activity_elements(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_14fragmentparser_7get_all_activity_elements = {"get_all_activity_elements", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_14fragmentparser_7get_all_activity_elements, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_14fragmentparser_7get_all_activity_elements(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  int __pyx_v_as_pandas;
+  Py_ssize_t __pyx_v_number_of_max_views;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_all_activity_elements (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_MACROS
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_as_pandas,&__pyx_n_s_number_of_max_views,0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_as_pandas);
+          if (value) { values[0] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_number_of_max_views);
+          if (value) { values[1] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_all_activity_elements") < 0)) __PYX_ERR(0, 217, __pyx_L3_error)
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    if (values[0]) {
+      __pyx_v_as_pandas = __Pyx_PyObject_IsTrue(values[0]); if (unlikely((__pyx_v_as_pandas == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
+    } else {
+      __pyx_v_as_pandas = ((int)0);
+    }
+    if (values[1]) {
+      __pyx_v_number_of_max_views = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_number_of_max_views == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
+    } else {
+      __pyx_v_number_of_max_views = ((Py_ssize_t)-1L);
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_all_activity_elements", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 217, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_AddTraceback("fragmentparser.get_all_activity_elements", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_14fragmentparser_6get_all_activity_elements(__pyx_self, __pyx_v_as_pandas, __pyx_v_number_of_max_views);
+
+  /* function exit code */
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_14fragmentparser_6get_all_activity_elements(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_as_pandas, Py_ssize_t __pyx_v_number_of_max_views) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  struct __pyx_opt_args_14fragmentparser_get_all_activity_elements __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_all_activity_elements", 1);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2.__pyx_n = 2;
+  __pyx_t_2.as_pandas = __pyx_v_as_pandas;
+  __pyx_t_2.number_of_max_views = __pyx_v_number_of_max_views;
+  __pyx_t_1 = __pyx_f_14fragmentparser_get_all_activity_elements(0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("fragmentparser.get_all_activity_elements", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -10030,6 +9925,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u_127_0_0_1_5560, __pyx_k_127_0_0_1_5560, sizeof(__pyx_k_127_0_0_1_5560), 0, 1, 0, 0},
     {&__pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME, __pyx_k_ADB_SHELL_GET_ALL_ACTIVITY_ELEME, sizeof(__pyx_k_ADB_SHELL_GET_ALL_ACTIVITY_ELEME), 0, 0, 1, 1},
     {&__pyx_n_u_AREA, __pyx_k_AREA, sizeof(__pyx_k_AREA), 0, 1, 0, 1},
+    {&__pyx_n_s_Any, __pyx_k_Any, sizeof(__pyx_k_Any), 0, 0, 1, 1},
     {&__pyx_n_u_CENTER_X, __pyx_k_CENTER_X, sizeof(__pyx_k_CENTER_X), 0, 1, 0, 1},
     {&__pyx_n_u_CENTER_Y, __pyx_k_CENTER_Y, sizeof(__pyx_k_CENTER_Y), 0, 1, 0, 1},
     {&__pyx_n_u_CLASSNAME, __pyx_k_CLASSNAME, sizeof(__pyx_k_CLASSNAME), 0, 1, 0, 1},
@@ -10073,27 +9969,22 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_b_View_Hierarchy, __pyx_k_View_Hierarchy, sizeof(__pyx_k_View_Hierarchy), 0, 0, 0, 0},
     {&__pyx_n_u_WIDTH, __pyx_k_WIDTH, sizeof(__pyx_k_WIDTH), 0, 1, 0, 1},
     {&__pyx_n_u_Windows, __pyx_k_Windows, sizeof(__pyx_k_Windows), 0, 1, 0, 1},
+    {&__pyx_kp_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
+    {&__pyx_n_s__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 0, 1, 1},
     {&__pyx_kp_u__12, __pyx_k__12, sizeof(__pyx_k__12), 0, 1, 0, 0},
-    {&__pyx_n_s__13, __pyx_k__13, sizeof(__pyx_k__13), 0, 0, 1, 1},
-    {&__pyx_kp_u__14, __pyx_k__14, sizeof(__pyx_k__14), 0, 1, 0, 0},
     {&__pyx_kp_u__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 1, 0, 0},
-    {&__pyx_n_s__24, __pyx_k__24, sizeof(__pyx_k__24), 0, 0, 1, 1},
+    {&__pyx_n_s__25, __pyx_k__25, sizeof(__pyx_k__25), 0, 0, 1, 1},
     {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
     {&__pyx_kp_u__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0, 0},
     {&__pyx_kp_u__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0, 0},
-    {&__pyx_kp_b__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 0, 0},
-    {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
+    {&__pyx_kp_b__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 0, 0},
     {&__pyx_n_s_adb, __pyx_k_adb, sizeof(__pyx_k_adb), 0, 0, 1, 1},
     {&__pyx_n_u_adb, __pyx_k_adb, sizeof(__pyx_k_adb), 0, 1, 0, 1},
-    {&__pyx_n_s_allchildrendata, __pyx_k_allchildrendata, sizeof(__pyx_k_allchildrendata), 0, 0, 1, 1},
-    {&__pyx_n_s_allconvdata, __pyx_k_allconvdata, sizeof(__pyx_k_allconvdata), 0, 0, 1, 1},
-    {&__pyx_n_s_allda, __pyx_k_allda, sizeof(__pyx_k_allda), 0, 0, 1, 1},
-    {&__pyx_n_s_allsi, __pyx_k_allsi, sizeof(__pyx_k_allsi), 0, 0, 1, 1},
-    {&__pyx_n_s_allsplits, __pyx_k_allsplits, sizeof(__pyx_k_allsplits), 0, 0, 1, 1},
     {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
     {&__pyx_n_s_as_pandas, __pyx_k_as_pandas, sizeof(__pyx_k_as_pandas), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_cache, __pyx_k_cache, sizeof(__pyx_k_cache), 0, 0, 1, 1},
+    {&__pyx_n_s_cache_clear, __pyx_k_cache_clear, sizeof(__pyx_k_cache_clear), 0, 0, 1, 1},
     {&__pyx_n_s_capture_output, __pyx_k_capture_output, sizeof(__pyx_k_capture_output), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_cmdo, __pyx_k_cmdo, sizeof(__pyx_k_cmdo), 0, 0, 1, 1},
@@ -10101,21 +9992,16 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_compile, __pyx_k_compile, sizeof(__pyx_k_compile), 0, 0, 1, 1},
     {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
     {&__pyx_n_s_datadict, __pyx_k_datadict, sizeof(__pyx_k_datadict), 0, 0, 1, 1},
-    {&__pyx_n_s_datadict2, __pyx_k_datadict2, sizeof(__pyx_k_datadict2), 0, 0, 1, 1},
     {&__pyx_n_s_decode, __pyx_k_decode, sizeof(__pyx_k_decode), 0, 0, 1, 1},
     {&__pyx_n_s_deepcopy, __pyx_k_deepcopy, sizeof(__pyx_k_deepcopy), 0, 0, 1, 1},
-    {&__pyx_n_s_di, __pyx_k_di, sizeof(__pyx_k_di), 0, 0, 1, 1},
     {&__pyx_kp_u_dumpsys_activity_top_a_c_checkin, __pyx_k_dumpsys_activity_top_a_c_checkin, sizeof(__pyx_k_dumpsys_activity_top_a_c_checkin), 0, 1, 0, 0},
-    {&__pyx_n_s_e, __pyx_k_e, sizeof(__pyx_k_e), 0, 0, 1, 1},
-    {&__pyx_n_s_elemtindex, __pyx_k_elemtindex, sizeof(__pyx_k_elemtindex), 0, 0, 1, 1},
-    {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
     {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
     {&__pyx_n_s_execute_sh_command, __pyx_k_execute_sh_command, sizeof(__pyx_k_execute_sh_command), 0, 0, 1, 1},
-    {&__pyx_n_s_f, __pyx_k_f, sizeof(__pyx_k_f), 0, 0, 1, 1},
     {&__pyx_n_s_fe, __pyx_k_fe, sizeof(__pyx_k_fe), 0, 0, 1, 1},
     {&__pyx_n_s_ff, __pyx_k_ff, sizeof(__pyx_k_ff), 0, 0, 1, 1},
     {&__pyx_n_s_findall, __pyx_k_findall, sizeof(__pyx_k_findall), 0, 0, 1, 1},
     {&__pyx_n_s_findchi, __pyx_k_findchi, sizeof(__pyx_k_findchi), 0, 0, 1, 1},
+    {&__pyx_n_s_findchi_locals_lambda, __pyx_k_findchi_locals_lambda, sizeof(__pyx_k_findchi_locals_lambda), 0, 0, 1, 1},
     {&__pyx_n_s_firstimesearch, __pyx_k_firstimesearch, sizeof(__pyx_k_firstimesearch), 0, 0, 1, 1},
     {&__pyx_n_s_fla_tu, __pyx_k_fla_tu, sizeof(__pyx_k_fla_tu), 0, 0, 1, 1},
     {&__pyx_n_s_flatten_any_dict_iterable_or_wha, __pyx_k_flatten_any_dict_iterable_or_wha, sizeof(__pyx_k_flatten_any_dict_iterable_or_wha), 0, 0, 1, 1},
@@ -10123,11 +10009,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_s_fragmentparser_pyx, __pyx_k_fragmentparser_pyx, sizeof(__pyx_k_fragmentparser_pyx), 0, 0, 1, 0},
     {&__pyx_n_s_functools, __pyx_k_functools, sizeof(__pyx_k_functools), 0, 0, 1, 1},
     {&__pyx_n_s_get_all_activity_elements, __pyx_k_get_all_activity_elements, sizeof(__pyx_k_get_all_activity_elements), 0, 0, 1, 1},
-    {&__pyx_n_s_get_all_activity_elements_locals, __pyx_k_get_all_activity_elements_locals, sizeof(__pyx_k_get_all_activity_elements_locals), 0, 0, 1, 1},
-    {&__pyx_n_s_get_all_activity_elements_locals_2, __pyx_k_get_all_activity_elements_locals_2, sizeof(__pyx_k_get_all_activity_elements_locals_2), 0, 0, 1, 1},
-    {&__pyx_n_s_hierachcounter, __pyx_k_hierachcounter, sizeof(__pyx_k_hierachcounter), 0, 0, 1, 1},
-    {&__pyx_n_s_hierachcounter2, __pyx_k_hierachcounter2, sizeof(__pyx_k_hierachcounter2), 0, 0, 1, 1},
-    {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
+    {&__pyx_n_s_hierachyregex, __pyx_k_hierachyregex, sizeof(__pyx_k_hierachyregex), 0, 0, 1, 1},
     {&__pyx_n_u_ignore, __pyx_k_ignore, sizeof(__pyx_k_ignore), 0, 1, 0, 1},
     {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
     {&__pyx_n_s_indent2dict, __pyx_k_indent2dict, sizeof(__pyx_k_indent2dict), 0, 0, 1, 1},
@@ -10145,19 +10027,15 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_list_split, __pyx_k_list_split, sizeof(__pyx_k_list_split), 0, 0, 1, 1},
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
     {&__pyx_n_s_maininfos, __pyx_k_maininfos, sizeof(__pyx_k_maininfos), 0, 0, 1, 1},
-    {&__pyx_n_s_maininfos2, __pyx_k_maininfos2, sizeof(__pyx_k_maininfos2), 0, 0, 1, 1},
     {&__pyx_n_s_map, __pyx_k_map, sizeof(__pyx_k_map), 0, 0, 1, 1},
     {&__pyx_n_s_maxsplit, __pyx_k_maxsplit, sizeof(__pyx_k_maxsplit), 0, 0, 1, 1},
     {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
     {&__pyx_n_s_number_of_max_views, __pyx_k_number_of_max_views, sizeof(__pyx_k_number_of_max_views), 0, 0, 1, 1},
     {&__pyx_kp_u_number_sections_must_be_larger_t, __pyx_k_number_sections_must_be_larger_t, sizeof(__pyx_k_number_sections_must_be_larger_t), 0, 1, 0, 0},
     {&__pyx_n_s_otherdata, __pyx_k_otherdata, sizeof(__pyx_k_otherdata), 0, 0, 1, 1},
-    {&__pyx_n_s_otherdata2, __pyx_k_otherdata2, sizeof(__pyx_k_otherdata2), 0, 0, 1, 1},
-    {&__pyx_n_s_p, __pyx_k_p, sizeof(__pyx_k_p), 0, 0, 1, 1},
     {&__pyx_n_s_parifinder, __pyx_k_parifinder, sizeof(__pyx_k_parifinder), 0, 0, 1, 1},
     {&__pyx_n_s_parse_pairs, __pyx_k_parse_pairs, sizeof(__pyx_k_parse_pairs), 0, 0, 1, 1},
     {&__pyx_n_s_platform, __pyx_k_platform, sizeof(__pyx_k_platform), 0, 0, 1, 1},
-    {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
     {&__pyx_n_s_r0, __pyx_k_r0, sizeof(__pyx_k_r0), 0, 0, 1, 1},
     {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
     {&__pyx_n_s_re, __pyx_k_re, sizeof(__pyx_k_re), 0, 0, 1, 1},
@@ -10190,24 +10068,23 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_t, __pyx_k_t, sizeof(__pyx_k_t), 0, 0, 1, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {&__pyx_n_u_text, __pyx_k_text, sizeof(__pyx_k_text), 0, 1, 0, 1},
+    {&__pyx_n_s_typing, __pyx_k_typing, sizeof(__pyx_k_typing), 0, 0, 1, 1},
     {&__pyx_kp_u_utf_8, __pyx_k_utf_8, sizeof(__pyx_k_utf_8), 0, 1, 0, 0},
     {&__pyx_n_s_v, __pyx_k_v, sizeof(__pyx_k_v), 0, 0, 1, 1},
     {&__pyx_n_s_which, __pyx_k_which, sizeof(__pyx_k_which), 0, 0, 1, 1},
-    {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
     {0, 0, 0, 0, 0, 0, 0}
   };
   return __Pyx_InitStrings(__pyx_string_tab);
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 30, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 33, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 41, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 240, __pyx_L1_error)
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 246, __pyx_L1_error)
-  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 263, __pyx_L1_error)
-  __pyx_builtin_map = __Pyx_GetBuiltinName(__pyx_n_s_map); if (!__pyx_builtin_map) __PYX_ERR(0, 105, __pyx_L1_error)
-  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_builtin_map = __Pyx_GetBuiltinName(__pyx_n_s_map); if (!__pyx_builtin_map) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 267, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 234, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -10218,114 +10095,125 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "fragmentparser.pyx":33
+  /* "fragmentparser.pyx":35
  *         Nsections = int(indices_or_sections)
  *         if Nsections <= 0:
  *             raise ValueError("number sections must be larger than 0.")             # <<<<<<<<<<<<<<
  * 
  *         Neach_section, extras = divmod(Ntotal, Nsections)
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_number_sections_must_be_larger_t); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_number_sections_must_be_larger_t); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "fragmentparser.pyx":81
- *             )[0]
- *             otherdata = ff.split(maininfos[-1]["text"])
- *             t = maininfos[-1]["text"][1:-1] + "  "             # <<<<<<<<<<<<<<
- *             infosplit = t.split(maxsplit=5)
- *             firstimesearch = infosplit[1]
+  /* "fragmentparser.pyx":83
+ *         )[0]
+ *         otherdata = ff.split(maininfos[-1]["text"])
+ *         t = maininfos[-1]["text"][1:-1] + "  "             # <<<<<<<<<<<<<<
+ *         infosplit = t.split(maxsplit=5)
+ *         firstimesearch = infosplit[1]
  */
-  __pyx_slice__4 = PySlice_New(__pyx_int_1, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(__pyx_int_1, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
-  /* "fragmentparser.pyx":67
- *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):
- *     @cache             # <<<<<<<<<<<<<<
- *     def findchi(ff):
- *         try:
- */
-  __pyx_tuple__7 = PyTuple_Pack(12, __pyx_n_s_ff, __pyx_n_s_r0, __pyx_n_s_datadict, __pyx_n_s_maininfos, __pyx_n_s_otherdata, __pyx_n_s_t, __pyx_n_s_infosplit, __pyx_n_s_firstimesearch, __pyx_n_s_secondtimesearch, __pyx_n_s_fe, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_findchi, 67, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 67, __pyx_L1_error)
-
-  /* "fragmentparser.pyx":243
+  /* "fragmentparser.pyx":247
  *         try:
  *             di = indent2dict(
  *                 b"\n".join(a[:]).decode("utf-8", "ignore"), removespaces=True             # <<<<<<<<<<<<<<
  *             )
  *         except Exception as e :
  */
-  __pyx_slice__10 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__10)) __PYX_ERR(0, 243, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__10);
-  __Pyx_GIVEREF(__pyx_slice__10);
-  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_kp_u_utf_8, __pyx_n_u_ignore); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 243, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__11);
-  __Pyx_GIVEREF(__pyx_tuple__11);
+  __pyx_slice__8 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__8)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__8);
+  __Pyx_GIVEREF(__pyx_slice__8);
+  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_kp_u_utf_8, __pyx_n_u_ignore); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "fragmentparser.pyx":14
- * import platform
+  /* "fragmentparser.pyx":15
+ * from typing import Any
  * iswindows = platform.system() == "Windows"
  * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")             # <<<<<<<<<<<<<<
+ * hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")
+ * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
+ */
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_u__12); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+
+  /* "fragmentparser.pyx":16
+ * iswindows = platform.system() == "Windows"
+ * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
+ * hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")             # <<<<<<<<<<<<<<
  * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
  * serial = "127.0.0.1:5560"
  */
-  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_u__14); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_b_s_View_Hierarchy_Looper); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "fragmentparser.pyx":17
+  /* "fragmentparser.pyx":19
  * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
  * serial = "127.0.0.1:5560"
  * adb = shutil.which("adb")             # <<<<<<<<<<<<<<
  * cmdo=adb + " -s " + serial + " shell"
  * 
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_n_u_adb); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__16);
-  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_n_u_adb); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "fragmentparser.pyx":21
+  /* "fragmentparser.pyx":23
  * 
  * 
  * cpdef list[list] list_split(list[str,bytes] l, list[tuple] indices_or_sections):             # <<<<<<<<<<<<<<
  *     cdef:
  *         Py_ssize_t Ntotal, Nsections, Neach_section, extras, new_sum, i, lenar, st, end
  */
-  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_n_s_l, __pyx_n_s_indices_or_sections); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_list_split, 21, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(2, __pyx_n_s_l, __pyx_n_s_indices_or_sections); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_list_split, 23, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 23, __pyx_L1_error)
 
-  /* "fragmentparser.pyx":56
+  /* "fragmentparser.pyx":58
  *     return sub_arys
  * 
- * def execute_sh_command(command):             # <<<<<<<<<<<<<<
+ * cpdef list[str] execute_sh_command(str command):             # <<<<<<<<<<<<<<
  *     if iswindows:
  *         p= subprocess.run(
  */
-  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_n_s_command, __pyx_n_s_p); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 56, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__19);
-  __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_execute_sh_command, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_n_s_command); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_execute_sh_command, 58, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 58, __pyx_L1_error)
 
-  /* "fragmentparser.pyx":66
- *         )
+  /* "fragmentparser.pyx":69
  *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):             # <<<<<<<<<<<<<<
- *     @cache
- *     def findchi(ff):
+ * 
+ * @cache             # <<<<<<<<<<<<<<
+ * def findchi(ff):
+ *     try:
  */
-  __pyx_tuple__21 = PyTuple_Pack(26, __pyx_n_s_as_pandas, __pyx_n_s_number_of_max_views, __pyx_n_s_findchi, __pyx_n_s_findchi, __pyx_n_s_allda, __pyx_n_s_allsi, __pyx_n_s_allsplits, __pyx_n_s_allconvdata, __pyx_n_s_elemtindex, __pyx_n_s_a, __pyx_n_s_di, __pyx_n_s_e, __pyx_n_s_allchildrendata, __pyx_n_s_hierachcounter, __pyx_n_s_f, __pyx_n_s_hierachcounter2, __pyx_n_s_ff, __pyx_n_s_maininfos2, __pyx_n_s_otherdata2, __pyx_n_s_datadict2, __pyx_n_s_datadict, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_x, __pyx_n_s_x, __pyx_n_s_x); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__21);
-  __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 26, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_get_all_activity_elements, 66, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __pyx_tuple__23 = PyTuple_Pack(2, ((PyObject *)Py_False), ((PyObject *)__pyx_int_neg_1)); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_tuple__20 = PyTuple_Pack(12, __pyx_n_s_ff, __pyx_n_s_r0, __pyx_n_s_datadict, __pyx_n_s_maininfos, __pyx_n_s_otherdata, __pyx_n_s_t, __pyx_n_s_infosplit, __pyx_n_s_firstimesearch, __pyx_n_s_secondtimesearch, __pyx_n_s_fe, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_findchi, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 69, __pyx_L1_error)
+
+  /* "fragmentparser.pyx":217
+ *         return [],[],{}
+ * 
+ * cpdef list[list[dict]] get_all_activity_elements(cython.bint as_pandas=False, cython.Py_ssize_t number_of_max_views=-1):             # <<<<<<<<<<<<<<
+ *     cdef:
+ *         dict[str,Any] datadict,datadict2
+ */
+  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_n_s_as_pandas, __pyx_n_s_number_of_max_views); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fragmentparser_pyx, __pyx_n_s_get_all_activity_elements, 217, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, Py_False, __pyx_int_neg_1); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -10832,7 +10720,7 @@ if (!__Pyx_RefNanny) {
  * import re
  * import shutil             # <<<<<<<<<<<<<<
  * import platform
- * iswindows = platform.system() == "Windows"
+ * from typing import Any
  */
   __pyx_t_3 = __Pyx_ImportDottedModule(__pyx_n_s_shutil, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -10843,8 +10731,8 @@ if (!__Pyx_RefNanny) {
  * import re
  * import shutil
  * import platform             # <<<<<<<<<<<<<<
+ * from typing import Any
  * iswindows = platform.system() == "Windows"
- * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
  */
   __pyx_t_3 = __Pyx_ImportDottedModule(__pyx_n_s_platform, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -10854,136 +10742,193 @@ if (!__Pyx_RefNanny) {
   /* "fragmentparser.pyx":13
  * import shutil
  * import platform
- * iswindows = platform.system() == "Windows"             # <<<<<<<<<<<<<<
+ * from typing import Any             # <<<<<<<<<<<<<<
+ * iswindows = platform.system() == "Windows"
  * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
- * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_platform); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_system); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_Any);
+  __Pyx_GIVEREF(__pyx_n_s_Any);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Any)) __PYX_ERR(0, 13, __pyx_L1_error);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_typing, __pyx_t_3, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Any); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_n_u_Windows, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Any, __pyx_t_3) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iswindows, __pyx_t_2) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "fragmentparser.pyx":14
  * import platform
+ * from typing import Any
+ * iswindows = platform.system() == "Windows"             # <<<<<<<<<<<<<<
+ * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
+ * hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_platform); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_system); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_n_u_Windows, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iswindows, __pyx_t_3) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "fragmentparser.pyx":15
+ * from typing import Any
  * iswindows = platform.system() == "Windows"
  * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")             # <<<<<<<<<<<<<<
+ * hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")
+ * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_refi, __pyx_t_3) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "fragmentparser.pyx":16
+ * iswindows = platform.system() == "Windows"
+ * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
+ * hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")             # <<<<<<<<<<<<<<
  * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
  * serial = "127.0.0.1:5560"
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_re); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_compile); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_refi, __pyx_t_2) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_hierachyregex, __pyx_t_3) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fragmentparser.pyx":15
- * iswindows = platform.system() == "Windows"
+  /* "fragmentparser.pyx":17
  * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
+ * hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")
  * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"             # <<<<<<<<<<<<<<
  * serial = "127.0.0.1:5560"
  * adb = shutil.which("adb")
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME, __pyx_kp_u_dumpsys_activity_top_a_c_checkin) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_ADB_SHELL_GET_ALL_ACTIVITY_ELEME, __pyx_kp_u_dumpsys_activity_top_a_c_checkin) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
 
-  /* "fragmentparser.pyx":16
- * refi = re.compile(r"([^,]+),([^,]+)-([^,]+),([^,]+)")
+  /* "fragmentparser.pyx":18
+ * hierachyregex=re.compile(rb"^\s*(?:(?:View Hierarchy:)|(?:Looper))")
  * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
  * serial = "127.0.0.1:5560"             # <<<<<<<<<<<<<<
  * adb = shutil.which("adb")
  * cmdo=adb + " -s " + serial + " shell"
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_serial, __pyx_kp_u_127_0_0_1_5560) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_serial, __pyx_kp_u_127_0_0_1_5560) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
 
-  /* "fragmentparser.pyx":17
+  /* "fragmentparser.pyx":19
  * ADB_SHELL_GET_ALL_ACTIVITY_ELEMENTS = "dumpsys activity top -a -c --checkin"
  * serial = "127.0.0.1:5560"
  * adb = shutil.which("adb")             # <<<<<<<<<<<<<<
  * cmdo=adb + " -s " + serial + " shell"
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_shutil); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_which); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_shutil); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_which); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_adb, __pyx_t_2) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_adb, __pyx_t_3) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fragmentparser.pyx":18
+  /* "fragmentparser.pyx":20
  * serial = "127.0.0.1:5560"
  * adb = shutil.which("adb")
  * cmdo=adb + " -s " + serial + " shell"             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_adb); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_kp_u_s); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_adb); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_serial); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_kp_u_s); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_serial); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_4, __pyx_kp_u_shell_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_kp_u_shell_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cmdo, __pyx_t_2) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cmdo, __pyx_t_3) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fragmentparser.pyx":21
+  /* "fragmentparser.pyx":23
  * 
  * 
  * cpdef list[list] list_split(list[str,bytes] l, list[tuple] indices_or_sections):             # <<<<<<<<<<<<<<
  *     cdef:
  *         Py_ssize_t Ntotal, Nsections, Neach_section, extras, new_sum, i, lenar, st, end
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_1list_split, 0, __pyx_n_s_list_split, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_list_split, __pyx_t_2) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_1list_split, 0, __pyx_n_s_list_split, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_list_split, __pyx_t_3) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "fragmentparser.pyx":56
+  /* "fragmentparser.pyx":58
  *     return sub_arys
  * 
- * def execute_sh_command(command):             # <<<<<<<<<<<<<<
+ * cpdef list[str] execute_sh_command(str command):             # <<<<<<<<<<<<<<
  *     if iswindows:
  *         p= subprocess.run(
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_3execute_sh_command, 0, __pyx_n_s_execute_sh_command, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_3execute_sh_command, 0, __pyx_n_s_execute_sh_command, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_execute_sh_command, __pyx_t_3) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "fragmentparser.pyx":69
+ *     return p.stdout.strip().splitlines()
+ * 
+ * @cache             # <<<<<<<<<<<<<<
+ * def findchi(ff):
+ *     try:
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_cache); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_5findchi, 0, __pyx_n_s_findchi, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_execute_sh_command, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_findchi, __pyx_t_2) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fragmentparser.pyx":66
- *         )
- *     return p.stdout.strip().splitlines()
- * def get_all_activity_elements( as_pandas=False,number_of_max_views=-1):             # <<<<<<<<<<<<<<
- *     @cache
- *     def findchi(ff):
+  /* "fragmentparser.pyx":217
+ *         return [],[],{}
+ * 
+ * cpdef list[list[dict]] get_all_activity_elements(cython.bint as_pandas=False, cython.Py_ssize_t number_of_max_views=-1):             # <<<<<<<<<<<<<<
+ *     cdef:
+ *         dict[str,Any] datadict,datadict2
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_5get_all_activity_elements, 0, __pyx_n_s_get_all_activity_elements, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14fragmentparser_7get_all_activity_elements, 0, __pyx_n_s_get_all_activity_elements, NULL, __pyx_n_s_fragmentparser, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__23);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_all_activity_elements, __pyx_t_2) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__24);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_all_activity_elements, __pyx_t_2) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "fragmentparser.pyx":1
@@ -12498,6 +12443,17 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_FastCallDict(PyObject *func, PyObj
     #endif
 }
 
+/* RaiseUnexpectedTypeError */
+static int
+__Pyx_RaiseUnexpectedTypeError(const char *expected, PyObject *obj)
+{
+    __Pyx_TypeName obj_type_name = __Pyx_PyType_GetName(Py_TYPE(obj));
+    PyErr_Format(PyExc_TypeError, "Expected %s, got " __Pyx_FMT_TYPENAME,
+                 expected, obj_type_name);
+    __Pyx_DECREF_TypeName(obj_type_name);
+    return 0;
+}
+
 /* UnpackUnboundCMethod */
 static PyObject *__Pyx_SelflessCall(PyObject *method, PyObject *args, PyObject *kwargs) {
     PyObject *result;
@@ -13965,147 +13921,57 @@ bad:
     return NULL;
 }
 
-/* RaiseUnexpectedTypeError */
-static int
-__Pyx_RaiseUnexpectedTypeError(const char *expected, PyObject *obj)
-{
-    __Pyx_TypeName obj_type_name = __Pyx_PyType_GetName(Py_TYPE(obj));
-    PyErr_Format(PyExc_TypeError, "Expected %s, got " __Pyx_FMT_TYPENAME,
-                 expected, obj_type_name);
-    __Pyx_DECREF_TypeName(obj_type_name);
-    return 0;
+/* SwapException */
+#if CYTHON_FAST_THREAD_STATE
+static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+  #if CYTHON_USE_EXC_INFO_STACK && PY_VERSION_HEX >= 0x030B00a4
+    _PyErr_StackItem *exc_info = tstate->exc_info;
+    tmp_value = exc_info->exc_value;
+    exc_info->exc_value = *value;
+    if (tmp_value == NULL || tmp_value == Py_None) {
+        Py_XDECREF(tmp_value);
+        tmp_value = NULL;
+        tmp_type = NULL;
+        tmp_tb = NULL;
+    } else {
+        tmp_type = (PyObject*) Py_TYPE(tmp_value);
+        Py_INCREF(tmp_type);
+        #if CYTHON_COMPILING_IN_CPYTHON
+        tmp_tb = ((PyBaseExceptionObject*) tmp_value)->traceback;
+        Py_XINCREF(tmp_tb);
+        #else
+        tmp_tb = PyException_GetTraceback(tmp_value);
+        #endif
+    }
+  #elif CYTHON_USE_EXC_INFO_STACK
+    _PyErr_StackItem *exc_info = tstate->exc_info;
+    tmp_type = exc_info->exc_type;
+    tmp_value = exc_info->exc_value;
+    tmp_tb = exc_info->exc_traceback;
+    exc_info->exc_type = *type;
+    exc_info->exc_value = *value;
+    exc_info->exc_traceback = *tb;
+  #else
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = *type;
+    tstate->exc_value = *value;
+    tstate->exc_traceback = *tb;
+  #endif
+    *type = tmp_type;
+    *value = tmp_value;
+    *tb = tmp_tb;
 }
-
-/* PyIntBinop */
-#if !CYTHON_COMPILING_IN_PYPY
-static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check) {
-    CYTHON_MAYBE_UNUSED_VAR(intval);
-    CYTHON_MAYBE_UNUSED_VAR(inplace);
-    CYTHON_UNUSED_VAR(zerodivision_check);
-    #if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_CheckExact(op1))) {
-        const long b = intval;
-        long x;
-        long a = PyInt_AS_LONG(op1);
-        
-            x = (long)((unsigned long)a + (unsigned long)b);
-            if (likely((x^a) >= 0 || (x^b) >= 0))
-                return PyInt_FromLong(x);
-            return PyLong_Type.tp_as_number->nb_add(op1, op2);
-    }
-    #endif
-    #if CYTHON_USE_PYLONG_INTERNALS
-    if (likely(PyLong_CheckExact(op1))) {
-        const long b = intval;
-        long a, x;
-#ifdef HAVE_LONG_LONG
-        const PY_LONG_LONG llb = intval;
-        PY_LONG_LONG lla, llx;
-#endif
-        if (unlikely(__Pyx_PyLong_IsZero(op1))) {
-            return __Pyx_NewRef(op2);
-        }
-        if (likely(__Pyx_PyLong_IsCompact(op1))) {
-            a = __Pyx_PyLong_CompactValue(op1);
-        } else {
-            const digit* digits = __Pyx_PyLong_Digits(op1);
-            const Py_ssize_t size = __Pyx_PyLong_SignedDigitCount(op1);
-            switch (size) {
-                case -2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-                    #ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-                    #endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 2:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-                    #ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-                    #endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-                    #ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-                    #endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 3:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-                    #ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-                    #endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-                    #ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-                    #endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                case 4:
-                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
-                        break;
-                    #ifdef HAVE_LONG_LONG
-                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
-                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
-                        goto long_long;
-                    #endif
-                    }
-                    CYTHON_FALLTHROUGH;
-                default: return PyLong_Type.tp_as_number->nb_add(op1, op2);
-            }
-        }
-                x = a + b;
-            return PyLong_FromLong(x);
-#ifdef HAVE_LONG_LONG
-        long_long:
-                llx = lla + llb;
-            return PyLong_FromLongLong(llx);
-#endif
-        
-        
-    }
-    #endif
-    if (PyFloat_CheckExact(op1)) {
-        const long b = intval;
-#if CYTHON_COMPILING_IN_LIMITED_API
-        double a = __pyx_PyFloat_AsDouble(op1);
 #else
-        double a = PyFloat_AS_DOUBLE(op1);
-#endif
-            double result;
-            
-            PyFPE_START_PROTECT("add", return NULL)
-            result = ((double)a) + (double)b;
-            PyFPE_END_PROTECT(result)
-            return PyFloat_FromDouble(result);
-    }
-    return (inplace ? PyNumber_InPlaceAdd : PyNumber_Add)(op1, op2);
+static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb) {
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    PyErr_GetExcInfo(&tmp_type, &tmp_value, &tmp_tb);
+    PyErr_SetExcInfo(*type, *value, *tb);
+    *type = tmp_type;
+    *value = tmp_value;
+    *tb = tmp_tb;
 }
 #endif
 
@@ -14261,60 +14127,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyBytes_Join(PyObject* sep, PyObject* value
     return __Pyx_PyObject_CallMethod1(sep, __pyx_n_s_join, values);
 #endif
 }
-
-/* SwapException */
-#if CYTHON_FAST_THREAD_STATE
-static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-  #if CYTHON_USE_EXC_INFO_STACK && PY_VERSION_HEX >= 0x030B00a4
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    tmp_value = exc_info->exc_value;
-    exc_info->exc_value = *value;
-    if (tmp_value == NULL || tmp_value == Py_None) {
-        Py_XDECREF(tmp_value);
-        tmp_value = NULL;
-        tmp_type = NULL;
-        tmp_tb = NULL;
-    } else {
-        tmp_type = (PyObject*) Py_TYPE(tmp_value);
-        Py_INCREF(tmp_type);
-        #if CYTHON_COMPILING_IN_CPYTHON
-        tmp_tb = ((PyBaseExceptionObject*) tmp_value)->traceback;
-        Py_XINCREF(tmp_tb);
-        #else
-        tmp_tb = PyException_GetTraceback(tmp_value);
-        #endif
-    }
-  #elif CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    tmp_type = exc_info->exc_type;
-    tmp_value = exc_info->exc_value;
-    tmp_tb = exc_info->exc_traceback;
-    exc_info->exc_type = *type;
-    exc_info->exc_value = *value;
-    exc_info->exc_traceback = *tb;
-  #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = *type;
-    tstate->exc_value = *value;
-    tstate->exc_traceback = *tb;
-  #endif
-    *type = tmp_type;
-    *value = tmp_value;
-    *tb = tmp_tb;
-}
-#else
-static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb) {
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    PyErr_GetExcInfo(&tmp_type, &tmp_value, &tmp_tb);
-    PyErr_SetExcInfo(*type, *value, *tb);
-    *type = tmp_type;
-    *value = tmp_value;
-    *tb = tmp_tb;
-}
-#endif
 
 /* append */
 static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x) {
@@ -14537,7 +14349,7 @@ static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
         if (unlikely(!module_name_str)) { goto modbad; }
         module_name = PyUnicode_FromString(module_name_str);
         if (unlikely(!module_name)) { goto modbad; }
-        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__12);
+        module_dot = PyUnicode_Concat(module_name, __pyx_kp_u__10);
         if (unlikely(!module_dot)) { goto modbad; }
         full_name = PyUnicode_Concat(module_dot, name);
         if (unlikely(!full_name)) { goto modbad; }
@@ -14645,7 +14457,7 @@ static PyObject *__Pyx_ImportDottedModule_WalkParts(PyObject *module, PyObject *
 #endif
 static PyObject *__Pyx__ImportDottedModule(PyObject *name, PyObject *parts_tuple) {
 #if PY_MAJOR_VERSION < 3
-    PyObject *module, *from_list, *star = __pyx_n_s__13;
+    PyObject *module, *from_list, *star = __pyx_n_s__11;
     CYTHON_UNUSED_VAR(parts_tuple);
     from_list = PyList_New(1);
     if (unlikely(!from_list))
@@ -15092,7 +14904,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__24);
+        name = __Pyx_NewRef(__pyx_n_s__25);
     }
     return name;
 }
